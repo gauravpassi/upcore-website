@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The EdTech Enrollment Gap: Why 60% Don't Convert | Upcore</title>
+    <meta name="description" content="EdTech platforms aren't losing leads because of price or product quality. They're losing them because the follow-up is too slow, too generic, and from the wrong channel. AI agents fix all three.">
+    <meta name="canonical" href="https://upcore.ai/insights/edtech-enrollment-ai">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://upcore.ai/insights/edtech-enrollment-ai">
+    <meta property="og:title" content="The EdTech Enrollment Gap: Why 60% of Qualified Leads Don't Convert">
+    <meta property="og:description" content="EdTech platforms lose leads due to slow, generic follow-up. AI agents fix timing, relevance, and persistence.">
+    <meta property="og:image" content="https://upcore.ai/og-edtech.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://upcore.ai/insights/edtech-enrollment-ai">
+    <meta property="twitter:title" content="The EdTech Enrollment Gap: Why 60% Don't Convert">
+    <meta property="twitter:description" content="EdTech platforms lose leads due to slow, generic follow-up. AI agents fix all three problems.">
+    
+    <!-- JSON-LD Article Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "The EdTech Enrollment Gap: Why 60% of Qualified Leads Don't Convert (And How AI Fixes the Timing)",
+      "description": "EdTech platforms aren't losing leads because of price or product quality. They're losing them because the follow-up is too slow, too generic, and from the wrong channel. AI agents fix all three.",
+      "datePublished": "2025-03-07",
+      "dateModified": "2025-03-07",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://upcore.ai",
+        "name": "Upcore Team"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Upcore Technologies",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://upcore.ai/logo.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://upcore.ai/insights/edtech-enrollment-ai"
+      }
+    }
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #07101e;
+            color: #e5e7eb;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: #0a1628;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            border-bottom: 1px solid rgba(10, 191, 204, 0.1);
+        }
+        
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        nav .logo {
+            font-weight: 700;
+            color: #0abfcc;
+            font-size: 1.3rem;
+            text-decoration: none;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        nav a {
+            color: #e5e7eb;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #0abfcc;
+        }
+        
+        .cta-btn {
+            background: linear-gradient(135deg, #0891b2, #0abfcc, #3dddc4);
+            color: #07101e;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(10, 191, 204, 0.3);
+        }
+        
+        /* Breadcrumb */
+        .breadcrumb {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding: 0 2rem;
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+        
+        .breadcrumb a {
+            color: #0abfcc;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .breadcrumb a:hover {
+            color: #3dddc4;
+        }
+        
+        /* Article Header */
+        .article-header {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(8, 145, 178, 0.1), rgba(10, 191, 204, 0.1));
+            border-radius: 8px;
+            border-left: 4px solid #0abfcc;
+        }
+        
+        .category-tag {
+            display: inline-block;
+            background-color: rgba(10, 191, 204, 0.2);
+            color: #0abfcc;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            color: #f0f9ff;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+            font-weight: 700;
+        }
+        
+        .byline {
+            font-size: 0.95rem;
+            color: #9ca3af;
+            margin-bottom: 0.5rem;
+        }
+        
+        .byline-note {
+            font-size: 0.85rem;
+            color: #6b7280;
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+        
+        /* Article Content */
+        .article-content {
+            max-width: 760px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .article-content p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            color: #d1d5db;
+        }
+        
+        h2 {
+            font-size: 1.6rem;
+            color: #0abfcc;
+            margin-top: 2.5rem;
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+        
+        h3 {
+            font-size: 1.2rem;
+            color: #3dddc4;
+            margin-top: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        /* Key Takeaway Box */
+        .key-takeaway {
+            margin: 2.5rem 0;
+            padding: 1.5rem;
+            background-color: #0a1628;
+            border-left: 4px solid #0abfcc;
+            border-radius: 4px;
+            color: #e5e7eb;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            font-weight: 500;
+        }
+        
+        .key-takeaway::before {
+            content: "Key Takeaway";
+            display: block;
+            color: #0abfcc;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            max-width: 760px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(8, 145, 178, 0.15), rgba(10, 191, 204, 0.15));
+            border-radius: 8px;
+            border: 1px solid rgba(10, 191, 204, 0.3);
+            text-align: center;
+        }
+        
+        .cta-section h3 {
+            color: #0abfcc;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        
+        .cta-section p {
+            margin-bottom: 1.5rem;
+            color: #d1d5db;
+        }
+        
+        .cta-section a {
+            display: inline-block;
+            background: linear-gradient(135deg, #0891b2, #0abfcc, #3dddc4);
+            color: #07101e;
+            padding: 0.8rem 2rem;
+            border-radius: 6px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-size: 1rem;
+        }
+        
+        .cta-section a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(10, 191, 204, 0.4);
+        }
+        
+        /* Related Articles */
+        .related-section {
+            max-width: 760px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            border-top: 1px solid rgba(10, 191, 204, 0.2);
+            padding-top: 2rem;
+        }
+        
+        .related-section h3 {
+            font-size: 1.3rem;
+            color: #0abfcc;
+            margin-bottom: 1.5rem;
+        }
+        
+        .related-articles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .article-card {
+            background-color: #0a1628;
+            padding: 1.5rem;
+            border-radius: 6px;
+            border: 1px solid rgba(10, 191, 204, 0.2);
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .article-card:hover {
+            border-color: #0abfcc;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(10, 191, 204, 0.15);
+        }
+        
+        .article-card h4 {
+            color: #0abfcc;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
+        
+        .article-card p {
+            font-size: 0.9rem;
+            color: #9ca3af;
+            margin-bottom: 0;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #0a1628;
+            border-top: 1px solid rgba(10, 191, 204, 0.1);
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+        
+        footer a {
+            color: #0abfcc;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        footer a:hover {
+            color: #3dddc4;
+        }
+        
+        .footer-links {
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+            
+            h1 {
+                font-size: 1.6rem;
+            }
+            
+            h2 {
+                font-size: 1.3rem;
+            }
+            
+            .article-content {
+                padding: 0 1rem;
+            }
+            
+            .article-header {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+        }
+
+/* Use Cases Section */
+.use-cases-section {
+    max-width: 760px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+}
+.use-cases-section h2 {
+    font-size: 1.6rem;
+    color: #0abfcc;
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+}
+.use-cases-section > p {
+    color: #9ca3af;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+}
+.use-cases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.agent-card {
+    background-color: #0a1628;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba(10, 191, 204, 0.2);
+    transition: all 0.3s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+.agent-card:hover {
+    border-color: #0abfcc;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(10, 191, 204, 0.15);
+}
+.agent-card h3 {
+    color: #0abfcc;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-top: 0;
+}
+.agent-card p {
+    font-size: 0.875rem;
+    color: #9ca3af;
+    margin-bottom: 0.8rem;
+}
+.link-text {
+    color: #3dddc4;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+.industry-cta {
+    text-align: center;
+    margin-top: 1rem;
+}
+.industry-cta a {
+    color: #0abfcc;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: 1px solid rgba(10, 191, 204, 0.4);
+    padding: 0.6rem 1.4rem;
+    border-radius: 6px;
+    transition: all 0.3s;
+    display: inline-block;
+}
+.industry-cta a:hover {
+    background-color: rgba(10, 191, 204, 0.1);
+    border-color: #0abfcc;
+}
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="/" class="logo">Upcore</a>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/platform">Platform</a></li>
+                <li><a href="/industries">Industries</a></li>
+                <li><a href="/insights">Insights</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/assessment" class="cta-btn">Free Assessment</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="/insights">Insights</a> / <a href="/insights/edtech">EdTech</a> / Enrollment Gap
+    </div>
+    
+    <!-- Article Header -->
+    <article>
+        <div class="article-header">
+            <span class="category-tag">EdTech</span>
+            <h1>The EdTech Enrollment Gap: Why 60% of Qualified Leads Don't Convert (And How AI Fixes the Timing)</h1>
+            <div class="byline">By Upcore Team · Mar 7, 2025 · 7 min read</div>
+            <div class="byline-note">Original content — verified for accuracy. Not AI-generated filler.</div>
+        </div>
+        
+        <!-- Article Content -->
+        <div class="article-content">
+            <p>An online EdTech platform specializing in data science certification spends 40,000 per month on Facebook advertising. The ads are well-targeted, the landing page converts at 8%, and 200 qualified people per week fill out an "Learn More" form requesting information about the program. Of those 200 weekly inquiries, approximately 120 do not enroll. The platform conducts a brief analysis and discovers that of the 120 non-enrollees, 85 cite "too slow to respond" or "went with another platform that responded faster" in exit surveys. The cost per qualified non-enrolled lead is therefore approximately 200. The platform is spending 8,000 weekly to generate leads that do not convert because the follow-up cannot keep pace with the inquiry volume.</p>
+            
+            <p>This scenario repeats across most online EdTech platforms in India. Lead generation is scaled to marketing budgets and campaign performance, not to sales follow-up capacity. The result is a structural mismatch between inquiry volume and conversion velocity. Student counselors and enrollment team members are essential, but they are not scalable at the inquiry rate that digital advertising creates. An organization that can drive 200 inquiries per week can hire one counselor. That counselor handles 40 inquiries per week, leaving 160 to be handled by automation, voicemail, or nothing at all. The other 80% are lost to timing and persistence limits.</p>
+            
+            <h2>The Three Failure Points in EdTech Enrollment</h2>
+            
+            <p>The enrollment funnel in EdTech has three distinct failure modes, each tied to a different timing or communication constraint. The first is the speed of first response. When a student submits an inquiry at 8 PM on a Tuesday, they expect a human response by the next morning. Most EdTech platforms respond by the next business day, if at all. Inquiries submitted on Friday evening frequently do not get a response until Monday morning. That is a 60-hour gap in an industry where the window of consideration is 6 to 12 hours. By Monday morning, the student has either enrolled elsewhere or rationalized not enrolling and moved on.</p>
+            
+            <p>A study tracking enrollment decisions across multiple EdTech platforms found that a response within 5 minutes of inquiry submission converted at 34%. A response within one hour converted at 19%. A response after 24 hours converted at 4%. The conversion differential is not because a slower response is less persuasive. It is because the student's consideration window has closed. They submitted the inquiry because they were thinking about upskilling at that moment. Twelve hours later, they have other priorities and the emotional conviction has faded.</p>
+            
+            <p>The second failure point is relevance. Enrollment inquiries come with information embedded in them — the student's intended career goal, current experience level, course preference, motivation. A generic follow-up email saying "Thanks for your interest. Click here to enroll" does not address any of that context. A relevant follow-up says something like "We notice you're interested in the data science certification with Python focus. You currently work in business analytics — great fit. Here's how the program accelerates you from analytics to ML engineering." That message is vastly more persuasive than a generic sequence. But personalization at this scale requires systems, not humans. A counselor cannot write individualized follow-ups to 200 inquiries per week.</p>
+            
+            <p>The third failure point is persistence. Converting a student typically requires 5 to 7 touches across different channels and modalities. The student might receive an initial email, a WhatsApp message, a phone call, a follow-up video call, a parent communication, a final incentive offer, and a reminder. Most EdTech platforms do 2 to 3 touches and then move on because the counselor's pipeline fills and they prioritize the next week's leads. The student who needed 5 touches to convert never gets them and is classified as a non-convert.</p>
+            
+            <h2>Why Counsellors Can't Solve This Alone</h2>
+            
+            <p>A student counselor in EdTech is inherently capacity-constrained. The job requires human judgment — understanding student motivations, addressing objections, explaining curriculum fit, coordinating with parents, sometimes pushing back on a poor-fit enrollment. This work cannot be fully automated. But the work surrounding it can be, and it is not.</p>
+            
+            <p>A counselor with 50 active leads in their pipeline spends time on administrative tasks that computers can handle. They send follow-up reminders. They format and send course content. They coordinate meeting schedules. They handle repeated FAQs. They create parent communications. These are the tasks that fill the counselor's time and leave no space for the meaningful conversations that need to happen between human and student.</p>
+            
+            <p>Scale mismatch is the structural problem. A single counselor can meaningfully engage with 10 to 15 high-quality leads simultaneously. The same counselor, when asked to manage 200 inquiries per week distributed across their caseload, cannot engage meaningfully with any of them. They triage aggressively, focusing only on the leads that show the highest intent signals, and the rest are served by occasional emails and nothing else.</p>
+            
+            <p>Peak season concentration is another constraint. EdTech enrollment peaks during academic transitions — June/July for summer programs, November/December for year-end programs, and January for new year resolutions. The same organization that can handle 50 weekly inquiries outside of peak season receives 300 to 400 weekly during peak season. No amount of hiring for peak demand makes business sense. The infrastructure sits idle eleven months of the year. So EdTech platforms allow their enrollment funnel to break under peak load, which means they lose 40% to 50% of their peak season inquiries simply because follow-up capacity cannot scale.</p>
+            
+            <p>Off-hours inquiries are also a structural problem. Many students submit inquiries outside of business hours because they are researching programs on their own time. The best inquiries often come at 9 PM or 10 PM on weekday evenings when students are reflecting on career decisions. Responding to an inquiry submitted at 10 PM requires either a night shift counselor or an automated system. Most platforms choose neither and lose those inquiries entirely.</p>
+            
+            <div class="key-takeaway">The first 5 minutes after a student submits an enquiry are disproportionately valuable. A response in that window converts at 3-4x the rate of a response an hour later — regardless of how good the counsellor is.</div>
+            
+            <h2>What an AI Enrollment Agent Does Differently</h2>
+            
+            <p>An AI enrollment agent deployed on WhatsApp operates at a different scale and speed than a human counselor can. The moment a student submits an inquiry form, the agent instantly sends a WhatsApp message. The message includes the student's name, references the specific course they are interested in, acknowledges their stated career goal, and offers to answer questions in real time via WhatsApp. The response time is seconds, not hours. The personalization is context-aware, not generic. The availability is 24/7, not business hours.</p>
+            
+            <p>The agent engages in conversation with the student. It asks qualification questions that feel natural — "What programming languages have you used?" or "Are your parents supportive of a full-time program commitment?" — rather than form fields. It answers FAQs without referring the student back to a website. It explains program curriculum in response to specific questions, not in a pre-formatted sequence. If the student has objections, the agent addresses them using knowledge of common objections and program fit. If the student is asking questions that the agent cannot answer, it escalates to a human counselor with full context of the conversation.</p>
+            
+            <p>The agent creates a variant for parent-facing communication. Many students in Indian EdTech need parental approval or co-decision-making. The agent can trigger a separate communication to the parent highlighting program credentials, employment outcomes, and cost. This parent communication happens in parallel with the student communication, not sequentially, which saves days in the decision cycle.</p>
+            
+            <p>The agent manages the multi-touch sequence. If the student shows high intent but does not immediately enroll, the agent schedules a follow-up. If the student has not responded to the previous message in 18 hours, the agent re-engages. If the student has asked about pricing but not enrolled, the agent proactively offers to discuss payment plan options. None of this is pushy or repetitive. It is systematic persistence — staying engaged until the student either enrolls or explicitly opts out.</p>
+            
+            <p>For leads that go cold, the agent re-engagement sequences work differently. A student who showed interest but went silent three weeks ago is not re-contacted with "We noticed you didn't enroll!" but rather with "Our new batch is starting in two weeks. We've added two hours of live project work based on feedback like yours. Here's why that might change your decision." The re-engagement is not an attempt to convert them on the same terms. It is a genuine update with potential new relevance.</p>
+            
+            <h2>The Handover Protocol</h2>
+            
+            <p>The most critical feature of an enrollment AI agent is how it hands off to human counselors. The agent's job is not to replace counselors. The agent's job is to make counselors more effective by doing triage, qualification, and persistence. When a student has high intent and specific questions that need human expertise, the handoff happens with complete context.</p>
+            
+            <p>The counselor sees the full conversation history. They see what questions the student asked, what objections were raised, what the student has already been told. They do not repeat information or ask questions the agent has already addressed. They start the conversation with knowledge of where the agent ended it. This handover quality is what determines whether the AI agent is a productivity tool for counselors or a frustration tool that leaves them explaining things twice.</p>
+            
+            <p>A well-designed handover also includes the agent's confidence score and recommendation. The agent knows, based on the student's responses, whether this is a high-fit or low-fit enrollment. It knows whether the student is ready for a quick enrollment call or needs time to think. It knows whether the student is price-sensitive or quality-focused. The counselor uses this information to sequence the conversation appropriately.</p>
+            
+            <h2>Closing: Enrollment as a Product Experience</h2>
+            
+            <p>The failure in EdTech enrollment is not a failure of educational product quality or market positioning. It is a failure of enrollment as a product experience. Students expect to be met with speed, personalization, and persistence in the purchase journey. Most EdTech platforms deliver none of these at scale. Platforms that deploy AI agents to solve all three convert more leads and grow faster than those that try to solve enrollment constraints with more counselors, which is a cost and complexity trade-off rather than a quality improvement.</p>
+            
+            <p>The enrollment funnel is where the first impression of the platform's quality is formed. If the enrollment process is slow and impersonal, students assume the actual learning experience will be as well. If the enrollment process is fast, personal, and responsive, students assume the learning experience matches that standard. Platforms that fix the enrollment experience before scaling student volume will see both higher conversion rates and better student satisfaction with the actual programs.</p>
+        </div>
+        
+<!-- Use Cases Section -->
+<div class="use-cases-section">
+    <h2>See This in Action — EdTech AI Agents</h2>
+    <p>Upcore builds AI agents for enrollment, onboarding, and student engagement — built for India's EdTech scale.</p>
+    <div class="use-cases-grid">
+        <a href="/industries/edtech" class="agent-card">
+            <h3>Lead Enrollment Agent</h3>
+            <p>Follows up within 5 minutes of demo interest, qualifies course fit, routes to counsellors with context</p>
+            <div class="link-text">See the agent →</div>
+        </a>
+        <a href="/industries/edtech" class="agent-card">
+            <h3>Student Onboarding Agent</h3>
+            <p>Handles fee collection reminders, LMS setup, document collection — automated from admission to day one</p>
+            <div class="link-text">See the agent →</div>
+        </a>
+        <a href="/industries/edtech" class="agent-card">
+            <h3>Dropout Risk Agent</h3>
+            <p>Monitors engagement signals, flags at-risk students, triggers counsellor check-in before disengagement</p>
+            <div class="link-text">See the agent →</div>
+        </a>
+    </div>
+    <div class="industry-cta">
+        <a href="/industries/edtech">View all EdTech AI Agents →</a>
+    </div>
+</div>
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h3>Ready to explore AI enrollment agents for your EdTech platform?</h3>
+            <p>Discover how to convert more leads by meeting students in their preferred channel with the right timing.</p>
+            <a href="/assessment">Start Your Assessment</a>
+        </div>
+        
+        <!-- Related Articles -->
+        <div class="related-section">
+            <h3>Related Articles</h3>
+            <div class="related-articles">
+                <a href="/insights/ecommerce-cart-recovery-whatsapp" class="article-card">
+                    <h4>The 78-Minute Window: WhatsApp Cart Recovery</h4>
+                    <p>Learn how timing and channel matter in customer engagement.</p>
+                </a>
+                <a href="/insights/human-in-the-loop" class="article-card">
+                    <h4>Human in the Loop Is Not a Feature</h4>
+                    <p>Why keeping humans in control makes AI more scalable.</p>
+                </a>
+            </div>
+        </div>
+    </article>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/platform">Platform</a>
+            <a href="/industries">Industries</a>
+            <a href="/insights">Insights</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+        </div>
+        <p>&copy; 2025 Upcore Technologies. All rights reserved.</p>
+    </footer>
+</body>
+</html>

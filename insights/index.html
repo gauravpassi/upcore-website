@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Practical AI and automation insights for manufacturing, ecommerce, banking, NBFC, edtech, healthcare, logistics, SaaS, legal, real estate, government, and marketing. Written by operators, for operators.">
+    <title>Insights — AI Strategy for India's Industries | Upcore Technologies</title>
+    <link rel="canonical" href="https://upcore-ai-workforces.vercel.app/insights">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Insights — AI Strategy for India's Industries | Upcore Technologies">
+    <meta property="og:description" content="Practical perspectives on AI and automation across 12 industries. Written for operators, not investors.">
+    <meta property="og:url" content="https://upcore-ai-workforces.vercel.app/insights">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html, body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #07101e;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        /* ========== NAVIGATION ========== */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(7, 16, 30, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(10, 191, 204, 0.1);
+            padding: 1rem 2rem;
+        }
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #0891b2, #0abfcc, #3dddc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+        nav ul { display: flex; list-style: none; gap: 2rem; align-items: center; }
+        nav a {
+            text-decoration: none;
+            color: #e0e0e0;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        nav a:hover { color: #0abfcc; }
+        nav a.active { color: #0abfcc; }
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #0891b2, #0abfcc, #3dddc4);
+        }
+        .cta-btn {
+            background: linear-gradient(135deg, #0891b2, #0abfcc, #3dddc4);
+            color: #07101e;
+            padding: 0.6rem 1.4rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            white-space: nowrap;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(10, 191, 204, 0.3); }
+
+        /* ========== HERO ========== */
+        .hero {
+            background-color: #07101e;
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(10, 191, 204, 0.1);
+        }
+        .hero .container { max-width: 900px; margin: 0 auto; }
+        .eyebrow { font-size: 0.95rem; color: #0abfcc; font-weight: 600; margin-bottom: 1rem; letter-spacing: 0.5px; }
+        .hero h1 { font-size: 3rem; font-weight: 700; margin-bottom: 1.2rem; line-height: 1.2; color: #ffffff; }
+        .grad-text {
+            background: linear-gradient(135deg, #0891b2, #0abfcc, #3dddc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero .subtext { font-size: 1.05rem; color: #b0b0b0; max-width: 700px; margin: 0 auto 2rem; line-height: 1.8; }
+        .stats-strip {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            padding: 1.5rem 0 0;
+            flex-wrap: wrap;
+        }
+        .stat-item { text-align: center; }
+        .stat-number { font-size: 1.8rem; font-weight: 700; color: #0abfcc; display: block; }
+        .stat-label { font-size: 0.85rem; color: #808080; }
+
+        /* ========== SEARCH + FILTER BAR ========== */
+        .filter-bar {
+            background-color: #07101e;
+            padding: 2rem 2rem 0;
+            position: sticky;
+            top: 65px;
+            z-index: 100;
+            border-bottom: 1px solid rgba(10, 191, 204, 0.1);
+        }
+        .filter-bar .container { max-width: 1200px; margin: 0 auto; }
+        .search-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+        }
+        .search-input {
+            flex: 1;
+            padding: 0.75rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(10, 191, 204, 0.25);
+            background-color: rgba(255,255,255,0.04);
+            color: #e0e0e0;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+        }
+        .search-input::placeholder { color: #555; }
+        .search-input:focus { outline: none; border-color: #0abfcc; background-color: rgba(255,255,255,0.07); }
+        .results-count { font-size: 0.85rem; color: #666; white-space: nowrap; display: flex; align-items: center; }
+        .pills-row {
+            display: flex;
+            gap: 0.7rem;
+            flex-wrap: wrap;
+            padding-bottom: 1.2rem;
+        }
+        .filter-pill {
+            padding: 0.55rem 1.2rem;
+            border-radius: 50px;
+            border: 1.5px solid rgba(255,255,255,0.12);
+            background-color: transparent;
+            color: #b0b0b0;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-size: 0.88rem;
+            white-space: nowrap;
+            font-family: 'Poppins', sans-serif;
+        }
+        .filter-pill:hover { border-color: #0abfcc; color: #0abfcc; }
+        .filter-pill.active {
+            background: linear-gradient(135deg, #0891b2, #0abfcc, #3dddc4);
+            color: #07101e;
+            border-color: transparent;
+            font-weight: 600;
+        }
+
+        /* ========== FEATURED ARTICLE ========== */
+        .featured-section {
+            background-color: #07101e;
+            padding: 3rem 2rem 1rem;
+        }
+        .featured-section .container { max-width: 1200px; margin: 0 auto; }
+        .section-label { font-size: 0.8rem; color: #666; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1.2rem; }
+        .featured-card {
+            background: linear-gradient(135deg, rgba(8,145,178,0.08), rgba(10,191,204,0.05));
+            border: 1px solid rgba(10, 191, 204, 0.25);
+            border-radius: 14px;
+            padding: 2.5rem;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 2rem;
+            align-items: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+        .featured-card:hover { border-color: rgba(10, 191, 204, 0.5); transform: translateY(-3px); box-shadow: 0 16px 40px rgba(10, 191, 204, 0.12); }
+        .featured-tag {
+            display: inline-block;
+            padding: 0.35rem 0.9rem;
+            border-radius: 50px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            background-color: rgba(168, 85, 247, 0.15);
+            color: #d8b4fe;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+        }
+        .featured-card h2 { font-size: 1.6rem; font-weight: 700; color: #fff; line-height: 1.3; margin-bottom: 0.8rem; }
+        .featured-card p { color: #b0b0b0; font-size: 0.95rem; line-height: 1.7; margin-bottom: 1rem; }
+        .featured-meta { font-size: 0.85rem; color: #666; }
+        .featured-cta {
+            background: linear-gradient(135deg, #0891b2, #0abfcc, #3dddc4);
+            color: #07101e;
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            white-space: nowrap;
+            display: inline-block;
+        }
+
+        /* ========== ARTICLES GRID ========== */
+        .articles-section {
+            background-color: #07101e;
+            padding: 2rem 2rem 4rem;
+        }
+        .articles-section .container { max-width: 1200px; margin: 0 auto; }
+        .grid-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        .grid-header h2 { font-size: 1.3rem; font-weight: 600; color: #fff; }
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.8rem;
+        }
+        .article-card {
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(10, 191, 204, 0.12);
+            border-radius: 12px;
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+        .article-card:hover {
+            border-color: rgba(10, 191, 204, 0.4);
+            background-color: rgba(255, 255, 255, 0.05);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 32px rgba(10, 191, 204, 0.1);
+        }
+        .article-card.hidden { display: none; }
+        .article-tag {
+            display: inline-block;
+            padding: 0.35rem 0.85rem;
+            border-radius: 50px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            width: fit-content;
+            margin-bottom: 1rem;
+        }
+        /* Industry tag colors */
+        .tag-manufacturing { background-color: rgba(249,115,22,0.12); color: #fb923c; border: 1px solid rgba(249,115,22,0.25); }
+        .tag-ecommerce { background-color: rgba(236,72,153,0.12); color: #f472b6; border: 1px solid rgba(236,72,153,0.25); }
+        .tag-nbfc { background-color: rgba(34,197,94,0.12); color: #86efac; border: 1px solid rgba(34,197,94,0.25); }
+        .tag-edtech { background-color: rgba(59,130,246,0.12); color: #93c5fd; border: 1px solid rgba(59,130,246,0.25); }
+        .tag-platform { background-color: rgba(168,85,247,0.12); color: #d8b4fe; border: 1px solid rgba(168,85,247,0.25); }
+        .tag-banking { background-color: rgba(34,197,94,0.12); color: #4ade80; border: 1px solid rgba(34,197,94,0.25); }
+        .tag-realestate { background-color: rgba(239,68,68,0.12); color: #f87171; border: 1px solid rgba(239,68,68,0.25); }
+        .tag-healthcare { background-color: rgba(236,72,153,0.12); color: #f9a8d4; border: 1px solid rgba(236,72,153,0.25); }
+        .tag-logistics { background-color: rgba(20,184,166,0.12); color: #2dd4bf; border: 1px solid rgba(20,184,166,0.25); }
+        .tag-saas { background-color: rgba(168,85,247,0.12); color: #c084fc; border: 1px solid rgba(168,85,247,0.25); }
+        .tag-legal { background-color: rgba(99,102,241,0.12); color: #a5b4fc; border: 1px solid rgba(99,102,241,0.25); }
+        .tag-government { background-color: rgba(59,130,246,0.12); color: #7dd3fc; border: 1px solid rgba(59,130,246,0.25); }
+        .tag-marketing { background-color: rgba(244,63,94,0.12); color: #fb7185; border: 1px solid rgba(244,63,94,0.25); }
+
+        .article-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.8rem; line-height: 1.4; color: #ffffff; }
+        .article-card > p { font-size: 0.9rem; color: #9ca3af; margin-bottom: 1.5rem; flex-grow: 1; line-height: 1.6; }
+        .article-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(10, 191, 204, 0.08);
+            padding-top: 1.2rem;
+            margin-top: auto;
+        }
+        .article-meta { font-size: 0.82rem; color: #666; display: flex; gap: 0.8rem; }
+        .article-link {
+            color: #0abfcc;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.88rem;
+            transition: color 0.3s ease;
+        }
+        .article-link:hover { color: #3dddc4; }
+
+        /* No results message */
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #666;
+        }
+        .no-results h3 { font-size: 1.3rem; color: #888; margin-bottom: 0.5rem; }
+
+        /* ========== NEWSLETTER ========== */
+        .newsletter-section {
+            background: linear-gradient(135deg, rgba(8,145,178,0.08), rgba(10,191,204,0.05));
+            border-top: 1px solid rgba(10, 191, 204, 0.1);
+            border-bottom: 1px solid rgba(10, 191, 204, 0.1);
+            padding: 4rem 2rem;
+        }
+        .newsletter-section .container { max-width: 600px; margin: 0 auto; text-align: center; }
+        .newsletter-section h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem; color: #ffffff; }
+        .newsletter-section p { font-size: 0.95rem; color: #b0b0b0; margin-bottom: 2rem; line-height: 1.8; }
+        .newsletter-form { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+        .newsletter-form input {
+            flex: 1;
+            min-width: 250px;
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(10, 191, 204, 0.3);
+            background-color: rgba(255,255,255,0.05);
+            color: #e0e0e0;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+        }
+        .newsletter-form input::placeholder { color: #444; }
+        .newsletter-form input:focus { outline: none; border-color: #0abfcc; }
+        .newsletter-form button {
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, #0891b2, #0abfcc, #3dddc4);
+            color: #07101e;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .newsletter-form button:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(10, 191, 204, 0.3); }
+        .quality-badge {
+            margin-top: 2rem;
+            font-size: 0.82rem;
+            color: #0abfcc;
+            opacity: 0.7;
+        }
+
+        /* ========== FOOTER ========== */
+        footer { background-color: #05080f; border-top: 1px solid rgba(10,191,204,0.1); padding: 3rem 2rem; }
+        footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        footer h4 { font-size: 0.95rem; margin-bottom: 1rem; color: #0abfcc; }
+        footer ul { list-style: none; }
+        footer ul li { margin-bottom: 0.6rem; }
+        footer a { text-decoration: none; color: #808080; font-size: 0.9rem; transition: color 0.3s ease; }
+        footer a:hover { color: #0abfcc; }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            border-top: 1px solid rgba(10,191,204,0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: #444;
+            font-size: 0.88rem;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 900px) {
+            .featured-card { grid-template-columns: 1fr; }
+            .featured-cta { display: none; }
+        }
+        @media (max-width: 768px) {
+            nav ul { gap: 1rem; }
+            nav a { font-size: 0.85rem; }
+            .hero h1 { font-size: 2rem; }
+            .filter-bar { top: 58px; }
+            .articles-grid { grid-template-columns: 1fr; }
+            .newsletter-form { flex-direction: column; }
+            .newsletter-form input, .newsletter-form button { width: 100%; }
+            .stats-strip { gap: 1.5rem; }
+            .search-row { flex-direction: column; }
+        }
+        @media (max-width: 480px) {
+            nav .container { flex-direction: column; gap: 0.8rem; }
+            nav ul { flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
+            .hero { padding: 2.5rem 1rem; }
+            .hero h1 { font-size: 1.7rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="container">
+            <a href="/" class="logo">Upcore</a>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/platform">Platform</a></li>
+                <li><a href="/industries">Industries</a></li>
+                <li><a href="/insights" class="active">Insights</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/assessment" class="cta-btn">Free Assessment</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <div class="eyebrow">📰 Insights</div>
+            <h1>Industry Intelligence. <span class="grad-text">Built for Practitioners.</span></h1>
+            <p class="subtext">Practical perspectives on AI, automation, and operations — written for the people running India's businesses, not for investors or academics.</p>
+            <div class="stats-strip">
+                <div class="stat-item">
+                    <span class="stat-number">15</span>
+                    <span class="stat-label">Articles Published</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">12</span>
+                    <span class="stat-label">Industries Covered</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Original Content</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEARCH + FILTER BAR -->
+    <div class="filter-bar" id="filterBar">
+        <div class="container">
+            <div class="search-row">
+                <input
+                    type="text"
+                    class="search-input"
+                    id="searchInput"
+                    placeholder="Search articles — e.g. KYC, WhatsApp, churn, WISMO..."
+                    oninput="filterArticles()"
+                >
+                <span class="results-count" id="resultsCount">15 articles</span>
+            </div>
+            <div class="pills-row">
+                <button class="filter-pill active" data-category="all" onclick="setFilter('all', this)">All</button>
+                <button class="filter-pill" data-category="manufacturing" onclick="setFilter('manufacturing', this)">🏭 Manufacturing</button>
+                <button class="filter-pill" data-category="ecommerce" onclick="setFilter('ecommerce', this)">🛒 Ecommerce</button>
+                <button class="filter-pill" data-category="banking" onclick="setFilter('banking', this)">🏦 Banking</button>
+                <button class="filter-pill" data-category="nbfc" onclick="setFilter('nbfc', this)">💰 NBFCs</button>
+                <button class="filter-pill" data-category="realestate" onclick="setFilter('realestate', this)">🏘️ Real Estate</button>
+                <button class="filter-pill" data-category="healthcare" onclick="setFilter('healthcare', this)">🏥 Healthcare</button>
+                <button class="filter-pill" data-category="edtech" onclick="setFilter('edtech', this)">🎓 EdTech</button>
+                <button class="filter-pill" data-category="logistics" onclick="setFilter('logistics', this)">🚚 Logistics</button>
+                <button class="filter-pill" data-category="saas" onclick="setFilter('saas', this)">💻 SaaS</button>
+                <button class="filter-pill" data-category="legal" onclick="setFilter('legal', this)">⚖️ Legal</button>
+                <button class="filter-pill" data-category="government" onclick="setFilter('government', this)">🏛️ Government</button>
+                <button class="filter-pill" data-category="marketing" onclick="setFilter('marketing', this)">📣 Marketing</button>
+                <button class="filter-pill" data-category="platform" onclick="setFilter('platform', this)">💡 Platform</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FEATURED ARTICLE -->
+    <section class="featured-section" id="featuredSection">
+        <div class="container">
+            <div class="section-label">✦ EDITOR'S PICK</div>
+            <a href="/insights/human-in-the-loop" class="featured-card" id="featuredCard" data-cat="platform" data-keywords="human loop approval enterprise ai decisions oversight governance control">
+                <div>
+                    <span class="featured-tag">💡 Platform Thinking</span>
+                    <h2>Human in the Loop Is Not a Feature. It's the Only Way Enterprise AI Actually Works.</h2>
+                    <p>The AI deployments that fail in year two are the ones that removed human oversight in year one. Here's the framework Upcore uses to keep humans in control at every critical decision — and why that actually makes AI scale faster, not slower.</p>
+                    <div class="featured-meta">8 min read · Mar 10, 2025</div>
+                </div>
+                <div>
+                    <span class="featured-cta">Read Article →</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- ARTICLES GRID -->
+    <section class="articles-section">
+        <div class="container">
+            <div class="grid-header">
+                <h2>All Articles</h2>
+            </div>
+            <div class="articles-grid" id="articlesGrid">
+
+                <!-- 1: Manufacturing -->
+                <a href="/insights/manufacturing-ai-quality-control" class="article-card" data-cat="manufacturing" data-keywords="manufacturing quality control defect qc inspection batch production shift capa cmm vision system automotive">
+                    <span class="article-tag tag-manufacturing">🏭 Manufacturing</span>
+                    <h3>Why Manufacturing Teams Catch Defects 3 Months Too Late — And What an AI Agent Changes</h3>
+                    <p>Most QC problems aren't detected at the batch level. They're found in the field, three months and forty clients later. Here's how AI agents change the detection timeline.</p>
+                    <div class="article-footer">
+                        <div class="article-meta">
+                            <span>7 min read</span>
+                            <span>Feb 28, 2025</span>
+                        </div>
+                        <span class="article-link">Read →</span>
+                    </div>
+                </a>
+
+                <!-- 2: Ecommerce -->
+                <a href="/insights/ecommerce-cart-recovery-whatsapp" class="article-card" data-cat="ecommerce" data-keywords="ecommerce cart abandonment whatsapp recovery d2c retail conversion email timing channel">
+                    <span class="article-tag tag-ecommerce">🛒 Ecommerce</span>
+                    <h3>The 78-Minute Window: Recovering Abandoned Carts on WhatsApp Before Customers Move On</h3>
+                    <p>Cart abandonment isn't a conversion problem — it's a timing and channel problem. WhatsApp AI agents solve it in the window where email has already lost.</p>
+                    <div class="article-footer">
+                        <div class="article-meta">
+                            <span>6 min read</span>
+                            <span>Mar 3, 2025</span>
+                        </div>
+                        <span class="article-link">Read →</span>
+                    </div>
+                </a>
+
+                <!-- 3: NBFC -->
+                <a href="/insights/nbfc-kyc-automation" class="article-card" data-cat="nbfc" data-keywords="nbfc kyc automation tat compliance rbi loan document verification aadhaar pan digital lending fintech">
+                    <span class="article-tag tag-nbfc">💰 NBFCs</span>
+                    <h3>How NBFCs Are Cutting KYC TAT from 7 Days to 4 Hours Without Compromising Compliance</h3>
+                    <p>KYC delays cost NBFCs both customers and capital. The fix isn't to skip steps — it's to automate the ones that don't require human judgment.</p>
+                    <div class="article-footer">
+                        <div class="article-meta">
+                            <span>6 min read</span>
+                            <span>Mar 5, 2025</span>
+                        </div>
+                        <span class="article-link">Read →</span>
+                    </div>
+                </a>
+
+                <!-- 4: EdTech -->
+                <a href="/insights/edtech-enrollment-ai" class="article-card" data-cat="edtech" data-keywords="edtech enrollment conversion leads counsellor follow-up education online learning demo india">
+                    <span class="article-tag tag-edtech">🎓 EdTech</span>
+                    <h3>The EdTech Enrollment Gap: Why 60% of Qualified Leads Don't Convert (And How AI Fixes the Timing)</h3>
+                    <p>EdTech platforms aren't losing leads to price or product — they're losing them because follow-up arrives too late, from the wrong person, with the wrong message.</p>
+                    <div class="article-footer">
+                        <div class="article-meta">
+                            <span>7 min read</span>
+                            <span>Mar 7, 2025</span>
+                        </div>
+                        <span class="article-link">Read →</span>
+                    </div>
+                </a>
+
+                <!-- 5: Banking -->
+                <a href="/insights/banking-ai-customer-service" class="article-card" data-cat="banking" data-keywords="banking customer service whatsapp chatbot ai 24x7 compliance query resolution balance loan card">
+                    <span class="article-tag tag-banking">🏦 Banking</span>
+                    <h3>Why Indian Banks Are Deploying AI on WhatsApp — And What Makes or Breaks the Experience</h3>
+                    <p>Indian banks face 75% repetitive query volumes, 24/7 customer expectations, and zero tolerance for compliance errors. WhatsApp AI customer service agents solve all three — if designed correctly.</p>
+                    <div class="article-footer">
+                        <div class="article-meta">
+                            <span>8 min read</span>
+                            <span>Mar 12, 2025</span>
+                        </div>
+                        <span class="article-link">Read →</span>
+                    </div>
+                </a>
+
+                <!-- 6: Real Estate -->
+                <a href="/insights/real-estate-lead-conversion" class="article-card" data-cat="realestate" data-keywords="real estate lead conversion site visit proptech follow-up sales cycle property india buyer">
+                    <span class="article-tag tag-realestate">🏘️ Real Estate</span>
+                    <h3>Real Estate's Lead Conversion Problem: 68% of Enquiries Never Get a Follow-Up Call</h3>
+                    <p>Real estate teams are drowning in portals, inboxes, and CRM entries — but most enquiries go cold because no one called back within 10 minutes. AI agents fix the timing problem.</p>
+                    <div class="article-footer">
+                        <div class="article-meta">
+                            <span>7 min read</span>
+                            <span>Mar 14, 2025</span>
+                        </div>
+                        <span class="article-link">Read →</span>
+                    </div>
+                </a>
+
+                <!-- 7: Healthcare -->
+                <a href="/insights/healthcare-patient-no-show-ai" class="article-card" data-cat="healthcare" data-keywords="healthcare patient no-show appointment reminder ai hospital clinic doctor schedule revenue">
+                    <span class="article-tag tag-healthcare">🏥 Healthcare</span>
+                    <h3>The 28% No-Show Rate: How Hospitals Are Using AI to Recover Lost Appointment Revenue</h3>
+                    <p>Healthcare providers lose 20-30% of appointment revenue to no-shows every month. AI appointment agents using intelligent reminders across WhatsApp and voice are recovering this lost capacity.</p>
+                    <div class="article-footer">
+                        <div class="article-meta">
+                            <span>7 min read</span>
+                            <span>Mar 16, 2025</span>
+                        </div>
+                        <span class="article-link">Read →</span>
+                    </div>
+                </a>
+
+                <!-- 8: Logistics -->
+                <a href="/insights/logistics-wismo-ai-agents" class="article-card" data-cat="logistics" data-keywords="logistics wismo where is my order delivery shipment tracking ai customer service supply chain last mile">
+                    <span class="article-tag tag-logistics">🚚 Logistics</span>
+                    <h3>WISMO: The Query That Consumes 35% of Logistics Customer Support (And How AI Eliminates It)</h3>
+                    <p>"Where Is My Order?" accounts for a third of all logistics support volume. AI agents that integrate with WMS and courier APIs can answer it in 8 seconds — without a human agent involved.</p>
+                    <div class="article-footer">
+                        <div class="article-meta">
+                            <span>7 min read</span>
+                            <span>Mar 18, 2025</span>
+                        </div>
+                        <span class="article-link">Read →</span>
+                    </div>
+                </a>
+
+                <!-- 9: SaaS -->
+                <a href="/insights/saas-churn-ai-early-warning" class="article-card" data-cat="saas" data-keywords="saas churn early warning b2b customer success retention mrr nrr expansion revenue product usage">
+                    <span class="article-tag tag-saas">💻 SaaS</span>
+                    <h3>The 90-Day Churn Signal: How SaaS Companies Are Using AI to Identify At-Risk Accounts Before It's Too Late</h3>
+                    <p>SaaS churn is predictable — the signals appear 60-90 days before a customer churns. AI agents that monitor usage patterns, support ticket sentiment, and engagement can catch them in time.</p>
+                    <div class="article-footer">
+                        <div class="article-meta">
+                            <span>8 min read</span>
+                            <span>Mar 20, 2025</span>
+                        </div>
+                        <span class="article-link">Read →</span>
+                    </div>
+                </a>
+
+                <!-- 10: Legal -->
+                <a href="/insights/legal-ai-contract-review" class="article-card" data-cat="legal" data-keywords="legal contract review ai nda msa vendor agreement compliance clause extraction india law firm corporate">
+                    <span class="article-tag tag-legal">⚖️ Legal</span>
+                    <h3>AI Contract Review for Indian Legal Teams: From 4 Hours to 20 Minutes Per Agreement</h3>
+                    <p>Indian legal teams spend an average of 4 hours per contract review. AI contract review agents extract key clauses, flag risk terms, and compare against playbooks — reducing review time by 80%.</p>
+                    <div class="article-footer">
+                        <div class="article-meta">
+                            <span>8 min read</span>
+                            <span>Mar 21, 2025</span>
+                        </div>
+                        <span class="article-link">Read →</span>
+                    </div>
+                </a>
+
+                <!-- 11: Government -->
+                <a href="/insights/government-ai-citizen-services" class="article-card" data-cat="government" data-keywords="government citizen services ai chatbot multilingual hindi scheme grievance digital india egovernance bhashini">
+                    <span class="article-tag tag-government">🏛️ Government</span>
+                    <h3>AI Citizen Service Agents: How Indian Government Bodies Are Cutting Grievance Resolution Time by 60%</h3>
+                    <p>India's 28 states, 22 official languages, and 1.4 billion citizens create a customer service challenge that no human team can solve at scale. Multilingual AI agents are changing what's possible.</p>
+                    <div class="article-footer">
+                        <div class="article-meta">
+                            <span>8 min read</span>
+                            <span>Mar 22, 2025</span>
+                        </div>
+                        <span class="article-link">Read →</span>
+                    </div>
+                </a>
+
+                <!-- 12: Marketing -->
+                <a href="/insights/marketing-ai-execution-vs-strategy" class="article-card" data-cat="marketing" data-keywords="marketing ai execution strategy automation campaign content performance reporting brand agency growth">
+                    <span class="article-tag tag-marketing">📣 Marketing</span>
+                    <h3>Marketing AI: Why the Tools Are Winning on Execution but Losing on Strategy (And What to Do About It)</h3>
+                    <p>AI marketing tools are excellent at producing content at scale — but they systematically fail at brand positioning, audience insight, and strategic sequencing. Here's the framework for using them correctly.</p>
+                    <div class="article-footer">
+                        <div class="article-meta">
+                            <span>9 min read</span>
+                            <span>Mar 23, 2025</span>
+                        </div>
+                        <span class="article-link">Read →</span>
+                    </div>
+                </a>
+
+                <!-- 13: Cross-industry ROI -->
+                <a href="/insights/roi-business-case-ai-agents" class="article-card" data-cat="platform" data-keywords="roi business case ai agents cost benefit payback period investment automation budget cfo finance">
+                    <span class="article-tag tag-platform">💡 Platform</span>
+                    <h3>Building the ROI Case for AI Agents: A CFO-Ready Framework for Operations Leaders</h3>
+                    <p>Operations leaders believe in AI agents. CFOs want numbers. Here's a structured framework for calculating ROI, payback period, and total cost of ownership — with real benchmarks by industry.</p>
+                    <div class="article-footer">
+                        <div class="article-meta">
+                            <span>9 min read</span>
+                            <span>Mar 24, 2025</span>
+                        </div>
+                        <span class="article-link">Read →</span>
+                    </div>
+                </a>
+
+                <!-- 14: Getting Started -->
+                <a href="/insights/choosing-first-ai-agent" class="article-card" data-cat="platform" data-keywords="first ai agent how to start implementation pilot automation selection criteria beginner guide">
+                    <span class="article-tag tag-platform">💡 Platform</span>
+                    <h3>How to Choose Your First AI Agent: A Decision Framework for Operations Teams</h3>
+                    <p>Most AI projects fail not because the technology doesn't work but because the starting point was wrong. Here's how to pick your first agent deployment for maximum ROI and minimum risk.</p>
+                    <div class="article-footer">
+                        <div class="article-meta">
+                            <span>7 min read</span>
+                            <span>Mar 25, 2025</span>
+                        </div>
+                        <span class="article-link">Read →</span>
+                    </div>
+                </a>
+
+                <!-- 15: Platform / Human-in-the-loop (also in featured, hide from grid by default but keep for filtering) -->
+                <a href="/insights/human-in-the-loop" class="article-card" data-cat="platform" data-keywords="human loop approval oversight control enterprise ai governance decisions scalable trust compliance">
+                    <span class="article-tag tag-platform">💡 Platform</span>
+                    <h3>Human in the Loop Is Not a Feature. It's the Only Way Enterprise AI Actually Works.</h3>
+                    <p>The AI deployments that fail in year two are the ones that removed human oversight in year one. Here's the framework Upcore uses to keep humans in control at every critical decision.</p>
+                    <div class="article-footer">
+                        <div class="article-meta">
+                            <span>8 min read</span>
+                            <span>Mar 10, 2025</span>
+                        </div>
+                        <span class="article-link">Read →</span>
+                    </div>
+                </a>
+
+                <!-- No results -->
+                <div class="no-results hidden" id="noResults">
+                    <h3>No articles found</h3>
+                    <p>Try a different search term or select a different category.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter-section">
+        <div class="container">
+            <h2>Get New Articles in Your Inbox</h2>
+            <p>We publish one new article per industry each month — practical, original, and built for the people running India's businesses.</p>
+            <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+                <input type="email" placeholder="Your work email" required autocomplete="email">
+                <button type="submit">Subscribe →</button>
+            </form>
+            <p class="quality-badge">✓ Original content · ✓ No AI-generated filler · ✓ Verified before publishing</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div>
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="/platform">Platform</a></li>
+                    <li><a href="/sdlc-agent">Forge — SDLC Agent</a></li>
+                    <li><a href="/agent-builder">Studio — Agent Builder</a></li>
+                    <li><a href="/industries">Industries</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Industries</h4>
+                <ul>
+                    <li><a href="/industries/manufacturing">Manufacturing</a></li>
+                    <li><a href="/industries/banking-finance">Banking & Finance</a></li>
+                    <li><a href="/industries/healthcare">Healthcare</a></li>
+                    <li><a href="/industries/retail-d2c">Ecommerce & D2C</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/insights">Insights</a></li>
+                    <li><a href="/assessment">Free Assessment</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                    <li><a href="/terms">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Upcore Technologies. All rights reserved. | AI Workforce Platform for India's Industries</p>
+        </div>
+    </footer>
+
+    <script>
+        let activeCategory = 'all';
+        let searchQuery = '';
+
+        function setFilter(cat, btn) {
+            activeCategory = cat;
+            document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+            btn.classList.add('active');
+            filterArticles();
+        }
+
+        function filterArticles() {
+            searchQuery = document.getElementById('searchInput').value.toLowerCase().trim();
+            const cards = document.querySelectorAll('#articlesGrid .article-card');
+            let visibleCount = 0;
+
+            // Handle featured card
+            const featured = document.getElementById('featuredCard');
+            const featuredSection = document.getElementById('featuredSection');
+            const featuredCat = featured.getAttribute('data-cat');
+            const featuredKeywords = featured.getAttribute('data-keywords');
+            const featuredText = (featured.textContent + ' ' + featuredKeywords).toLowerCase();
+
+            const featuredCatMatch = activeCategory === 'all' || featuredCat === activeCategory;
+            const featuredSearchMatch = !searchQuery || featuredText.includes(searchQuery);
+
+            if (featuredCatMatch && featuredSearchMatch && activeCategory !== 'platform' && !searchQuery) {
+                featuredSection.style.display = '';
+            } else {
+                featuredSection.style.display = 'none';
+            }
+
+            cards.forEach(card => {
+                const cat = card.getAttribute('data-cat');
+                const keywords = card.getAttribute('data-keywords');
+                const text = (card.textContent + ' ' + keywords).toLowerCase();
+
+                const catMatch = activeCategory === 'all' || cat === activeCategory;
+                const searchMatch = !searchQuery || text.includes(searchQuery);
+
+                if (catMatch && searchMatch) {
+                    card.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            // Update results count
+            const total = visibleCount;
+            const label = total === 1 ? 'article' : 'articles';
+            document.getElementById('resultsCount').textContent = total + ' ' + label;
+
+            // Show/hide no results
+            const noResults = document.getElementById('noResults');
+            if (total === 0) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+            }
+        }
+
+        function handleNewsletter(e) {
+            e.preventDefault();
+            const email = e.target.querySelector('input').value;
+            e.target.innerHTML = '<p style="color:#0abfcc;font-weight:600;font-size:1rem;">✓ You\'re subscribed! New articles will arrive in your inbox.</p>';
+        }
+    </script>
+</body>
+</html>

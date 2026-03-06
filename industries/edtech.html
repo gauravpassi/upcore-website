@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>EdTech AI Workforce — Upcore Technologies</title>
+<meta name="description" content="Agents for student support, course recommendation, onboarding, parent communication, and admissions. Scale support without scaling headcount."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#07101e;--bg2:#0a1628;--card:#0f2040;--teal:#0abfcc;--mint:#3dddc4;--txt:#ffffff;--txt2:#8bbed4;--txt3:#3a6080;--border:rgba(10,191,204,.13);--bh:rgba(10,191,204,.38);--grad:linear-gradient(135deg,#0891b2,#0abfcc,#3dddc4);--ff:'Poppins',sans-serif;}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--ff);background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+.grad-text{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+nav{width:100%;background:rgba(7,16,30,.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 48px;height:72px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:99;}
+.nav-logo a{display:flex;align-items:center;}.nav-logo img{height:52px;width:auto;}
+.nav-links{display:flex;gap:4px;list-style:none;}
+.nav-links a{padding:8px 16px;border-radius:8px;font-size:14px;font-weight:500;color:var(--txt2);transition:all .2s;}
+.nav-links a:hover{color:var(--txt);background:rgba(10,191,204,.08);}
+.nav-links a.active{color:var(--teal);}
+.nav-cta{background:var(--grad)!important;color:#07101e!important;font-weight:700!important;border-radius:10px!important;padding:10px 22px!important;}
+.hub-hero{padding:80px 48px 64px;background:radial-gradient(ellipse 80% 55% at 30% 0%,rgba(10,191,204,.08),transparent 65%),var(--bg);position:relative;overflow:hidden;}
+.hub-hero::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(10,191,204,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(10,191,204,.03) 1px,transparent 1px);background-size:60px 60px;}
+.hub-hero-inner{position:relative;z-index:2;max-width:700px;}
+.hub-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--teal);background:rgba(10,191,204,.1);border:1px solid var(--border);border-radius:100px;padding:6px 14px;margin-bottom:16px;}
+.hub-status-live{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:#4ade80;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2);border-radius:100px;padding:5px 14px;margin-bottom:20px;}
+.hub-status-ready{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:var(--teal);background:rgba(10,191,204,.08);border:1px solid var(--border);border-radius:100px;padding:5px 14px;margin-bottom:20px;}
+.sdot{width:7px;height:7px;border-radius:50%;background:currentColor;animation:pulse 2s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+.hub-icon{font-size:48px;margin-bottom:16px;}
+.hub-hero h1{font-size:clamp(28px,4vw,48px);font-weight:900;letter-spacing:-2px;line-height:1.1;margin-bottom:16px;}
+.hub-hero p{font-size:16px;color:var(--txt2);line-height:1.75;margin-bottom:32px;max-width:580px;}
+.hub-meta{display:flex;gap:32px;flex-wrap:wrap;}
+.meta-item{font-size:13px;color:var(--txt2);}
+.meta-item span{color:var(--teal);font-weight:700;}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--txt3);margin-bottom:32px;}
+.breadcrumb a{color:var(--txt3);}
+.breadcrumb a:hover{color:var(--teal);}
+.section{padding:64px 48px 80px;}
+.section-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--txt3);margin-bottom:8px;}
+.section-title{font-size:clamp(22px,3vw,32px);font-weight:800;letter-spacing:-1px;margin-bottom:40px;}
+.usecases-grid{display:flex;flex-direction:column;gap:28px;}
+.uc-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:36px;position:relative;overflow:hidden;}
+.uc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad);}
+.uc-num{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--txt3);margin-bottom:8px;}
+.uc-title{font-size:20px;font-weight:800;letter-spacing:-.5px;margin-bottom:16px;}
+.uc-pain{font-size:15px;font-style:italic;color:var(--teal);line-height:1.6;padding-left:16px;border-left:3px solid var(--teal);margin-bottom:16px;}
+.uc-cost-lbl,.uc-sol-lbl{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--txt3);margin-bottom:6px;}
+.uc-cost{font-size:14px;color:#f87171;line-height:1.6;margin-bottom:20px;}
+.uc-solution{font-size:14px;color:var(--txt2);line-height:1.75;margin-bottom:20px;}
+.uc-outcomes{display:flex;flex-direction:column;gap:8px;}
+.uc-out{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--txt2);}
+.uc-check{width:18px;height:18px;border-radius:50%;background:rgba(61,221,196,.15);border:1px solid var(--mint);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--mint);flex-shrink:0;margin-top:1px;}
+.agents-section{padding:0 48px 80px;}
+.agents-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
+.agent-pill-card{background:rgba(10,191,204,.04);border:1px solid var(--border);border-radius:14px;padding:20px 24px;}
+.agent-tag{display:inline-flex;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mint);background:rgba(61,221,196,.08);border:1px solid rgba(61,221,196,.2);border-radius:100px;padding:3px 10px;margin-bottom:10px;}
+.agent-pill-card h4{font-size:15px;font-weight:700;margin-bottom:6px;}
+.agent-pill-card p{font-size:12px;color:var(--txt2);line-height:1.6;}
+.cta-section{padding:64px 48px;background:var(--bg2);border-top:1px solid var(--border);text-align:center;}
+.cta-section h2{font-size:clamp(20px,2.5vw,32px);font-weight:800;letter-spacing:-1px;margin-bottom:12px;}
+.cta-section p{font-size:15px;color:var(--txt2);margin-bottom:32px;max-width:540px;margin-left:auto;margin-right:auto;}
+.btn-cta{display:inline-flex;align-items:center;gap:10px;background:var(--grad);color:#07101e;font-family:var(--ff);font-size:15px;font-weight:700;padding:16px 36px;border-radius:100px;transition:all .2s;}
+.btn-cta:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(10,191,204,.4);}
+.btn-ghost{display:inline-flex;align-items:center;gap:10px;color:var(--teal);font-family:var(--ff);font-size:14px;font-weight:600;padding:14px 28px;border-radius:100px;border:1px solid var(--border);transition:all .2s;margin-left:16px;}
+.btn-ghost:hover{border-color:var(--teal);background:rgba(10,191,204,.05);}
+footer{background:var(--bg);border-top:1px solid var(--border);padding:32px 48px;}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.footer-logo img{height:36px;opacity:.7;}
+.footer-copy{font-size:12px;color:var(--txt3);}
+@media(max-width:768px){nav{padding:0 20px;}.nav-links{display:none;}.hub-hero,.section,.agents-section,.cta-section,footer{padding-left:20px;padding-right:20px;}.agents-grid{grid-template-columns:1fr;}.hub-meta{gap:16px;}.btn-ghost{margin-left:0;margin-top:12px;}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo"><a href="/"><img src="upcore-logo.svg" alt="Upcore"/></a></div>
+  <ul class="nav-links">
+    <li><a href="/#solution">Solutions</a></li>
+    <li><a href="/#products">Products</a></li>
+    <li><a href="/industries" class="active">Industries</a></li>
+    <li><a href="/#engage">Pricing</a></li>
+    <li><a href="/assessment" class="nav-cta">Free Assessment</a></li>
+  </ul>
+</nav>
+
+<div class="hub-hero">
+  <div class="hub-hero-inner">
+    <div class="breadcrumb"><a href="/industries">Industries</a> / EdTech</div>
+    <div class="hub-eyebrow">Industry AI Workforce</div>
+    <div class="hub-status-ready"><span class="sdot"></span>Ready to Build</div>
+    <div class="hub-icon">🎓</div>
+    <h1>EdTech<br/><span class="grad-text">AI Workforce</span></h1>
+    <p>Agents that answer 24/7, onboard students properly, and keep parents informed — so your platform scales without your support headcount scaling with it.</p>
+    <div class="hub-meta">
+      <div class="meta-item">Agents: <span>5 Specialities</span></div>
+      <div class="meta-item">Human in the Loop: <span>Mandatory</span></div>
+      <div class="meta-item">Deployment: <span>30 Days</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Real Pain Points. Real Solutions.</div>
+  <div class="section-title">3 Problems Your <span class="grad-text">EdTech AI Team</span> Solves From Day One</div>
+  <div class="usecases-grid">
+    <div class="uc-card">
+      <div class="uc-num">Use Case 01</div>
+      <div class="uc-title">Students Who Feel Abandoned</div>
+      <div class="uc-pain">"We have 10,000 learners. Our support team of 15 people cannot keep up. Students feel alone."</div>
+      <div><div class="uc-cost-lbl">The Cost</div><div class="uc-cost">Poor support means low completion rates, bad reviews, and slowing growth — in that order.</div></div>
+      <div><div class="uc-sol-lbl">What We Build For You</div><div class="uc-solution">The Student Support Agent answers course queries, resolves platform issues, and escalates academic questions to mentors 24/7 — in English and Hindi — without your team being stretched.</div></div>
+      <div class="uc-outcomes">
+        <div class="uc-out"><div class="uc-check">✓</div>60% of queries resolved without human involvement</div>
+        <div class="uc-out"><div class="uc-check">✓</div>Response time under 2 minutes, day or night</div>
+        <div class="uc-out"><div class="uc-check">✓</div>Student satisfaction scores improve across the board</div>
+      </div>
+    </div>
+
+    <div class="uc-card">
+      <div class="uc-num">Use Case 02</div>
+      <div class="uc-title">8% Trial-to-Paid Conversion</div>
+      <div class="uc-pain">"Our trial-to-paid conversion is 8%. We think students do not know what to do after signing up."</div>
+      <div><div class="uc-cost-lbl">The Cost</div><div class="uc-cost">Every 1% improvement in trial conversion is worth more than any marketing campaign you run.</div></div>
+      <div><div class="uc-sol-lbl">What We Build For You</div><div class="uc-solution">The Onboarding Agent guides each new student through personalised first steps based on their goals, answers questions in real-time, and nudges them toward the activation moments that predict long-term retention.</div></div>
+      <div class="uc-outcomes">
+        <div class="uc-out"><div class="uc-check">✓</div>Trial-to-paid conversion improves by 2-3 percentage points</div>
+        <div class="uc-out"><div class="uc-check">✓</div>Drop-off in the first week reduced dramatically</div>
+        <div class="uc-out"><div class="uc-check">✓</div>Students who reach activation are 4x more likely to complete</div>
+      </div>
+    </div>
+
+    <div class="uc-card">
+      <div class="uc-num">Use Case 03</div>
+      <div class="uc-title">Parents Who Do Not Know What Their Child Is Learning</div>
+      <div class="uc-pain">"Parents pay the fees, but we never talk to them. They do not know what their child is learning."</div>
+      <div><div class="uc-cost-lbl">The Cost</div><div class="uc-cost">Anxious parents do not renew. Informed, engaged parents become your best word-of-mouth channel.</div></div>
+      <div><div class="uc-sol-lbl">What We Build For You</div><div class="uc-solution">The Parent Communication Agent sends weekly personalised progress updates via WhatsApp — attendance, completion rates, assessment scores — and handles parent queries so your counsellors handle relationships, not repetition.</div></div>
+      <div class="uc-outcomes">
+        <div class="uc-out"><div class="uc-check">✓</div>Renewal rates improve by 20%</div>
+        <div class="uc-out"><div class="uc-check">✓</div>Parent-initiated escalations drop as anxiety is preempted</div>
+        <div class="uc-out"><div class="uc-check">✓</div>Referral rates increase as parents share visible progress</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="agents-section">
+  <div class="section-label">Agent Specialities</div>
+  <div class="section-title" style="margin-bottom:24px;">Your <span class="grad-text">AI Workforce</span> for EdTech</div>
+  <div class="agents-grid">
+    <div class="agent-pill-card">
+      <div class="agent-tag">Agent 01</div>
+      <h4>Student Support</h4>
+      <p>Answers course queries and platform issues 24/7 in English and Hindi, resolves 60% of queries autonomously, escalates academic questions to mentors with full context — letting students get help whenever they need it.</p>
+    </div>
+    <div class="agent-pill-card">
+      <div class="agent-tag">Agent 02</div>
+      <h4>Course Recommender</h4>
+      <p>Analyzes student goals, learning style, and progress data, recommends next courses aligned with their pathway, sends personalised learning suggestions, and tracks engagement to surface at-risk students early.</p>
+    </div>
+    <div class="agent-pill-card">
+      <div class="agent-tag">Agent 03</div>
+      <h4>Onboarding Agent</h4>
+      <p>Guides new students through first steps based on their stated goals, answers setup questions in real-time, nudges toward activation milestones, and tracks progress to improve trial-to-paid conversion rates.</p>
+    </div>
+    <div class="agent-pill-card">
+      <div class="agent-tag">Agent 04</div>
+      <h4>Parent Communication</h4>
+      <p>Sends weekly progress updates via WhatsApp with attendance, completion rates, and assessment scores, handles parent queries about curriculum and progress, and escalates concerns to counsellors for relationship building.</p>
+    </div>
+    <div class="agent-pill-card">
+      <div class="agent-tag">Agent 05</div>
+      <h4>Admissions Agent</h4>
+      <p>Qualifies inbound inquiries, guides prospective students through the application process, schedules demo classes and assessments, collects required documents, and tracks conversion from inquiry to enrollment.</p>
+    </div>
+  </div>
+</div>
+
+<div class="cta-section">
+  <h2>Ready to build your <span class="grad-text">EdTech AI team?</span></h2>
+  <p>45-minute free assessment. We map your top 3 agent opportunities and give you a written action plan. No pitch. No pressure.</p>
+  <a href="/assessment" class="btn-cta">Book Free AI Assessment &#8594;</a>
+  <a href="/industries" class="btn-ghost">&#8592; All Industries</a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo"><a href="/"><img src="upcore-logo.svg" alt="Upcore"/></a></div>
+    <span class="footer-copy">© 2025 Upcore Technologies</span>
+    <a href="/industries" style="font-size:13px;color:var(--txt3);">&#8592; All Industries</a>
+  </div>
+</footer>
+</body>
+</html>

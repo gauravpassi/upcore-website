@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Studio by Upcore — Build AI Agents for Your Industry</title>
+<meta name="description" content="Studio by Upcore lets anyone describe a workflow in plain English and deploy a production AI agent in 48 hours. 60+ pre-built agent templates across 12 industries. No code. No vendor lock-in."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#07101e;--bg2:#0a1628;--bg3:#0d1c34;--card:#0f2040;--card2:#0a1a32;
+  --teal:#0abfcc;--mint:#3dddc4;--teal3:#0891b2;
+  --txt:#ffffff;--txt2:#8bbed4;--txt3:#3a6080;
+  --border:rgba(10,191,204,.13);--bh:rgba(10,191,204,.38);
+  --glow:rgba(10,191,204,.08);--red:#f87171;--green:#4ade80;--amber:#fbbf24;
+  --grad:linear-gradient(135deg,#0891b2,#0abfcc,#3dddc4);
+  --ff:'Poppins',sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--ff);background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+.grad-text{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+
+/* NAV */
+nav{width:100%;background:rgba(7,16,30,.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 48px;height:72px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:99;}
+.nav-logo a{display:flex;align-items:center;}.nav-logo img{height:52px;width:auto;}
+.nav-links{display:flex;gap:4px;list-style:none;}
+.nav-links a{padding:8px 16px;border-radius:8px;font-size:14px;font-weight:500;color:var(--txt2);transition:all .2s;}
+.nav-links a:hover{color:var(--txt);background:var(--glow);}
+.nav-links a.active{color:var(--teal);}
+.nav-cta{background:var(--grad)!important;color:#07101e!important;font-weight:700!important;border-radius:10px!important;padding:10px 22px!important;}
+
+/* HERO */
+.hero{
+  min-height:100vh;padding:80px 48px 64px;
+  display:flex;align-items:center;
+  background:
+    radial-gradient(ellipse 90% 60% at 15% 50%,rgba(10,191,204,.07),transparent 60%),
+    radial-gradient(ellipse 50% 80% at 85% 30%,rgba(8,145,178,.05),transparent 55%),
+    var(--bg);
+  position:relative;overflow:hidden;
+}
+.hero::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(10,191,204,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(10,191,204,.025) 1px,transparent 1px);
+  background-size:72px 72px;}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;width:100%;position:relative;z-index:2;max-width:1400px;margin:0 auto;}
+.hero-left{max-width:600px;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--teal);background:rgba(10,191,204,.1);border:1px solid var(--border);border-radius:100px;padding:7px 18px;margin-bottom:28px;}
+.hero-badge .live-dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 1.8s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(74,222,128,.4);}50%{opacity:.7;box-shadow:0 0 0 6px rgba(74,222,128,0);}}
+.hero h1{font-size:clamp(32px,4.5vw,58px);font-weight:900;letter-spacing:-2.5px;line-height:1.05;margin-bottom:22px;}
+.hero-sub{font-size:18px;color:var(--txt2);line-height:1.75;margin-bottom:16px;max-width:520px;}
+.hero-hook{font-size:15px;color:var(--teal);font-style:italic;padding:14px 18px;border-left:3px solid var(--teal);background:rgba(10,191,204,.05);border-radius:0 10px 10px 0;margin-bottom:36px;max-width:520px;}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:40px;}
+.btn-hero-primary{display:inline-flex;align-items:center;gap:10px;background:var(--grad);color:#07101e;font-family:var(--ff);font-size:15px;font-weight:700;padding:16px 32px;border-radius:100px;transition:all .2s;}
+.btn-hero-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(10,191,204,.4);}
+.btn-hero-ghost{display:inline-flex;align-items:center;gap:10px;color:var(--teal);font-family:var(--ff);font-size:15px;font-weight:600;padding:14px 28px;border-radius:100px;border:1px solid var(--border);transition:all .2s;}
+.btn-hero-ghost:hover{border-color:var(--teal);background:rgba(10,191,204,.06);}
+.hero-stats{display:flex;gap:32px;flex-wrap:wrap;}
+.hstat{display:flex;flex-direction:column;}
+.hstat-num{font-size:26px;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-1px;}
+.hstat-lbl{font-size:11px;color:var(--txt3);font-weight:500;margin-top:1px;}
+
+/* BUILDER MOCKUP */
+.builder-window{width:100%;max-width:480px;background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.4);}
+.builder-header{background:var(--bg3);padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;}
+.bh-icon{width:34px;height:34px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:16px;}
+.bh-title{font-size:14px;font-weight:700;color:var(--txt);}
+.bh-sub{font-size:11px;color:var(--teal);}
+.builder-body{padding:20px;display:flex;flex-direction:column;gap:14px;}
+.input-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--txt3);margin-bottom:6px;}
+.prompt-box{background:var(--bg);border:1px solid var(--bh);border-radius:12px;padding:14px;font-size:13px;color:var(--txt2);line-height:1.6;position:relative;}
+.prompt-box .cursor{display:inline-block;width:2px;height:13px;background:var(--teal);animation:blink .8s step-end infinite;vertical-align:middle;margin-left:1px;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
+.agent-preview{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:14px;}
+.ap-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.ap-name{font-size:14px;font-weight:800;color:var(--txt);}
+.ap-status{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--green);background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.2);border-radius:100px;padding:3px 10px;}
+.ap-caps{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
+.ap-cap{font-size:11px;color:var(--teal);background:rgba(10,191,204,.08);border:1px solid var(--border);border-radius:6px;padding:3px 9px;}
+.ap-channels{font-size:11px;color:var(--txt3);}
+.ap-channels span{color:var(--txt2);}
+.deploy-bar{background:var(--bg3);border-radius:10px;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;}
+.deploy-label{font-size:12px;color:var(--txt2);}
+.deploy-btn{background:var(--grad);color:#07101e;font-family:var(--ff);font-size:11px;font-weight:800;padding:7px 16px;border-radius:8px;border:none;cursor:pointer;}
+
+/* SECTIONS */
+.section{padding:80px 48px;}
+.section-inner{max-width:1200px;margin:0 auto;}
+.section-bg2{background:var(--bg2);}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:14px;}
+.section-title{font-size:clamp(26px,3.5vw,42px);font-weight:900;letter-spacing:-2px;line-height:1.1;margin-bottom:14px;}
+.section-sub{font-size:16px;color:var(--txt2);line-height:1.75;max-width:600px;margin-bottom:48px;}
+.divider{height:1px;background:var(--border);margin:0;}
+
+/* HOW IT WORKS */
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.step-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px 24px;position:relative;}
+.step-num{font-size:42px;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-2px;line-height:1;margin-bottom:14px;}
+.step-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:8px;}
+.step-title{font-size:17px;font-weight:800;margin-bottom:8px;}
+.step-desc{font-size:13px;color:var(--txt2);line-height:1.65;}
+.step-connector{position:absolute;right:-10px;top:50%;transform:translateY(-50%);width:20px;height:2px;background:var(--border);z-index:1;}
+.step-card:last-child .step-connector{display:none;}
+.who-badge{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:100px;padding:3px 10px;margin-top:10px;}
+.who-human{background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.2);color:var(--amber);}
+.who-agent{background:rgba(10,191,204,.08);border:1px solid var(--border);color:var(--teal);}
+
+/* INDUSTRY TABS */
+.industry-section{padding:80px 48px;}
+.industry-inner{max-width:1340px;margin:0 auto;}
+.industry-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px;}
+.ind-tab{background:transparent;border:1px solid var(--border);color:var(--txt2);font-family:var(--ff);font-size:13px;font-weight:600;padding:9px 18px;border-radius:100px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:7px;}
+.ind-tab:hover{border-color:var(--teal);color:var(--txt);}
+.ind-tab.active{background:var(--grad);border-color:transparent;color:#07101e;}
+.industry-panel{display:none;}
+.industry-panel.active{display:block;}
+.ind-panel-header{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:20px;margin-bottom:32px;}
+.ind-meta{max-width:680px;}
+.ind-tag{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);background:rgba(10,191,204,.08);border:1px solid var(--border);border-radius:100px;padding:5px 14px;margin-bottom:12px;}
+.ind-title{font-size:clamp(20px,2.5vw,30px);font-weight:900;letter-spacing:-1px;margin-bottom:10px;}
+.ind-desc{font-size:15px;color:var(--txt2);line-height:1.75;}
+.ind-cta{flex-shrink:0;align-self:flex-end;}
+.agents-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;}
+.agent-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;transition:border-color .2s,transform .2s;}
+.agent-card:hover{border-color:var(--bh);transform:translateY(-3px);}
+.agent-num{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mint);background:rgba(61,221,196,.08);border:1px solid rgba(61,221,196,.2);border-radius:100px;padding:3px 10px;display:inline-block;margin-bottom:12px;}
+.agent-name{font-size:16px;font-weight:800;margin-bottom:6px;}
+.agent-desc{font-size:13px;color:var(--txt2);line-height:1.65;margin-bottom:14px;}
+.agent-replaces{font-size:11px;color:var(--txt3);display:flex;align-items:center;gap:6px;}
+.agent-replaces span{color:var(--red);text-decoration:line-through;}
+.agent-replaces strong{color:var(--green);}
+
+/* CAPABILITIES */
+.caps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.cap-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px 24px;}
+.cap-icon{font-size:28px;margin-bottom:14px;}
+.cap-title{font-size:17px;font-weight:800;margin-bottom:8px;}
+.cap-desc{font-size:13px;color:var(--txt2);line-height:1.65;}
+
+/* COMPARISON */
+.compare-table{width:100%;border-collapse:collapse;}
+.compare-table th{font-size:13px;font-weight:800;text-align:left;padding:14px 18px;border-bottom:1px solid var(--border);}
+.compare-table th:first-child{color:var(--txt2);}
+.compare-table th.ours{color:var(--teal);}
+.compare-table th.theirs{color:var(--txt3);}
+.compare-table td{font-size:13px;color:var(--txt2);padding:12px 18px;border-bottom:1px solid rgba(10,191,204,.06);}
+.compare-table tr:last-child td{border:none;}
+.compare-table td.feature{font-weight:600;color:var(--txt);}
+.compare-table td.check{color:var(--green);font-weight:700;}
+.compare-table td.cross{color:var(--red);}
+.compare-table td.partial{color:var(--amber);}
+.compare-wrap{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
+
+/* TRUST */
+.trust-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;}
+.trust-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px 18px;text-align:center;}
+.trust-icon{font-size:22px;margin-bottom:10px;}
+.trust-title{font-size:13px;font-weight:700;margin-bottom:6px;}
+.trust-desc{font-size:11px;color:var(--txt3);line-height:1.5;}
+
+/* INTEGRATIONS */
+.integrations-row{display:flex;flex-wrap:wrap;gap:10px;}
+.int-chip{display:inline-flex;align-items:center;gap:7px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:9px 16px;font-size:13px;font-weight:600;color:var(--txt2);}
+.int-dot{width:7px;height:7px;border-radius:50%;background:var(--teal);}
+
+/* PRICING */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.pricing-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:36px 28px;}
+.pricing-card.featured{border-color:var(--teal);background:linear-gradient(160deg,rgba(10,191,204,.07),rgba(8,145,178,.04));}
+.pricing-badge{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);background:rgba(10,191,204,.1);border:1px solid var(--border);border-radius:100px;padding:4px 12px;display:inline-block;margin-bottom:16px;}
+.pricing-name{font-size:22px;font-weight:900;margin-bottom:8px;}
+.pricing-price{font-size:32px;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-1px;margin-bottom:4px;}
+.pricing-note{font-size:12px;color:var(--txt3);margin-bottom:24px;}
+.pricing-feats{display:flex;flex-direction:column;gap:10px;margin-bottom:28px;}
+.pf{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--txt2);}
+.pf-check{width:16px;height:16px;border-radius:50%;background:rgba(61,221,196,.1);border:1px solid rgba(61,221,196,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.pf-check svg{width:8px;height:8px;}
+
+/* CTA SECTION */
+.cta-section{padding:100px 48px;text-align:center;background:radial-gradient(ellipse 80% 50% at 50% 100%,rgba(10,191,204,.08),transparent 60%),var(--bg);}
+.cta-title{font-size:clamp(28px,4vw,52px);font-weight:900;letter-spacing:-2.5px;line-height:1.1;margin-bottom:18px;}
+.cta-sub{font-size:18px;color:var(--txt2);margin-bottom:36px;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.7;}
+.cta-actions{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--grad);color:#07101e;font-family:var(--ff);font-size:15px;font-weight:700;padding:16px 32px;border-radius:100px;transition:all .2s;}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(10,191,204,.4);}
+.btn-ghost{display:inline-flex;align-items:center;gap:10px;color:var(--teal);font-family:var(--ff);font-size:15px;font-weight:600;padding:15px 30px;border-radius:100px;border:1px solid var(--border);transition:all .2s;}
+.btn-ghost:hover{border-color:var(--teal);background:rgba(10,191,204,.06);}
+
+footer{padding:28px 48px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+footer p{font-size:12px;color:var(--txt3);}
+
+@media(max-width:1024px){
+  .steps-grid{grid-template-columns:repeat(2,1fr);}
+  .caps-grid{grid-template-columns:repeat(2,1fr);}
+  .trust-grid{grid-template-columns:repeat(3,1fr);}
+  .pricing-grid{grid-template-columns:1fr;}
+}
+@media(max-width:768px){
+  nav{padding:0 20px;}
+  .hero{padding:60px 20px 48px;}
+  .hero-inner{grid-template-columns:1fr;gap:40px;}
+  .builder-window{max-width:100%;}
+  .section,.industry-section{padding:60px 20px;}
+  .steps-grid{grid-template-columns:1fr;}
+  .caps-grid{grid-template-columns:1fr;}
+  .trust-grid{grid-template-columns:repeat(2,1fr);}
+  footer{padding:20px;flex-direction:column;gap:10px;}
+  .step-connector{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo"><a href="/"><img src="/upcore-logo.svg" alt="Upcore Technologies"/></a></div>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/platform">Platform</a></li>
+    <li><a href="/sdlc-agent">Forge</a></li>
+    <li><a href="/agent-builder" class="active">Studio</a></li>
+    <li><a href="/industries">Industries</a></li>
+    <li><a href="/insights">Insights</a></li>
+    <li><a href="/about">About</a></li>
+  </ul>
+  <a href="/assessment" class="nav-links a nav-cta" style="display:inline-flex;align-items:center;gap:8px;background:var(--grad);color:#07101e;font-family:var(--ff);font-size:14px;font-weight:700;padding:10px 22px;border-radius:10px;">Free Assessment →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-badge">
+        <span class="live-dot"></span>
+        🧠 Studio by Upcore — Agent Builder
+      </div>
+      <h1>Your Workflows.<br/><span class="grad-text">Now Run Themselves.</span></h1>
+      <p class="hero-sub">Most AI tools are built for generic use. Studio builds agents that know your industry, speak your terminology, and automate workflows that are specific to <em>your</em> business — deployed in 48 hours.</p>
+      <div class="hero-hook">"If you can describe what your team does every day, we can turn it into an agent."</div>
+      <div class="hero-ctas">
+        <a href="/assessment" class="btn-hero-primary">Build My First Agent →</a>
+        <a href="#industry-showcase" class="btn-hero-ghost">See Agents by Industry</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat"><span class="hstat-num">12</span><span class="hstat-lbl">Industries Covered</span></div>
+        <div class="hstat"><span class="hstat-num">60+</span><span class="hstat-lbl">Agent Templates</span></div>
+        <div class="hstat"><span class="hstat-num">48hrs</span><span class="hstat-lbl">Deploy Time</span></div>
+        <div class="hstat"><span class="hstat-num">0</span><span class="hstat-lbl">Code Required</span></div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;">
+      <div class="builder-window">
+        <div class="builder-header">
+          <div class="bh-icon">🧠</div>
+          <div><div class="bh-title">Studio Agent Builder</div><div class="bh-sub">Describe → Configure → Deploy</div></div>
+        </div>
+        <div class="builder-body">
+          <div>
+            <div class="input-label">Describe your agent</div>
+            <div class="prompt-box">
+              Handle all incoming loan inquiries on WhatsApp. Pre-qualify the lead based on income and credit, answer product FAQs, and schedule a callback for qualified prospects. Escalate to a human if the customer mentions fraud or distress.<span class="cursor"></span>
+            </div>
+          </div>
+          <div>
+            <div class="input-label">Agent configured</div>
+            <div class="agent-preview">
+              <div class="ap-row">
+                <span class="ap-name">Loan Inquiry Agent</span>
+                <span class="ap-status">Ready to Deploy</span>
+              </div>
+              <div class="ap-caps">
+                <span class="ap-cap">Lead Pre-Qualification</span>
+                <span class="ap-cap">FAQ Handling</span>
+                <span class="ap-cap">Callback Booking</span>
+                <span class="ap-cap">Human Escalation</span>
+              </div>
+              <div class="ap-channels">Channels: <span>WhatsApp · Web Widget · API</span></div>
+            </div>
+          </div>
+          <div class="deploy-bar">
+            <div>
+              <div class="deploy-label" style="font-size:11px;font-weight:700;color:var(--txt);">Estimated Setup</div>
+              <div class="deploy-label" style="color:var(--teal);">24–48 hours to go live</div>
+            </div>
+            <button class="deploy-btn">Deploy Agent →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- HOW IT WORKS -->
+<section class="section">
+  <div class="section-inner">
+    <div class="eyebrow">⚡ How It Works</div>
+    <h2 class="section-title">From Description to <span class="grad-text">Live Agent in 4 Steps</span></h2>
+    <p class="section-sub">No developers. No complex configuration. You describe, we build, you control.</p>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <div class="step-label">You Describe</div>
+        <div class="step-title">Tell Studio What the Agent Should Do</div>
+        <div class="step-desc">Plain English. No flowcharts, no API specs. "Handle customer returns via WhatsApp, issue refunds for orders under ₹2,000, escalate above that."</div>
+        <div class="who-badge who-human">👤 You</div>
+        <div class="step-connector"></div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <div class="step-label">Studio Configures</div>
+        <div class="step-title">Agent is Designed Around Your Workflows</div>
+        <div class="step-desc">Studio maps your description to logic, guardrails, escalation paths, and data sources. You review the configuration before anything goes live.</div>
+        <div class="who-badge who-agent">🤖 Studio</div>
+        <div class="step-connector"></div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <div class="step-label">You Review & Approve</div>
+        <div class="step-title">Nothing Ships Without Your Sign-Off</div>
+        <div class="step-desc">See exactly how the agent will behave — tone, rules, escalation triggers. Adjust anything. Your approval is the gate before deployment.</div>
+        <div class="who-badge who-human">👤 You</div>
+        <div class="step-connector"></div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">04</div>
+        <div class="step-label">Agent Goes Live</div>
+        <div class="step-title">Deployed to WhatsApp, Web, Slack, or API</div>
+        <div class="step-desc">One click. The agent is live, handling real interactions, logging every action, and escalating to your team whenever it hits an edge case.</div>
+        <div class="who-badge who-agent">🤖 Studio</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- INDUSTRY SHOWCASE — THE STAR FEATURE -->
+<section class="industry-section section-bg2" id="industry-showcase">
+  <div class="industry-inner">
+    <div class="eyebrow">🏭 Agents by Industry</div>
+    <h2 class="section-title">Pre-Built for <span class="grad-text">Your Industry</span></h2>
+    <p class="section-sub">Every industry has different workflows, terminology, and compliance needs. Studio agents are built from the ground up for each vertical — not adapted from a generic template.</p>
+
+    <!-- TABS -->
+    <div class="industry-tabs">
+      <button class="ind-tab active" onclick="showIndustry('manufacturing',this)">🏭 Manufacturing</button>
+      <button class="ind-tab" onclick="showIndustry('ecommerce',this)">🛒 Ecommerce</button>
+      <button class="ind-tab" onclick="showIndustry('edtech',this)">🎓 EdTech</button>
+      <button class="ind-tab" onclick="showIndustry('banking',this)">🏦 Banking & Finance</button>
+      <button class="ind-tab" onclick="showIndustry('realestate',this)">🏠 Real Estate</button>
+      <button class="ind-tab" onclick="showIndustry('nbfc',this)">💰 NBFCs</button>
+      <button class="ind-tab" onclick="showIndustry('govt',this)">🏛️ Government</button>
+      <button class="ind-tab" onclick="showIndustry('saas',this)">☁️ SaaS</button>
+      <button class="ind-tab" onclick="showIndustry('healthcare',this)">🏥 Healthcare</button>
+      <button class="ind-tab" onclick="showIndustry('logistics',this)">🚚 Logistics</button>
+      <button class="ind-tab" onclick="showIndustry('legal',this)">⚖️ Legal</button>
+      <button class="ind-tab" onclick="showIndustry('marketing',this)">📣 Marketing</button>
+    </div>
+
+    <!-- MANUFACTURING -->
+    <div class="industry-panel active" id="panel-manufacturing">
+      <div class="ind-panel-header">
+        <div class="ind-meta">
+          <div class="ind-tag">🏭 Manufacturing</div>
+          <div class="ind-title">Catch Defects Early. Cut Procurement Costs. <span class="grad-text">Move Faster.</span></div>
+          <div class="ind-desc">Manufacturing agents monitor quality, track procurement prices, accelerate feasibility studies, and keep your compliance certifications current — all running in the background while your team focuses on output.</div>
+        </div>
+        <div class="ind-cta"><a href="/industries/manufacturing" class="btn-ghost">See Full Industry Page →</a></div>
+      </div>
+      <div class="agents-grid">
+        <div class="agent-card">
+          <div class="agent-num">Agent 01</div>
+          <div class="agent-name">QC Intelligence Agent</div>
+          <div class="agent-desc">Processes inspection data in real-time, surfaces defect patterns by batch and shift, and generates CAPA suggestions before bad product ships. Integrates with your QMS and production systems.</div>
+          <div class="agent-replaces">Replaces: <span>manual defect review</span> → <strong>real-time batch alerts</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 02</div>
+          <div class="agent-name">Procurement Price Monitor</div>
+          <div class="agent-desc">Tracks commodity and raw material prices daily. Alerts procurement team when input costs move more than 3% and forecasts margin impact before the invoice arrives.</div>
+          <div class="agent-replaces">Replaces: <span>weekly price checks</span> → <strong>real-time margin alerts</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 03</div>
+          <div class="agent-name">Feasibility Scout</div>
+          <div class="agent-desc">Runs preliminary feasibility analysis in 48 hours instead of 6 months. Pulls market data, competitor positioning, and regulatory requirements to give your team a go/no-go framework.</div>
+          <div class="agent-replaces">Replaces: <span>6-month studies</span> → <strong>48-hour frameworks</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 04</div>
+          <div class="agent-name">Compliance Tracker</div>
+          <div class="agent-desc">Monitors your certifications (ISO, BIS, export licences) and automatically flags renewal timelines. Keeps documentation current so you are never caught in an audit gap.</div>
+          <div class="agent-replaces">Replaces: <span>manual cert tracking</span> → <strong>automated compliance alerts</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 05</div>
+          <div class="agent-name">Shift Handover Agent</div>
+          <div class="agent-desc">Captures end-of-shift notes from operators, flags open issues, and sends a structured brief to the incoming shift supervisor — ensuring nothing gets lost in the handover.</div>
+          <div class="agent-replaces">Replaces: <span>verbal handovers</span> → <strong>structured shift logs</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ECOMMERCE -->
+    <div class="industry-panel" id="panel-ecommerce">
+      <div class="ind-panel-header">
+        <div class="ind-meta">
+          <div class="ind-tag">🛒 Ecommerce</div>
+          <div class="ind-title">Recover More Revenue. <span class="grad-text">Handle More Customers.</span></div>
+          <div class="ind-desc">Ecommerce agents handle the work that falls through the cracks — cart abandonment, returns, review responses, inventory alerts — so your team can focus on growth, not operations.</div>
+        </div>
+        <div class="ind-cta"><a href="/industries/retail-d2c" class="btn-ghost">See Full Industry Page →</a></div>
+      </div>
+      <div class="agents-grid">
+        <div class="agent-card">
+          <div class="agent-num">Agent 01</div>
+          <div class="agent-name">Cart Recovery Agent</div>
+          <div class="agent-desc">Re-engages abandoned carts via WhatsApp or SMS with personalized nudges. Knows when to offer a discount, when to just remind, and when to let it go — based on cart value and customer history.</div>
+          <div class="agent-replaces">Replaces: <span>generic email sequences</span> → <strong>personalized WhatsApp recovery</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 02</div>
+          <div class="agent-name">Product Discovery Agent</div>
+          <div class="agent-desc">Guides shoppers to the right SKU through a conversational interface on WhatsApp or your site. Understands requirements, filters catalogue, and sends direct product links with size/variant guidance.</div>
+          <div class="agent-replaces">Replaces: <span>support tickets for "what should I buy"</span> → <strong>instant guided discovery</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 03</div>
+          <div class="agent-name">Returns & Refund Copilot</div>
+          <div class="agent-desc">Handles return requests end-to-end — verifies order eligibility, initiates the return, tracks pickup, and triggers refund — without any human involvement for standard cases.</div>
+          <div class="agent-replaces">Replaces: <span>support agents for returns</span> → <strong>fully automated standard returns</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 04</div>
+          <div class="agent-name">Inventory Alert Agent</div>
+          <div class="agent-desc">Monitors SKU stock levels across warehouses and triggers reorder alerts before stockouts happen. Notifies your ops team and flags which products are at risk of going out of stock in the next 7 days.</div>
+          <div class="agent-replaces">Replaces: <span>manual stock checks</span> → <strong>predictive inventory alerts</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 05</div>
+          <div class="agent-name">Review Response Agent</div>
+          <div class="agent-desc">Responds to every product review — positive and negative — in your brand voice. Flags escalated reviews for human review and generates weekly sentiment summaries by product category.</div>
+          <div class="agent-replaces">Replaces: <span>unresponsive reviews</span> → <strong>100% review coverage</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EDTECH -->
+    <div class="industry-panel" id="panel-edtech">
+      <div class="ind-panel-header">
+        <div class="ind-meta">
+          <div class="ind-tag">🎓 EdTech</div>
+          <div class="ind-title">Higher Enrollment. Lower Dropout. <span class="grad-text">Better Outcomes.</span></div>
+          <div class="ind-desc">EdTech agents support students 24/7, nurture prospects from inquiry to admission, and identify at-risk learners before they quit — all without adding headcount to your academic ops team.</div>
+        </div>
+        <div class="ind-cta"><a href="/industries/edtech" class="btn-ghost">See Full Industry Page →</a></div>
+      </div>
+      <div class="agents-grid">
+        <div class="agent-card">
+          <div class="agent-num">Agent 01</div>
+          <div class="agent-name">Doubt Solver Agent</div>
+          <div class="agent-desc">Answers curriculum-specific questions 24/7 in the student's preferred language. Trained on your course content, syllabus, and common student doubts — not a generic chatbot.</div>
+          <div class="agent-replaces">Replaces: <span>delayed doubt resolution</span> → <strong>instant 24/7 support</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 02</div>
+          <div class="agent-name">Enrollment Closer Agent</div>
+          <div class="agent-desc">Nurtures leads from inquiry to admission with personalized follow-ups, answers fee and curriculum questions, handles objections, and books demo classes — handing off to sales only for final closing.</div>
+          <div class="agent-replaces">Replaces: <span>manual lead nurturing</span> → <strong>automated enrollment pipeline</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 03</div>
+          <div class="agent-name">Progress Nudge Agent</div>
+          <div class="agent-desc">Sends personalized performance updates to students and parents — assignment completion, test scores, attendance — with motivational nudges calibrated to each learner's track record.</div>
+          <div class="agent-replaces">Replaces: <span>mass progress emails</span> → <strong>personalized learner nudges</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 04</div>
+          <div class="agent-name">Dropout Prevention Agent</div>
+          <div class="agent-desc">Identifies at-risk students using engagement signals — login frequency, assignment submissions, test scores — and proactively intervenes with personalized re-engagement messages before they quit.</div>
+          <div class="agent-replaces">Replaces: <span>reactive dropout response</span> → <strong>early intervention system</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 05</div>
+          <div class="agent-name">Content Curator Agent</div>
+          <div class="agent-desc">Matches supplementary learning resources to each student's pace and weak areas. Automatically suggests practice sets, videos, or peer groups based on performance data.</div>
+          <div class="agent-replaces">Replaces: <span>one-size-fits-all resources</span> → <strong>personalised learning paths</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BANKING -->
+    <div class="industry-panel" id="panel-banking">
+      <div class="ind-panel-header">
+        <div class="ind-meta">
+          <div class="ind-tag">🏦 Banking & Finance</div>
+          <div class="ind-title">Faster Processing. Stronger Compliance. <span class="grad-text">24/7 Customer Service.</span></div>
+          <div class="ind-desc">Banking agents handle KYC reviews, loan pre-qualification, customer FAQs, and compliance monitoring — reducing manual workload while keeping human oversight exactly where regulations require it.</div>
+        </div>
+        <div class="ind-cta"><a href="/industries/banking-finance" class="btn-ghost">See Full Industry Page →</a></div>
+      </div>
+      <div class="agents-grid">
+        <div class="agent-card">
+          <div class="agent-num">Agent 01</div>
+          <div class="agent-name">KYC Document Agent</div>
+          <div class="agent-desc">Reviews incoming KYC submissions for completeness and discrepancies. Flags missing documents, sends automated follow-up reminders, and queues complete applications for human review.</div>
+          <div class="agent-replaces">Replaces: <span>manual KYC checklist reviews</span> → <strong>automated pre-screening</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 02</div>
+          <div class="agent-name">Loan Pre-Qualifier</div>
+          <div class="agent-desc">Screens loan applicants against your eligibility criteria before they reach an RM. Collects income proof, runs basic credit checks, and sends qualified leads to your sales team with a summary profile.</div>
+          <div class="agent-replaces">Replaces: <span>RM time on ineligible leads</span> → <strong>pre-qualified pipeline</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 03</div>
+          <div class="agent-name">Customer Support Agent</div>
+          <div class="agent-desc">Handles balance inquiries, card block requests, product FAQs, and branch locators 24/7 — across WhatsApp, website chat, and app. Escalates complaints and complex queries to a human instantly.</div>
+          <div class="agent-replaces">Replaces: <span>call centre queue</span> → <strong>instant digital resolution</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 04</div>
+          <div class="agent-name">Fraud Alert Agent</div>
+          <div class="agent-desc">Monitors transaction patterns for anomalies, sends real-time alerts to customers and the fraud team, and collects customer confirmation before blocking — reducing false positives.</div>
+          <div class="agent-replaces">Replaces: <span>delayed fraud detection</span> → <strong>real-time anomaly alerts</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 05</div>
+          <div class="agent-name">Compliance Monitor</div>
+          <div class="agent-desc">Tracks RBI circular updates, flags policy mismatches in your current documentation, and generates compliance gap reports for your legal team's review — always current, never missed.</div>
+          <div class="agent-replaces">Replaces: <span>manual circular tracking</span> → <strong>automated compliance radar</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- REAL ESTATE -->
+    <div class="industry-panel" id="panel-realestate">
+      <div class="ind-panel-header">
+        <div class="ind-meta">
+          <div class="ind-tag">🏠 Real Estate</div>
+          <div class="ind-title">Qualify More Leads. Chase Fewer Documents. <span class="grad-text">Close Faster.</span></div>
+          <div class="ind-desc">Real estate agents handle the repetitive work across the buyer journey — from lead qualification and site visit scheduling to document collection and post-booking engagement — so your sales team only talks to buyers who matter.</div>
+        </div>
+        <div class="ind-cta"><a href="/industries/real-estate" class="btn-ghost">See Full Industry Page →</a></div>
+      </div>
+      <div class="agents-grid">
+        <div class="agent-card">
+          <div class="agent-num">Agent 01</div>
+          <div class="agent-name">Lead Qualifier Agent</div>
+          <div class="agent-desc">Scores and qualifies every inbound property inquiry — budget, location preference, timeline, loan readiness — and routes hot leads to your sales team with a complete buyer profile attached.</div>
+          <div class="agent-replaces">Replaces: <span>manual lead screening</span> → <strong>pre-scored buyer profiles</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 02</div>
+          <div class="agent-name">Site Visit Scheduler</div>
+          <div class="agent-desc">Books site visits, sends confirmations, handles reschedules, and follows up post-visit to capture buyer feedback — all without involving your sales ops team.</div>
+          <div class="agent-replaces">Replaces: <span>co-ordinator calls for scheduling</span> → <strong>fully automated booking</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 03</div>
+          <div class="agent-name">Property Match Agent</div>
+          <div class="agent-desc">Matches buyer requirements to available inventory in real-time. Sends shortlists via WhatsApp with unit details, floor plans, and pricing — reducing the "I need to think about it" drop-off.</div>
+          <div class="agent-replaces">Replaces: <span>manual inventory matching</span> → <strong>instant personalised shortlists</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 04</div>
+          <div class="agent-name">Document Collector Agent</div>
+          <div class="agent-desc">Chases buyers for KYC, income proof, and loan documents at every stage of the booking process — sending reminders at the right intervals and flagging stuck cases to your CRM team.</div>
+          <div class="agent-replaces">Replaces: <span>manual document follow-up</span> → <strong>automated collection pipeline</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 05</div>
+          <div class="agent-name">Post-Booking Nurture Agent</div>
+          <div class="agent-desc">Keeps buyers engaged from booking to possession — construction updates, milestone payments, regulatory clearances — reducing cancellations and RERA complaints through consistent communication.</div>
+          <div class="agent-replaces">Replaces: <span>silent post-sale period</span> → <strong>continuous buyer engagement</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NBFCs -->
+    <div class="industry-panel" id="panel-nbfc">
+      <div class="ind-panel-header">
+        <div class="ind-meta">
+          <div class="ind-tag">💰 NBFCs</div>
+          <div class="ind-title">Process More Applications. Collect Better. <span class="grad-text">Stay Compliant.</span></div>
+          <div class="ind-desc">NBFC agents handle the high-volume, high-stakes work across credit, collections, and compliance — operating within your risk policies while dramatically reducing manual effort per loan.</div>
+        </div>
+        <div class="ind-cta"><a href="/industries/nbfcs" class="btn-ghost">See Full Industry Page →</a></div>
+      </div>
+      <div class="agents-grid">
+        <div class="agent-card">
+          <div class="agent-num">Agent 01</div>
+          <div class="agent-name">Credit Pre-Screen Agent</div>
+          <div class="agent-desc">Runs initial eligibility screening before the application reaches a human underwriter — income verification, bureau check triggers, and document completeness — creating a cleaner queue for your credit team.</div>
+          <div class="agent-replaces">Replaces: <span>underwriter time on rejections</span> → <strong>pre-screened application queue</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 02</div>
+          <div class="agent-name">Collections Reminder Agent</div>
+          <div class="agent-desc">Sends calibrated payment reminders across SMS, WhatsApp, and email based on DPD bucket and customer communication history — reducing early-stage delinquency without aggressive tactics.</div>
+          <div class="agent-replaces">Replaces: <span>manual reminder calls</span> → <strong>automated multi-channel nudges</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 03</div>
+          <div class="agent-name">KYC Refresh Agent</div>
+          <div class="agent-desc">Proactively reaches customers 60 days before KYC expiry, collects updated documents, and routes complete submissions for review — eliminating last-minute compliance gaps.</div>
+          <div class="agent-replaces">Replaces: <span>reactive KYC renewal</span> → <strong>proactive refresh pipeline</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 04</div>
+          <div class="agent-name">Disbursement Tracker</div>
+          <div class="agent-desc">Monitors active disbursement cases, flags loans stuck at any stage, and notifies the ops team with context on what's blocking — reducing average TAT without manual follow-up.</div>
+          <div class="agent-replaces">Replaces: <span>manual pipeline reviews</span> → <strong>real-time disbursement alerts</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 05</div>
+          <div class="agent-name">Regulatory Compliance Agent</div>
+          <div class="agent-desc">Monitors your portfolio metrics against RBI prudential norms — NPA ratios, concentration limits, capital adequacy — and alerts your compliance team before thresholds are breached.</div>
+          <div class="agent-replaces">Replaces: <span>periodic manual reporting</span> → <strong>continuous portfolio monitoring</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GOVERNMENT -->
+    <div class="industry-panel" id="panel-govt">
+      <div class="ind-panel-header">
+        <div class="ind-meta">
+          <div class="ind-tag">🏛️ Government</div>
+          <div class="ind-title">Serve More Citizens. <span class="grad-text">Reduce Grievance Backlogs.</span></div>
+          <div class="ind-desc">Government agents handle citizen queries, track grievances, verify documents, and communicate scheme updates at scale — improving service delivery without expanding the administrative headcount.</div>
+        </div>
+        <div class="ind-cta"><a href="/industries/government" class="btn-ghost">See Full Industry Page →</a></div>
+      </div>
+      <div class="agents-grid">
+        <div class="agent-card">
+          <div class="agent-num">Agent 01</div>
+          <div class="agent-name">Citizen Query Agent</div>
+          <div class="agent-desc">Answers scheme eligibility questions instantly — in local language — across WhatsApp and web. Trained on your programme guidelines, eligibility criteria, and application processes.</div>
+          <div class="agent-replaces">Replaces: <span>helpline call queues</span> → <strong>instant multilingual support</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 02</div>
+          <div class="agent-name">Grievance Tracker</div>
+          <div class="agent-desc">Follows up on open complaints, sends status updates to applicants, escalates stale grievances to the right officer, and generates a daily pending report for your nodal officer.</div>
+          <div class="agent-replaces">Replaces: <span>manual grievance follow-up</span> → <strong>automated redressal tracking</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 03</div>
+          <div class="agent-name">Document Verification Agent</div>
+          <div class="agent-desc">Pre-checks submitted application documents for completeness before they enter the processing queue — reducing rejections and re-submissions significantly.</div>
+          <div class="agent-replaces">Replaces: <span>officer time on incomplete docs</span> → <strong>automated pre-verification</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 04</div>
+          <div class="agent-name">Scheme Awareness Agent</div>
+          <div class="agent-desc">Communicates new scheme launches, deadline reminders, and eligibility updates to beneficiaries at scale — reaching lakhs of citizens via WhatsApp and SMS without bulk-broadcast limitations.</div>
+          <div class="agent-replaces">Replaces: <span>passive scheme communication</span> → <strong>proactive beneficiary outreach</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 05</div>
+          <div class="agent-name">Feedback Collector</div>
+          <div class="agent-desc">Gathers citizen satisfaction feedback after service delivery, flags negative experiences for supervisory review, and generates aggregate sentiment reports for programme evaluation.</div>
+          <div class="agent-replaces">Replaces: <span>annual paper surveys</span> → <strong>real-time citizen sentiment</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SAAS -->
+    <div class="industry-panel" id="panel-saas">
+      <div class="ind-panel-header">
+        <div class="ind-meta">
+          <div class="ind-tag">☁️ SaaS</div>
+          <div class="ind-title">Retain More. Onboard Faster. <span class="grad-text">Grow Without Growing the Team.</span></div>
+          <div class="ind-desc">SaaS agents handle the touchpoints that determine whether a customer succeeds or churns — onboarding, feature adoption, churn signals, and renewal — running automatically across your entire user base.</div>
+        </div>
+        <div class="ind-cta"><a href="/industries/saas" class="btn-ghost">See Full Industry Page →</a></div>
+      </div>
+      <div class="agents-grid">
+        <div class="agent-card">
+          <div class="agent-num">Agent 01</div>
+          <div class="agent-name">Onboarding Guide Agent</div>
+          <div class="agent-desc">Walks new users through setup, celebrates milestones, surfaces the right help docs at the right moment, and flags stuck users to your CS team — reducing time-to-value by 40%.</div>
+          <div class="agent-replaces">Replaces: <span>one-size-fits-all onboarding emails</span> → <strong>contextual guided setup</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 02</div>
+          <div class="agent-name">Churn Risk Detector</div>
+          <div class="agent-desc">Identifies disengaged accounts using login frequency, feature usage, and support ticket patterns. Triggers proactive re-engagement and sends at-risk accounts to your success team before they cancel.</div>
+          <div class="agent-replaces">Replaces: <span>reactive churn response</span> → <strong>predictive retention intervention</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 03</div>
+          <div class="agent-name">Tier-1 Support Agent</div>
+          <div class="agent-desc">Handles common support questions — how-to, billing, integrations, password reset — instantly, 24/7. Escalates complex issues with full context to your human CS team so no ticket starts from zero.</div>
+          <div class="agent-replaces">Replaces: <span>repetitive tier-1 tickets</span> → <strong>instant resolution for common issues</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 04</div>
+          <div class="agent-name">Feature Adoption Agent</div>
+          <div class="agent-desc">Monitors which features each account hasn't used and sends in-app or Slack nudges with use-case examples specific to their role — driving deeper product adoption and reducing cancellation risk.</div>
+          <div class="agent-replaces">Replaces: <span>generic feature announcements</span> → <strong>personalised adoption nudges</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 05</div>
+          <div class="agent-name">Renewal Agent</div>
+          <div class="agent-desc">Identifies upcoming renewals 90 days out, generates usage summaries for the account, surfaces expansion opportunities, and proactively starts the renewal conversation — reducing last-minute churn.</div>
+          <div class="agent-replaces">Replaces: <span>renewal reminders 7 days before</span> → <strong>90-day proactive renewal pipeline</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HEALTHCARE -->
+    <div class="industry-panel" id="panel-healthcare">
+      <div class="ind-panel-header">
+        <div class="ind-meta">
+          <div class="ind-tag">🏥 Healthcare</div>
+          <div class="ind-title">Better Patient Experience. Less Admin Burden. <span class="grad-text">Zero Missed Follow-ups.</span></div>
+          <div class="ind-desc">Healthcare agents handle the administrative layer of patient care — appointments, billing queries, pre-consultation triage, and medication reminders — freeing your clinical staff to focus on care.</div>
+        </div>
+        <div class="ind-cta"><a href="/industries/healthcare" class="btn-ghost">See Full Industry Page →</a></div>
+      </div>
+      <div class="agents-grid">
+        <div class="agent-card">
+          <div class="agent-num">Agent 01</div>
+          <div class="agent-name">Appointment Agent</div>
+          <div class="agent-desc">Books, confirms, and reschedules appointments automatically via WhatsApp — sends reminders 24h and 2h before, collects cancellation reasons, and fills slots from a waitlist.</div>
+          <div class="agent-replaces">Replaces: <span>receptionist scheduling calls</span> → <strong>24/7 automated booking</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 02</div>
+          <div class="agent-name">Symptom Triage Agent</div>
+          <div class="agent-desc">Collects patient symptoms, medical history, and current medications before the consultation. Sends a structured brief to the doctor so the appointment starts informed, not from scratch.</div>
+          <div class="agent-replaces">Replaces: <span>intake forms and in-clinic collection</span> → <strong>pre-consultation structured intake</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 03</div>
+          <div class="agent-name">Billing Query Agent</div>
+          <div class="agent-desc">Resolves insurance queries, bill breakdowns, and payment plan questions without involving your billing staff. Escalates disputed claims to the right person with full context attached.</div>
+          <div class="agent-replaces">Replaces: <span>billing department call queue</span> → <strong>instant self-service billing support</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 04</div>
+          <div class="agent-name">Medication Reminder Agent</div>
+          <div class="agent-desc">Sends medication reminders to patients at prescribed intervals across WhatsApp — tracks adherence, flags missed doses to the care team, and answers basic dosage questions.</div>
+          <div class="agent-replaces">Replaces: <span>manual follow-up calls</span> → <strong>automated adherence tracking</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 05</div>
+          <div class="agent-name">Lab Report Agent</div>
+          <div class="agent-desc">Notifies patients when lab results are ready, sends the report securely, explains key values in plain language, and flags abnormal results for clinical review — reducing patient anxiety from delayed communication.</div>
+          <div class="agent-replaces">Replaces: <span>patients calling for results</span> → <strong>proactive result delivery</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LOGISTICS -->
+    <div class="industry-panel" id="panel-logistics">
+      <div class="ind-panel-header">
+        <div class="ind-meta">
+          <div class="ind-tag">🚚 Logistics</div>
+          <div class="ind-title">Fewer Customer Calls. Faster Ops. <span class="grad-text">Complete Visibility.</span></div>
+          <div class="ind-desc">Logistics agents proactively communicate shipment status, catch delays before customers notice, reconcile invoices, and collect proof-of-delivery — eliminating the manual work that slows down your ops floor.</div>
+        </div>
+        <div class="ind-cta"><a href="/industries/logistics" class="btn-ghost">See Full Industry Page →</a></div>
+      </div>
+      <div class="agents-grid">
+        <div class="agent-card">
+          <div class="agent-num">Agent 01</div>
+          <div class="agent-name">Shipment Tracker Agent</div>
+          <div class="agent-desc">Proactively notifies customers of every status change — picked up, in-transit, out for delivery, delivered — via WhatsApp without them needing to call or track manually.</div>
+          <div class="agent-replaces">Replaces: <span>"where is my order?" calls</span> → <strong>proactive status updates</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 02</div>
+          <div class="agent-name">Delay Alert Agent</div>
+          <div class="agent-desc">Identifies shipments at risk of delay — weather, carrier issues, customs holds — before the customer notices and before the SLA is breached. Alerts the ops team with context and suggested actions.</div>
+          <div class="agent-replaces">Replaces: <span>reactive delay management</span> → <strong>proactive SLA protection</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 03</div>
+          <div class="agent-name">POD Collection Agent</div>
+          <div class="agent-desc">Follows up with delivery partners for proof-of-delivery submissions at set intervals — reducing POD ageing and giving your billing team the documentation they need to invoice on time.</div>
+          <div class="agent-replaces">Replaces: <span>ops team POD chasing</span> → <strong>automated POD collection</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 04</div>
+          <div class="agent-name">Route Query Agent</div>
+          <div class="agent-desc">Answers carrier, route, and lane questions for your ops team instantly — which carrier covers a pin code, what's the transit time, what are the current rate cards — without digging through spreadsheets.</div>
+          <div class="agent-replaces">Replaces: <span>manual rate card lookups</span> → <strong>instant ops query resolution</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 05</div>
+          <div class="agent-name">Invoice Reconciler</div>
+          <div class="agent-desc">Matches freight invoices to shipment records automatically, flags discrepancies for human review, and generates a weekly reconciliation summary — eliminating the month-end billing scramble.</div>
+          <div class="agent-replaces">Replaces: <span>manual invoice matching</span> → <strong>automated freight reconciliation</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LEGAL -->
+    <div class="industry-panel" id="panel-legal">
+      <div class="ind-panel-header">
+        <div class="ind-meta">
+          <div class="ind-tag">⚖️ Legal</div>
+          <div class="ind-title">Faster Reviews. Fewer Missed Deadlines. <span class="grad-text">Better Client Communication.</span></div>
+          <div class="ind-desc">Legal agents handle the labour-intensive, repetitive work — contract review, research, document intake, deadline tracking — so your lawyers spend time on the work that actually requires a lawyer.</div>
+        </div>
+        <div class="ind-cta"><a href="/industries/legal" class="btn-ghost">See Full Industry Page →</a></div>
+      </div>
+      <div class="agents-grid">
+        <div class="agent-card">
+          <div class="agent-num">Agent 01</div>
+          <div class="agent-name">Contract Review Agent</div>
+          <div class="agent-desc">Flags non-standard clauses, one-sided indemnities, missing definitions, and risky terms in contracts — giving your lawyer a marked-up summary to review instead of starting from a blank document.</div>
+          <div class="agent-replaces">Replaces: <span>first-pass manual review</span> → <strong>flagged clause summary</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 02</div>
+          <div class="agent-name">Legal Research Agent</div>
+          <div class="agent-desc">Pulls relevant case law, statutes, and legal precedents on demand. Summarises holdings, identifies jurisdiction-specific nuances, and surfaces contradictory authorities — in minutes, not days.</div>
+          <div class="agent-replaces">Replaces: <span>hours of manual legal research</span> → <strong>on-demand precedent summaries</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 03</div>
+          <div class="agent-name">Document Intake Agent</div>
+          <div class="agent-desc">Collects, categorises, and routes incoming documents — briefs, evidence, client communications — to the right matter and team member. Eliminates the inbox chaos in high-volume litigation practices.</div>
+          <div class="agent-replaces">Replaces: <span>manual document sorting</span> → <strong>automated intake and routing</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 04</div>
+          <div class="agent-name">Deadline Tracker Agent</div>
+          <div class="agent-desc">Monitors court deadlines, filing dates, and limitation periods across all active matters. Sends escalating reminders to responsible lawyers and flags overdue items to the managing partner.</div>
+          <div class="agent-replaces">Replaces: <span>manual diary management</span> → <strong>automated deadline radar</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 05</div>
+          <div class="agent-name">Client Status Agent</div>
+          <div class="agent-desc">Keeps clients updated on matter progress — hearing dates, filings, key developments — via WhatsApp. Reduces "what's the status?" calls while improving client satisfaction scores.</div>
+          <div class="agent-replaces">Replaces: <span>reactive client status calls</span> → <strong>proactive matter updates</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MARKETING -->
+    <div class="industry-panel" id="panel-marketing">
+      <div class="ind-panel-header">
+        <div class="ind-meta">
+          <div class="ind-tag">📣 Marketing</div>
+          <div class="ind-title">More Leads Nurtured. Better Campaigns. <span class="grad-text">Less Repetitive Work.</span></div>
+          <div class="ind-desc">Marketing agents automate the repetitive, high-volume work — lead nurturing sequences, campaign reporting, content briefs, event follow-ups — so your team focuses on strategy and creative, not execution.</div>
+        </div>
+        <div class="ind-cta"><a href="/industries/marketing" class="btn-ghost">See Full Industry Page →</a></div>
+      </div>
+      <div class="agents-grid">
+        <div class="agent-card">
+          <div class="agent-num">Agent 01</div>
+          <div class="agent-name">Lead Nurture Agent</div>
+          <div class="agent-desc">Runs personalised follow-up sequences for every lead automatically — calibrated by source, intent signal, and engagement level. Passes sales-ready leads to CRM with a full interaction history.</div>
+          <div class="agent-replaces">Replaces: <span>generic drip campaigns</span> → <strong>personalised nurture at scale</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 02</div>
+          <div class="agent-name">Campaign Report Agent</div>
+          <div class="agent-desc">Pulls campaign performance data from your ad platforms and summarises spend, CPL, ROAS, and trend commentary in plain English — delivered to your team's Slack every Monday morning.</div>
+          <div class="agent-replaces">Replaces: <span>manual weekly campaign reports</span> → <strong>automated Monday morning brief</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 03</div>
+          <div class="agent-name">Content Brief Agent</div>
+          <div class="agent-desc">Generates structured content briefs from a target keyword, audience segment, and campaign goal. Includes SEO intent, competitor angle, recommended format, and key messages — ready for your writer.</div>
+          <div class="agent-replaces">Replaces: <span>hours of brief writing</span> → <strong>structured briefs in minutes</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 04</div>
+          <div class="agent-name">Social Listening Agent</div>
+          <div class="agent-desc">Monitors brand mentions, competitor activity, and trending topics in your category. Surfaces conversation opportunities for your social team and flags negative sentiment for immediate attention.</div>
+          <div class="agent-replaces">Replaces: <span>manual social monitoring</span> → <strong>real-time brand intelligence</strong></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-num">Agent 05</div>
+          <div class="agent-name">Event Follow-Up Agent</div>
+          <div class="agent-desc">Engages leads captured at conferences, webinars, and trade shows within 15 minutes of capture — personalised to the event context, with relevant assets attached. Warms leads before your sales team calls.</div>
+          <div class="agent-replaces">Replaces: <span>post-event follow-up lag</span> → <strong>instant personalised outreach</strong></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CAPABILITIES -->
+<section class="section">
+  <div class="section-inner">
+    <div class="eyebrow">⚙️ What Every Agent Gets</div>
+    <h2 class="section-title">Built-in Capabilities. <span class="grad-text">Not Add-Ons.</span></h2>
+    <p class="section-sub">Every agent built in Studio comes with the same enterprise-grade foundation — so you are not paying extra for security, audit trails, or multi-channel deployment.</p>
+    <div class="caps-grid">
+      <div class="cap-card">
+        <div class="cap-icon">🎯</div>
+        <div class="cap-title">Industry-Specific Training</div>
+        <div class="cap-desc">Agents learn your industry's terminology, workflows, regulations, and edge cases — not a generic version that needs extensive prompting to understand what "DPD" or "CAPA" means.</div>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">🔗</div>
+        <div class="cap-title">Deep System Integrations</div>
+        <div class="cap-desc">Native connectors to your CRM, ERP, databases, and APIs. Agents read from and write to your systems — not just respond in a chat window disconnected from your data.</div>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">📡</div>
+        <div class="cap-title">Multi-Channel Deployment</div>
+        <div class="cap-desc">Deploy to WhatsApp, Slack, web chat, email, or API — wherever your customers and team actually are. One agent, multiple surfaces, consistent behaviour.</div>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">🛡️</div>
+        <div class="cap-title">Guardrails & Escalation</div>
+        <div class="cap-desc">Every agent knows its boundaries. When it hits an edge case, it escalates to the right human — with full context attached — instead of hallucinating an answer or dropping the conversation.</div>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">📋</div>
+        <div class="cap-title">Full Audit Trail</div>
+        <div class="cap-desc">Every interaction, decision, and escalation is logged. Compliance teams get full visibility. Managers can review agent behaviour and tune it without involving engineering.</div>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">📈</div>
+        <div class="cap-title">Live Analytics Dashboard</div>
+        <div class="cap-desc">Track resolution rates, escalation patterns, response times, and volume trends — by agent, by channel, by time period. Know what's working before your leadership asks.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- COMPARISON -->
+<section class="section section-bg2">
+  <div class="section-inner">
+    <div class="eyebrow">📊 How Studio Compares</div>
+    <h2 class="section-title">Not All AI Agents Are <span class="grad-text">Built the Same</span></h2>
+    <p class="section-sub">Generic AI tools give you a starting point. Studio gives you agents that are ready for production on day one.</p>
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Capability</th>
+            <th class="ours">Studio by Upcore</th>
+            <th class="theirs">ChatGPT / Generic AI</th>
+            <th class="theirs">Custom Dev</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="feature">Industry-specific training</td>
+            <td class="check">✅ Built-in</td>
+            <td class="cross">❌ Requires extensive prompting</td>
+            <td class="partial">⚠️ Months of data work</td>
+          </tr>
+          <tr>
+            <td class="feature">Connects to your systems</td>
+            <td class="check">✅ Native CRM/ERP connectors</td>
+            <td class="cross">❌ No data access</td>
+            <td class="check">✅ But takes 6+ months</td>
+          </tr>
+          <tr>
+            <td class="feature">No-code setup</td>
+            <td class="check">✅ Plain English description</td>
+            <td class="partial">⚠️ Still needs a developer</td>
+            <td class="cross">❌ Full dev team required</td>
+          </tr>
+          <tr>
+            <td class="feature">WhatsApp deployment</td>
+            <td class="check">✅ Day 1</td>
+            <td class="cross">❌ Not supported</td>
+            <td class="partial">⚠️ Complex integration</td>
+          </tr>
+          <tr>
+            <td class="feature">Human escalation built-in</td>
+            <td class="check">✅ Configurable guardrails</td>
+            <td class="cross">❌ Manual prompting only</td>
+            <td class="partial">⚠️ Custom build required</td>
+          </tr>
+          <tr>
+            <td class="feature">Audit trail & compliance</td>
+            <td class="check">✅ Every interaction logged</td>
+            <td class="cross">❌ No audit trail</td>
+            <td class="partial">⚠️ Extra dev work</td>
+          </tr>
+          <tr>
+            <td class="feature">Time to deploy</td>
+            <td class="check">✅ 48 hours</td>
+            <td class="cross">❌ Weeks of prompting</td>
+            <td class="cross">❌ 3–9 months</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TRUST & CONTROL -->
+<section class="section">
+  <div class="section-inner">
+    <div style="text-align:center;margin-bottom:48px;">
+      <div class="eyebrow" style="justify-content:center;">🔒 Trust & Governance</div>
+      <h2 class="section-title">Your Agents. <span class="grad-text">Your Rules. Always.</span></h2>
+      <p class="section-sub" style="margin-left:auto;margin-right:auto;text-align:center;">AI agents that work without human oversight aren't trusted. Ours are built with control at every layer.</p>
+    </div>
+    <div class="trust-grid">
+      <div class="trust-card">
+        <div class="trust-icon">👤</div>
+        <div class="trust-title">Human-in-the-Loop</div>
+        <div class="trust-desc">Agents escalate to humans for every edge case. You define the boundaries. They never exceed them.</div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon">🎛️</div>
+        <div class="trust-title">Role-Based Access</div>
+        <div class="trust-desc">Control who can see, configure, or modify agent behaviour. Managers and admins have separate permission levels.</div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon">📜</div>
+        <div class="trust-title">Complete Audit Logs</div>
+        <div class="trust-desc">Every agent action, decision, and handover is logged with timestamp, context, and outcome — ready for compliance review.</div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon">🔐</div>
+        <div class="trust-title">Data Stays Yours</div>
+        <div class="trust-desc">No customer data is used to train any shared model. Your data is isolated, encrypted, and never leaves your environment boundary.</div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon">⚡</div>
+        <div class="trust-title">Instant Kill Switch</div>
+        <div class="trust-desc">Pause or disable any agent instantly from your dashboard. No support ticket, no delay. You stay in control at all times.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- INTEGRATIONS -->
+<section class="section section-bg2">
+  <div class="section-inner">
+    <div class="eyebrow">🔌 Integrations</div>
+    <h2 class="section-title">Connects to the Tools <span class="grad-text">You Already Use</span></h2>
+    <p class="section-sub" style="margin-bottom:32px;">Studio agents plug into your existing stack — no rip and replace, no new infrastructure.</p>
+    <div style="margin-bottom:28px;">
+      <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--txt3);margin-bottom:12px;">Communication</div>
+      <div class="integrations-row">
+        <div class="int-chip"><div class="int-dot"></div>WhatsApp Business</div>
+        <div class="int-chip"><div class="int-dot"></div>Slack</div>
+        <div class="int-chip"><div class="int-dot"></div>Telegram</div>
+        <div class="int-chip"><div class="int-dot"></div>Email</div>
+        <div class="int-chip"><div class="int-dot"></div>Web Chat</div>
+        <div class="int-chip"><div class="int-dot"></div>SMS</div>
+      </div>
+    </div>
+    <div style="margin-bottom:28px;">
+      <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--txt3);margin-bottom:12px;">CRM & Sales</div>
+      <div class="integrations-row">
+        <div class="int-chip"><div class="int-dot"></div>Salesforce</div>
+        <div class="int-chip"><div class="int-dot"></div>HubSpot</div>
+        <div class="int-chip"><div class="int-dot"></div>Zoho CRM</div>
+        <div class="int-chip"><div class="int-dot"></div>Leadsquared</div>
+        <div class="int-chip"><div class="int-dot"></div>Custom CRM via API</div>
+      </div>
+    </div>
+    <div style="margin-bottom:28px;">
+      <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--txt3);margin-bottom:12px;">Operations & ERP</div>
+      <div class="integrations-row">
+        <div class="int-chip"><div class="int-dot"></div>SAP</div>
+        <div class="int-chip"><div class="int-dot"></div>Tally</div>
+        <div class="int-chip"><div class="int-dot"></div>Jira</div>
+        <div class="int-chip"><div class="int-dot"></div>Zoho Books</div>
+        <div class="int-chip"><div class="int-dot"></div>Google Workspace</div>
+        <div class="int-chip"><div class="int-dot"></div>Microsoft 365</div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--txt3);margin-bottom:12px;">Cloud & Data</div>
+      <div class="integrations-row">
+        <div class="int-chip"><div class="int-dot"></div>AWS</div>
+        <div class="int-chip"><div class="int-dot"></div>Azure</div>
+        <div class="int-chip"><div class="int-dot"></div>Google Cloud</div>
+        <div class="int-chip"><div class="int-dot"></div>PostgreSQL</div>
+        <div class="int-chip"><div class="int-dot"></div>MongoDB</div>
+        <div class="int-chip"><div class="int-dot"></div>REST APIs</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRICING -->
+<section class="section">
+  <div class="section-inner">
+    <div style="text-align:center;margin-bottom:48px;">
+      <div class="eyebrow" style="justify-content:center;">💳 Pricing</div>
+      <h2 class="section-title">Simple Pricing. <span class="grad-text">No Surprises.</span></h2>
+      <p class="section-sub" style="margin-left:auto;margin-right:auto;text-align:center;">Start with one agent. Scale to a full workforce. Pay for outcomes, not seats.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-badge">Starter</div>
+        <div class="pricing-name">First Agent</div>
+        <div class="pricing-price">₹49,999</div>
+        <div class="pricing-note">One-time setup · Includes 3 months support</div>
+        <div class="pricing-feats">
+          <div class="pf"><div class="pf-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#3ddcc4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>1 fully custom agent built for your workflow</span></div>
+          <div class="pf"><div class="pf-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#3ddcc4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Deployed to 1 channel (WhatsApp / Web / Slack)</span></div>
+          <div class="pf"><div class="pf-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#3ddcc4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Integration with 1 existing system</span></div>
+          <div class="pf"><div class="pf-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#3ddcc4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Full audit trail and analytics dashboard</span></div>
+          <div class="pf"><div class="pf-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#3ddcc4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>3-month post-launch tuning and support</span></div>
+        </div>
+        <a href="/assessment" class="btn-ghost" style="width:100%;justify-content:center;">Start Here →</a>
+      </div>
+      <div class="pricing-card featured">
+        <div class="pricing-badge">Most Popular</div>
+        <div class="pricing-name">Agent Suite</div>
+        <div class="pricing-price">₹1,49,999</div>
+        <div class="pricing-note">One-time setup · Includes 6 months support</div>
+        <div class="pricing-feats">
+          <div class="pf"><div class="pf-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#3ddcc4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>3 custom agents built for your top workflows</span></div>
+          <div class="pf"><div class="pf-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#3ddcc4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Multi-channel: WhatsApp + Web + Slack/email</span></div>
+          <div class="pf"><div class="pf-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#3ddcc4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Integration with up to 3 systems (CRM, ERP, DB)</span></div>
+          <div class="pf"><div class="pf-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#3ddcc4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Agent coordination — hand-offs between agents</span></div>
+          <div class="pf"><div class="pf-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#3ddcc4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>6-month post-launch tuning, support, and retraining</span></div>
+        </div>
+        <a href="/assessment" class="btn-primary" style="width:100%;justify-content:center;">Get Started →</a>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-badge">Enterprise</div>
+        <div class="pricing-name">AI Workforce</div>
+        <div class="pricing-price">Custom</div>
+        <div class="pricing-note">Full workforce scoping · 12 months support</div>
+        <div class="pricing-feats">
+          <div class="pf"><div class="pf-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#3ddcc4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Unlimited agents across all your workflows</span></div>
+          <div class="pf"><div class="pf-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#3ddcc4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Full system integration across your entire stack</span></div>
+          <div class="pf"><div class="pf-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#3ddcc4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Dedicated AI workforce manager</span></div>
+          <div class="pf"><div class="pf-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#3ddcc4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>On-premise or private cloud deployment options</span></div>
+          <div class="pf"><div class="pf-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#3ddcc4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>12 months dedicated support, training, and retraining</span></div>
+        </div>
+        <a href="/assessment" class="btn-ghost" style="width:100%;justify-content:center;">Let's Talk →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="eyebrow" style="justify-content:center;margin-bottom:20px;">🚀 Ready to Build?</div>
+  <h2 class="cta-title">Describe One Workflow.<br/><span class="grad-text">We'll Build You an Agent.</span></h2>
+  <p class="cta-sub">Book a 45-minute session. We identify your top agent opportunity, map the workflow, and give you a written build plan — at no cost and no commitment.</p>
+  <div class="cta-actions">
+    <a href="/assessment" class="btn-primary">Book Free Discovery Call →</a>
+    <a href="/platform" class="btn-ghost">See Full Platform</a>
+  </div>
+  <div style="margin-top:28px;font-size:13px;color:var(--txt3);">No pitch. No pressure. Just a clear plan you can act on.</div>
+</section>
+
+<footer>
+  <p>© 2025 Upcore Technologies. All rights reserved.</p>
+  <div style="display:flex;gap:20px;">
+    <a href="/" style="font-size:12px;color:var(--txt3);">Home</a>
+    <a href="/platform" style="font-size:12px;color:var(--txt3);">Platform</a>
+    <a href="/sdlc-agent" style="font-size:12px;color:var(--txt3);">Forge</a>
+    <a href="/industries" style="font-size:12px;color:var(--txt3);">Industries</a>
+    <a href="/assessment" style="font-size:12px;color:var(--txt3);">Assessment</a>
+  </div>
+</footer>
+
+<script>
+function showIndustry(id, btn) {
+  document.querySelectorAll('.industry-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.ind-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>

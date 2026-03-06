@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Industry AI Workforces — Upcore Technologies</title>
+<meta name="description" content="AI workforces built for your specific industry. 12 verticals, 60+ agent specialities, real pain points solved from day one."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#07101e;--bg2:#0a1628;--bg3:#0d1c34;--card:#0f2040;
+  --teal:#0abfcc;--mint:#3dddc4;--teal3:#0891b2;
+  --txt:#ffffff;--txt2:#8bbed4;--txt3:#3a6080;
+  --border:rgba(10,191,204,.13);--bh:rgba(10,191,204,.38);
+  --glow:rgba(10,191,204,.08);
+  --grad:linear-gradient(135deg,#0891b2,#0abfcc,#3dddc4);
+  --ff:'Poppins',sans-serif;--nav-h:72px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--ff);background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+.grad-text{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+
+/* NAV */
+nav{width:100%;background:rgba(7,16,30,.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 48px;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:99;}
+.nav-logo a{display:flex;align-items:center;}
+.nav-logo img{height:52px;width:auto;}
+.nav-links{display:flex;gap:4px;list-style:none;}
+.nav-links a{padding:8px 16px;border-radius:8px;font-size:14px;font-weight:500;color:var(--txt2);transition:all .2s;}
+.nav-links a:hover{color:var(--txt);background:var(--glow);}
+.nav-links a.active{color:var(--teal);}
+.nav-cta{background:var(--grad)!important;color:#07101e!important;font-weight:700!important;border-radius:10px!important;padding:10px 22px!important;}
+.nav-cta:hover{opacity:.9;transform:translateY(-1px);}
+
+/* HERO */
+.page-hero{
+  padding:calc(var(--nav-h) + 72px) 48px 64px;
+  background:radial-gradient(ellipse 70% 55% at 50% 0%,rgba(10,191,204,.07),transparent 65%),var(--bg);
+  text-align:center;position:relative;overflow:hidden;
+}
+.page-hero::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(10,191,204,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(10,191,204,.03) 1px,transparent 1px);background-size:64px 64px;}
+.hero-inner{position:relative;z-index:2;}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--teal);background:rgba(10,191,204,.1);border:1px solid var(--border);border-radius:100px;padding:7px 16px;margin-bottom:24px;}
+.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--mint);animation:pulse 2s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+.page-hero h1{font-size:clamp(30px,4.5vw,52px);font-weight:900;letter-spacing:-2px;line-height:1.1;margin-bottom:18px;}
+.page-hero p{font-size:17px;color:var(--txt2);max-width:580px;margin:0 auto 48px;line-height:1.75;}
+
+/* STATS */
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);max-width:640px;margin:0 auto 64px;background:rgba(10,191,204,.04);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
+.stat{padding:22px 24px;text-align:center;border-right:1px solid var(--border);}
+.stat:last-child{border-right:none;}
+.stat-num{font-size:28px;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-1px;}
+.stat-lbl{font-size:12px;color:var(--txt2);font-weight:500;margin-top:3px;}
+
+/* FILTERS */
+.filter-bar{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;padding:0 48px 40px;}
+.filter-btn{font-family:var(--ff);font-size:12px;font-weight:600;padding:8px 18px;border-radius:100px;border:1px solid var(--border);background:transparent;color:var(--txt2);cursor:pointer;transition:all .2s;}
+.filter-btn:hover,.filter-btn.active{background:var(--glow);border-color:var(--teal);color:var(--teal);}
+
+/* HUB GRID */
+.hubs-section{padding:0 48px 80px;}
+.hubs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px;}
+
+.hub-card{
+  background:var(--card);border:1px solid var(--border);border-radius:20px;
+  padding:28px;cursor:pointer;transition:all .25s;position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.hub-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);opacity:0;transition:opacity .25s;}
+.hub-card:hover{border-color:var(--bh);transform:translateY(-3px);box-shadow:0 12px 40px rgba(10,191,204,.12);}
+.hub-card:hover::before{opacity:1;}
+.hub-link{position:absolute;inset:0;z-index:2;}
+.hub-icon{font-size:32px;margin-bottom:14px;}
+.hub-status{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:100px;padding:4px 12px;margin-bottom:12px;}
+.hub-status.live{color:#4ade80;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2);}
+.hub-status.ready{color:var(--teal);background:rgba(10,191,204,.08);border:1px solid var(--border);}
+.hub-status .sdot{width:5px;height:5px;border-radius:50%;background:currentColor;}
+.hub-card h3{font-size:18px;font-weight:800;letter-spacing:-.5px;margin-bottom:8px;}
+.hub-card .hub-hook{font-size:13px;color:var(--teal);font-style:italic;line-height:1.5;margin-bottom:10px;padding-left:10px;border-left:2px solid var(--teal);}
+.hub-card p{font-size:13px;color:var(--txt2);line-height:1.6;margin-bottom:16px;flex:1;}
+.hub-pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px;}
+.hub-pill{font-size:10px;font-weight:600;color:var(--txt2);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:100px;padding:3px 9px;}
+.hub-arrow{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--teal);}
+.hub-arrow svg{width:14px;height:14px;transition:transform .2s;}
+.hub-card:hover .hub-arrow svg{transform:translateX(3px);}
+
+/* CTA */
+.page-cta{padding:64px 48px;background:var(--bg2);border-top:1px solid var(--border);text-align:center;}
+.page-cta h2{font-size:clamp(22px,3vw,34px);font-weight:800;letter-spacing:-1px;margin-bottom:12px;}
+.page-cta p{font-size:15px;color:var(--txt2);margin-bottom:32px;}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--grad);color:#07101e;font-family:var(--ff);font-size:15px;font-weight:700;padding:16px 36px;border-radius:100px;transition:all .2s;}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(10,191,204,.4);}
+
+/* FOOTER */
+footer{background:var(--bg);border-top:1px solid var(--border);padding:32px 48px;}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.footer-logo img{height:36px;opacity:.7;}
+.footer-copy{font-size:12px;color:var(--txt3);}
+
+@media(max-width:768px){
+  nav{padding:0 20px;}
+  .page-hero{padding:calc(var(--nav-h) + 48px) 20px 48px;}
+  .filter-bar,.hubs-section,.page-cta,footer{padding-left:20px;padding-right:20px;}
+  .hubs-grid{grid-template-columns:1fr;}
+  .stats-row{grid-template-columns:1fr;}
+  .stat{border-right:none;border-bottom:1px solid var(--border);}
+  .stat:last-child{border-bottom:none;}
+  .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo"><a href="/"><img src="upcore-logo.svg" alt="Upcore"/></a></div>
+  <ul class="nav-links">
+    <li><a href="/#solution">Solutions</a></li>
+    <li><a href="/#products">Products</a></li>
+    <li><a href="/industries" class="active">Industries</a></li>
+    <li><a href="/#engage">Pricing</a></li>
+    <li><a href="/assessment" class="nav-cta">Free Assessment</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-inner">
+    <div class="eyebrow"><span class="dot"></span>12 Industry Workforces</div>
+    <h1>Your AI Team, Built for<br/><span class="grad-text">Your Industry's Actual Problems</span></h1>
+    <p>Every industry has its own version of the same pain. Generic AI doesn't know yours. We build AI workforces that do — from loan processing to lead nurturing to predictive maintenance.</p>
+    <div class="stats-row">
+      <div class="stat"><div class="stat-num">60+</div><div class="stat-lbl">Agent Specialities</div></div>
+      <div class="stat"><div class="stat-num">12</div><div class="stat-lbl">Industry Workforces</div></div>
+      <div class="stat"><div class="stat-num">30</div><div class="stat-lbl">Days to Your First Live Agent</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filterHubs('all',this)">All Industries</button>
+  <button class="filter-btn" onclick="filterHubs('live',this)">Live Deployments</button>
+  <button class="filter-btn" onclick="filterHubs('finance',this)">Finance</button>
+  <button class="filter-btn" onclick="filterHubs('operations',this)">Operations</button>
+  <button class="filter-btn" onclick="filterHubs('growth',this)">Growth</button>
+</div>
+
+<div class="hubs-section">
+  <div class="hubs-grid" id="hubs-grid">
+
+    <div class="hub-card" data-cat="operations live">
+      <a class="hub-link" href="/industries/manufacturing"></a>
+      <div class="hub-icon">⚙️</div>
+      <span class="hub-status live"><span class="sdot"></span>Live Deployment</span>
+      <h3>Manufacturing</h3>
+      <div class="hub-hook">"We find defect patterns 3 months after they start. By then we've shipped to 40 clients."</div>
+      <p>Intelligence agents for quality control, procurement, supply chain monitoring, feasibility analysis, and predictive maintenance — built for complex, data-rich environments.</p>
+      <div class="hub-pills">
+        <span class="hub-pill">Hydrogen Feasibility</span><span class="hub-pill">Quality Control</span><span class="hub-pill">Procurement Intel</span><span class="hub-pill">Supply Chain</span><span class="hub-pill">Predictive Maint.</span>
+      </div>
+      <div class="hub-arrow">Explore Workforce <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+
+    <div class="hub-card" data-cat="growth live">
+      <a class="hub-link" href="/industries/retail-d2c"></a>
+      <div class="hub-icon">🛒</div>
+      <span class="hub-status live"><span class="sdot"></span>Live Deployment</span>
+      <h3>Ecommerce</h3>
+      <div class="hub-hook">"We have 800 orders a day. 500 customers never hear from us."</div>
+      <p>Customer service, product recommendations, returns automation, inventory intelligence, and campaign personalisation agents that turn volume into advantage.</p>
+      <div class="hub-pills">
+        <span class="hub-pill">Customer Service</span><span class="hub-pill">Product Recommender</span><span class="hub-pill">Returns Agent</span><span class="hub-pill">Inventory Intel</span><span class="hub-pill">Campaign AI</span>
+      </div>
+      <div class="hub-arrow">Explore Workforce <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+
+    <div class="hub-card" data-cat="growth">
+      <a class="hub-link" href="/industries/edtech"></a>
+      <div class="hub-icon">🎓</div>
+      <span class="hub-status ready"><span class="sdot"></span>Ready to Build</span>
+      <h3>EdTech</h3>
+      <div class="hub-hook">"We have 10,000 learners. Our support team of 15 cannot keep up."</div>
+      <p>Student support, course recommendations, automated assessments, parent communication, and admissions agents that scale your platform without scaling your headcount.</p>
+      <div class="hub-pills">
+        <span class="hub-pill">Student Support</span><span class="hub-pill">Course Recommender</span><span class="hub-pill">Assessment Agent</span><span class="hub-pill">Parent Comms</span><span class="hub-pill">Admissions</span>
+      </div>
+      <div class="hub-arrow">Explore Workforce <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+
+    <div class="hub-card" data-cat="finance live">
+      <a class="hub-link" href="/industries/banking-finance"></a>
+      <div class="hub-icon">🏦</div>
+      <span class="hub-status live"><span class="sdot"></span>Live Deployment</span>
+      <h3>Banking &amp; Finance</h3>
+      <div class="hub-hook">"Every loan file sits in someone's email for 3 days before anyone touches it."</div>
+      <p>Agents that clear origination backlogs, cut KYC drop-off, catch portfolio risk at 30 DPD, and automate collections — so your team focuses on decisions, not process.</p>
+      <div class="hub-pills">
+        <span class="hub-pill">Loan Processing</span><span class="hub-pill">KYC Onboarding</span><span class="hub-pill">Credit Risk</span><span class="hub-pill">Collections</span><span class="hub-pill">Compliance Monitor</span>
+      </div>
+      <div class="hub-arrow">Explore Workforce <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+
+    <div class="hub-card" data-cat="operations live">
+      <a class="hub-link" href="/industries/real-estate"></a>
+      <div class="hub-icon">🏗️</div>
+      <span class="hub-status live"><span class="sdot"></span>Live Deployment</span>
+      <h3>Real Estate</h3>
+      <div class="hub-hook">"We get 300 leads a day. Our sales team follows up with maybe 40."</div>
+      <p>Voice-enabled lead nurturing, site visit coordination, document handling, and post-sale agents that turn every inquiry into a conversation and every buyer into an advocate.</p>
+      <div class="hub-pills">
+        <span class="hub-pill">Voice Lead Agent</span><span class="hub-pill">Property Matching</span><span class="hub-pill">Site Visit Coord.</span><span class="hub-pill">Document Agent</span><span class="hub-pill">Post-Sale CX</span>
+      </div>
+      <div class="hub-arrow">Explore Workforce <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+
+    <div class="hub-card" data-cat="finance live">
+      <a class="hub-link" href="/industries/nbfc-loans"></a>
+      <div class="hub-icon">🚗</div>
+      <span class="hub-status live"><span class="sdot"></span>Live Deployment</span>
+      <h3>Vehicle Loans / NBFCs</h3>
+      <div class="hub-hook">"50% of the leads our DSAs chase don't qualify. We find out after 5 days."</div>
+      <p>End-to-end lending agents — from lead qualification to document collection, bureau checks, field verification, and EMI collections — that cut disbursal TAT in half.</p>
+      <div class="hub-pills">
+        <span class="hub-pill">Lead Qualification</span><span class="hub-pill">Doc Collection</span><span class="hub-pill">Bureau Check</span><span class="hub-pill">EMI Reminders</span><span class="hub-pill">FI Coordinator</span>
+      </div>
+      <div class="hub-arrow">Explore Workforce <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+
+    <div class="hub-card" data-cat="operations live">
+      <a class="hub-link" href="/industries/government"></a>
+      <div class="hub-icon">🏛️</div>
+      <span class="hub-status live"><span class="sdot"></span>Live Deployment</span>
+      <h3>Government / Public Sector</h3>
+      <div class="hub-hook">"Our IAS aspirants study for 3 years with no real feedback on their answers."</div>
+      <p>Agents for civil services coaching, citizen grievance handling, policy research, RTI processing, and scheme eligibility — built for India's public sector context.</p>
+      <div class="hub-pills">
+        <span class="hub-pill">IAS Exam Prep</span><span class="hub-pill">Citizen Grievance</span><span class="hub-pill">Policy Research</span><span class="hub-pill">RTI Processing</span><span class="hub-pill">Scheme Eligibility</span>
+      </div>
+      <div class="hub-arrow">Explore Workforce <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+
+    <div class="hub-card" data-cat="growth live">
+      <a class="hub-link" href="/industries/saas-technology"></a>
+      <div class="hub-icon">💻</div>
+      <span class="hub-status live"><span class="sdot"></span>Live Deployment</span>
+      <h3>SaaS / Technology</h3>
+      <div class="hub-hook">"By the time a feature ships, 40% of the original intent has been lost."</div>
+      <p>The SDLC Agent, Agent Creator, support ticket automation, and onboarding agents — the same AI workforce that powers Upcore, now available for your tech business.</p>
+      <div class="hub-pills">
+        <span class="hub-pill">SDLC Agent</span><span class="hub-pill">Agent Creator</span><span class="hub-pill">Support Tickets</span><span class="hub-pill">Onboarding</span><span class="hub-pill">Code Review</span>
+      </div>
+      <div class="hub-arrow">Explore Workforce <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+
+    <div class="hub-card" data-cat="operations">
+      <a class="hub-link" href="/industries/healthcare"></a>
+      <div class="hub-icon">🏥</div>
+      <span class="hub-status ready"><span class="sdot"></span>Ready to Build</span>
+      <h3>Healthcare</h3>
+      <div class="hub-hook">"Our no-show rate is 35%. That's 35% of our doctors' time wasted every day."</div>
+      <p>Patient intake, appointment management, insurance pre-authorisation, clinical documentation, and follow-up agents that give clinical teams time back for actual care.</p>
+      <div class="hub-pills">
+        <span class="hub-pill">Appointment Scheduling</span><span class="hub-pill">Insurance Pre-Auth</span><span class="hub-pill">Patient Intake</span><span class="hub-pill">Clinical Docs</span><span class="hub-pill">Follow-up Agent</span>
+      </div>
+      <div class="hub-arrow">Explore Workforce <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+
+    <div class="hub-card" data-cat="operations">
+      <a class="hub-link" href="/industries/logistics"></a>
+      <div class="hub-icon">📦</div>
+      <span class="hub-status ready"><span class="sdot"></span>Ready to Build</span>
+      <h3>Logistics &amp; Supply Chain</h3>
+      <div class="hub-hook">"Every customer calls 4 times per shipment asking where it is."</div>
+      <p>Shipment tracking, vendor communication, route optimisation, exception handling, and invoice processing agents that make your operation transparent and efficient.</p>
+      <div class="hub-pills">
+        <span class="hub-pill">Shipment Tracker</span><span class="hub-pill">Route Optimiser</span><span class="hub-pill">Exception Handler</span><span class="hub-pill">Invoice Processor</span><span class="hub-pill">Vendor Comms</span>
+      </div>
+      <div class="hub-arrow">Explore Workforce <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+
+    <div class="hub-card" data-cat="finance">
+      <a class="hub-link" href="/industries/legal-compliance"></a>
+      <div class="hub-icon">🔐</div>
+      <span class="hub-status ready"><span class="sdot"></span>Ready to Build</span>
+      <h3>Legal &amp; Compliance</h3>
+      <div class="hub-hook">"120 billable hours a month on first-pass contract review. By pattern recognition."</div>
+      <p>Contract review, due diligence, regulatory monitoring, legal research, and document drafting agents — with human review mandatory at every decision point.</p>
+      <div class="hub-pills">
+        <span class="hub-pill">Contract Review</span><span class="hub-pill">Due Diligence</span><span class="hub-pill">Regulatory Monitor</span><span class="hub-pill">Legal Research</span><span class="hub-pill">Doc Drafting</span>
+      </div>
+      <div class="hub-arrow">Explore Workforce <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+
+    <div class="hub-card" data-cat="growth">
+      <a class="hub-link" href="/industries/marketing-agencies"></a>
+      <div class="hub-icon">🎯</div>
+      <span class="hub-status ready"><span class="sdot"></span>Ready to Build</span>
+      <h3>Marketing &amp; Agencies</h3>
+      <div class="hub-hook">"Our competitors publish 10x more content. We cannot compete at this volume."</div>
+      <p>Content creation, SEO research, campaign analytics, client reporting, and lead scoring agents — so your team spends time on strategy, not formatting and repetition.</p>
+      <div class="hub-pills">
+        <span class="hub-pill">Content Creator</span><span class="hub-pill">SEO Research</span><span class="hub-pill">Campaign Analytics</span><span class="hub-pill">Client Reports</span><span class="hub-pill">Lead Scoring</span>
+      </div>
+      <div class="hub-arrow">Explore Workforce <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+
+  </div>
+</div>
+
+<div class="page-cta">
+  <h2>Ready to build your <span class="grad-text">industry's AI team?</span></h2>
+  <p>45-minute free assessment. Your top 3 agent opportunities. A written action plan. No pitch.</p>
+  <a href="/assessment" class="btn-primary">Book Free AI Assessment &#8594;</a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo"><a href="/"><img src="upcore-logo.svg" alt="Upcore"/></a></div>
+    <span class="footer-copy">© 2025 Upcore Technologies</span>
+    <a href="/" style="font-size:13px;color:var(--txt3);">&#8592; Back to Home</a>
+  </div>
+</footer>
+
+<script>
+function filterHubs(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.hub-card').forEach(card => {
+    const cats = card.dataset.cat || '';
+    card.style.display = (cat === 'all' || cats.includes(cat)) ? 'flex' : 'none';
+  });
+}
+</script>
+</body>
+</html>

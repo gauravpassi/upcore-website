@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Marketing & Agencies AI Workforce — Upcore Technologies</title>
+<meta name="description" content="Content at scale, smarter lead scoring, and automated client reports. Agents that let your team focus on strategy instead of formatting and repetition."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#07101e;--bg2:#0a1628;--card:#0f2040;--teal:#0abfcc;--mint:#3dddc4;--txt:#ffffff;--txt2:#8bbed4;--txt3:#3a6080;--border:rgba(10,191,204,.13);--bh:rgba(10,191,204,.38);--grad:linear-gradient(135deg,#0891b2,#0abfcc,#3dddc4);--ff:'Poppins',sans-serif;}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--ff);background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+.grad-text{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+nav{width:100%;background:rgba(7,16,30,.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 48px;height:72px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:99;}
+.nav-logo a{display:flex;align-items:center;}.nav-logo img{height:52px;width:auto;}
+.nav-links{display:flex;gap:4px;list-style:none;}
+.nav-links a{padding:8px 16px;border-radius:8px;font-size:14px;font-weight:500;color:var(--txt2);transition:all .2s;}
+.nav-links a:hover{color:var(--txt);background:rgba(10,191,204,.08);}
+.nav-links a.active{color:var(--teal);}
+.nav-cta{background:var(--grad)!important;color:#07101e!important;font-weight:700!important;border-radius:10px!important;padding:10px 22px!important;}
+.hub-hero{padding:80px 48px 64px;background:radial-gradient(ellipse 80% 55% at 30% 0%,rgba(10,191,204,.08),transparent 65%),var(--bg);position:relative;overflow:hidden;}
+.hub-hero::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(10,191,204,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(10,191,204,.03) 1px,transparent 1px);background-size:60px 60px;}
+.hub-hero-inner{position:relative;z-index:2;max-width:700px;}
+.hub-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--teal);background:rgba(10,191,204,.1);border:1px solid var(--border);border-radius:100px;padding:6px 14px;margin-bottom:16px;}
+.hub-status-live{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:#4ade80;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2);border-radius:100px;padding:5px 14px;margin-bottom:20px;}
+.hub-status-ready{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:var(--teal);background:rgba(10,191,204,.08);border:1px solid var(--border);border-radius:100px;padding:5px 14px;margin-bottom:20px;}
+.sdot{width:7px;height:7px;border-radius:50%;background:currentColor;animation:pulse 2s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+.hub-icon{font-size:48px;margin-bottom:16px;}
+.hub-hero h1{font-size:clamp(28px,4vw,48px);font-weight:900;letter-spacing:-2px;line-height:1.1;margin-bottom:16px;}
+.hub-hero p{font-size:16px;color:var(--txt2);line-height:1.75;margin-bottom:32px;max-width:580px;}
+.hub-meta{display:flex;gap:32px;flex-wrap:wrap;}
+.meta-item{font-size:13px;color:var(--txt2);}
+.meta-item span{color:var(--teal);font-weight:700;}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--txt3);margin-bottom:32px;}
+.breadcrumb a{color:var(--txt3);}
+.breadcrumb a:hover{color:var(--teal);}
+.section{padding:64px 48px 80px;}
+.section-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--txt3);margin-bottom:8px;}
+.section-title{font-size:clamp(22px,3vw,32px);font-weight:800;letter-spacing:-1px;margin-bottom:40px;}
+.usecases-grid{display:flex;flex-direction:column;gap:28px;}
+.uc-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:36px;position:relative;overflow:hidden;}
+.uc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad);}
+.uc-num{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--txt3);margin-bottom:8px;}
+.uc-title{font-size:20px;font-weight:800;letter-spacing:-.5px;margin-bottom:16px;}
+.uc-pain{font-size:15px;font-style:italic;color:var(--teal);line-height:1.6;padding-left:16px;border-left:3px solid var(--teal);margin-bottom:16px;}
+.uc-cost-lbl,.uc-sol-lbl{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--txt3);margin-bottom:6px;}
+.uc-cost{font-size:14px;color:#f87171;line-height:1.6;margin-bottom:20px;}
+.uc-solution{font-size:14px;color:var(--txt2);line-height:1.75;margin-bottom:20px;}
+.uc-outcomes{display:flex;flex-direction:column;gap:8px;}
+.uc-out{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--txt2);}
+.uc-check{width:18px;height:18px;border-radius:50%;background:rgba(61,221,196,.15);border:1px solid var(--mint);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--mint);flex-shrink:0;margin-top:1px;}
+.agents-section{padding:0 48px 80px;}
+.agents-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
+.agent-pill-card{background:rgba(10,191,204,.04);border:1px solid var(--border);border-radius:14px;padding:20px 24px;}
+.agent-tag{display:inline-flex;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mint);background:rgba(61,221,196,.08);border:1px solid rgba(61,221,196,.2);border-radius:100px;padding:3px 10px;margin-bottom:10px;}
+.agent-pill-card h4{font-size:15px;font-weight:700;margin-bottom:6px;}
+.agent-pill-card p{font-size:12px;color:var(--txt2);line-height:1.6;}
+.cta-section{padding:64px 48px;background:var(--bg2);border-top:1px solid var(--border);text-align:center;}
+.cta-section h2{font-size:clamp(20px,2.5vw,32px);font-weight:800;letter-spacing:-1px;margin-bottom:12px;}
+.cta-section p{font-size:15px;color:var(--txt2);margin-bottom:32px;max-width:540px;margin-left:auto;margin-right:auto;}
+.btn-cta{display:inline-flex;align-items:center;gap:10px;background:var(--grad);color:#07101e;font-family:var(--ff);font-size:15px;font-weight:700;padding:16px 36px;border-radius:100px;transition:all .2s;}
+.btn-cta:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(10,191,204,.4);}
+.btn-ghost{display:inline-flex;align-items:center;gap:10px;color:var(--teal);font-family:var(--ff);font-size:14px;font-weight:600;padding:14px 28px;border-radius:100px;border:1px solid var(--border);transition:all .2s;margin-left:16px;}
+.btn-ghost:hover{border-color:var(--teal);background:rgba(10,191,204,.05);}
+footer{background:var(--bg);border-top:1px solid var(--border);padding:32px 48px;}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.footer-logo img{height:36px;opacity:.7;}
+.footer-copy{font-size:12px;color:var(--txt3);}
+@media(max-width:768px){nav{padding:0 20px;}.nav-links{display:none;}.hub-hero,.section,.agents-section,.cta-section,footer{padding-left:20px;padding-right:20px;}.agents-grid{grid-template-columns:1fr;}.hub-meta{gap:16px;}.btn-ghost{margin-left:0;margin-top:12px;}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo"><a href="/"><img src="upcore-logo.svg" alt="Upcore"/></a></div>
+  <ul class="nav-links">
+    <li><a href="/#solution">Solutions</a></li>
+    <li><a href="/#products">Products</a></li>
+    <li><a href="/industries" class="active">Industries</a></li>
+    <li><a href="/#engage">Pricing</a></li>
+    <li><a href="/assessment" class="nav-cta">Free Assessment</a></li>
+  </ul>
+</nav>
+
+<div class="hub-hero">
+  <div class="hub-hero-inner">
+    <div class="breadcrumb"><a href="/industries">Industries</a> / Marketing & Agencies</div>
+    <div class="hub-eyebrow">Industry AI Workforce</div>
+    <div class="hub-status-ready"><span class="sdot"></span>Ready to Build</div>
+    <div class="hub-icon">🎯</div>
+    <h1>Marketing & Agencies<br/><span class="grad-text">AI Workforce</span></h1>
+    <p>Content at scale, smarter lead scoring, and automated client reports — so your team spends time on strategy, not formatting and repetition.</p>
+    <div class="hub-meta">
+      <div class="meta-item">Agents: <span>5 Specialities</span></div>
+      <div class="meta-item">Human in the Loop: <span>Mandatory</span></div>
+      <div class="meta-item">Deployment: <span>30 Days</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Real Pain Points. Real Solutions.</div>
+  <div class="section-title">3 Problems Your <span class="grad-text">Marketing & Agencies AI Team</span> Solves From Day One</div>
+  <div class="usecases-grid">
+    <div class="uc-card">
+      <div class="uc-num">Use Case 01</div>
+      <div class="uc-title">Competitors Publishing 10x More Content</div>
+      <div class="uc-pain">"Our content team creates 20 pieces a month. Our competitors are publishing 200. We cannot compete at this volume."</div>
+      <div><div class="uc-cost-lbl">The Cost</div><div class="uc-cost">In SEO and content, velocity with quality beats velocity without. But you still need velocity.</div></div>
+      <div><div class="uc-sol-lbl">What We Build For You</div><div class="uc-solution">The Content Creation Agent produces on-brand blog posts, social content, and ad copy trained on your brand voice and style guidelines — so every piece sounds like you wrote it, even when you did not.</div></div>
+      <div class="uc-outcomes">
+        <div class="uc-out"><div class="uc-check">✓</div>Content output 5-10x without adding headcount</div>
+        <div class="uc-out"><div class="uc-check">✓</div>Brand voice maintained consistently across all channels</div>
+        <div class="uc-out"><div class="uc-check">✓</div>SEO coverage expands into topics your team never had time for</div>
+      </div>
+    </div>
+
+    <div class="uc-card">
+      <div class="uc-num">Use Case 02</div>
+      <div class="uc-title">45 Hours a Month Building Client Reports</div>
+      <div class="uc-pain">"We spend 3 hours building each client report. With 15 clients, that is 45 hours a month just on formatting."</div>
+      <div><div class="uc-cost-lbl">The Cost</div><div class="uc-cost">45 hours of account manager time on formatting is 45 hours not spent on strategy and client relationships.</div></div>
+      <div><div class="uc-sol-lbl">What We Build For You</div><div class="uc-solution">The Client Reporting Agent pulls performance data from your ad and analytics platforms, writes narrative commentary in plain English, and formats the report in your agency template — ready for your AM to review and send.</div></div>
+      <div class="uc-outcomes">
+        <div class="uc-out"><div class="uc-check">✓</div>Report creation drops from 3 hours to 20 minutes</div>
+        <div class="uc-out"><div class="uc-check">✓</div>Reports sent same-day instead of end of week</div>
+        <div class="uc-out"><div class="uc-check">✓</div>Account managers spend their time on insights, not spreadsheets</div>
+      </div>
+    </div>
+
+    <div class="uc-card">
+      <div class="uc-num">Use Case 03</div>
+      <div class="uc-title">Sales Team Chasing Wrong Leads</div>
+      <div class="uc-pain">"Our sales team chases every lead equally. Hot leads do not get enough attention. Cold leads waste everyone's time."</div>
+      <div><div class="uc-cost-lbl">The Cost</div><div class="uc-cost">MQL-to-SQL conversion at most agencies is under 10%. Better lead scoring doubles or triples it.</div></div>
+      <div><div class="uc-sol-lbl">What We Build For You</div><div class="uc-solution">The Lead Scoring Agent enriches every lead with firmographic data, scores by ICP fit and intent signals, and routes the top 20% to sales with a context summary — so every call starts with a reason to close.</div></div>
+      <div class="uc-outcomes">
+        <div class="uc-out"><div class="uc-check">✓</div>Sales team focuses on the leads most likely to convert</div>
+        <div class="uc-out"><div class="uc-check">✓</div>Conversion rate improves 2-3x with the same team</div>
+        <div class="uc-out"><div class="uc-check">✓</div>Revenue per sales rep increases without adding headcount</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="agents-section">
+  <div class="section-label">Agent Specialities</div>
+  <div class="section-title" style="margin-bottom:24px;">Your <span class="grad-text">AI Workforce</span> for Marketing & Agencies</div>
+  <div class="agents-grid">
+    <div class="agent-pill-card">
+      <div class="agent-tag">Agent 01</div>
+      <h4>Content Creator</h4>
+      <p>Produces blog posts, social content, and ad copy trained on your brand voice and guidelines, maintains consistent tone across channels, optimises for SEO and engagement — enabling 5-10x content output without sacrificing quality or brand consistency.</p>
+    </div>
+    <div class="agent-pill-card">
+      <div class="agent-tag">Agent 02</div>
+      <h4>SEO Research</h4>
+      <p>Identifies high-intent keywords in your niche, analyzes competitor content and rankings, surfaces content gaps and opportunities, generates topic ideas aligned with search intent — accelerating SEO strategy development and content prioritization.</p>
+    </div>
+    <div class="agent-pill-card">
+      <div class="agent-tag">Agent 03</div>
+      <h4>Campaign Analytics</h4>
+      <p>Pulls performance data from ad platforms and analytics tools, calculates KPIs and trends, identifies top and bottom performers, surfaces actionable optimisation opportunities — enabling faster, data-driven campaign adjustments.</p>
+    </div>
+    <div class="agent-pill-card">
+      <div class="agent-tag">Agent 04</div>
+      <h4>Client Reporting</h4>
+      <p>Aggregates performance data, writes narrative commentary on results and trends, formats reports in your agency template, schedules report generation — cutting report creation from hours to minutes and freeing AMs for relationship building.</p>
+    </div>
+    <div class="agent-pill-card">
+      <div class="agent-tag">Agent 05</div>
+      <h4>Lead Scoring</h4>
+      <p>Enriches leads with firmographic and behavioural data, scores by ICP fit and intent signals, routes top prospects to sales with context summaries, tracks conversion by segment — improving sales efficiency and revenue per rep without adding headcount.</p>
+    </div>
+  </div>
+</div>
+
+<div class="cta-section">
+  <h2>Ready to build your <span class="grad-text">Marketing & Agencies AI team?</span></h2>
+  <p>45-minute free assessment. We map your top 3 agent opportunities and give you a written action plan. No pitch. No pressure.</p>
+  <a href="/assessment" class="btn-cta">Book Free AI Assessment &#8594;</a>
+  <a href="/industries" class="btn-ghost">&#8592; All Industries</a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo"><a href="/"><img src="upcore-logo.svg" alt="Upcore"/></a></div>
+    <span class="footer-copy">© 2025 Upcore Technologies</span>
+    <a href="/industries" style="font-size:13px;color:var(--txt3);">&#8592; All Industries</a>
+  </div>
+</footer>
+</body>
+</html>

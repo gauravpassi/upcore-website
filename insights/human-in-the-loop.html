@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Human in the Loop Is Not a Feature | Upcore</title>
+    <meta name="description" content="AI deployments that removed human oversight in year one tend to fail by year two. Here's the framework Upcore uses to keep humans in control at every critical decision.">
+    <meta name="canonical" href="https://upcore.ai/insights/human-in-the-loop">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://upcore.ai/insights/human-in-the-loop">
+    <meta property="og:title" content="Human in the Loop Is Not a Feature. It's the Only Way Enterprise AI Works.">
+    <meta property="og:description" content="AI deployments that removed human oversight tend to fail by year two. Here's why human-in-the-loop design enables scale, not limitation.">
+    <meta property="og:image" content="https://upcore.ai/og-platform.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://upcore.ai/insights/human-in-the-loop">
+    <meta property="twitter:title" content="Human in the Loop Is Not a Feature">
+    <meta property="twitter:description" content="Why keeping humans in control enables AI scale, not limits it.">
+    
+    <!-- JSON-LD Article Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Human in the Loop Is Not a Feature. It's the Only Way Enterprise AI Actually Works.",
+      "description": "AI deployments that removed human oversight in year one tend to fail by year two. Here's the framework Upcore uses to keep humans in control at every critical decision — and why that makes AI more scalable, not less.",
+      "datePublished": "2025-03-10",
+      "dateModified": "2025-03-10",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://upcore.ai",
+        "name": "Upcore Team"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Upcore Technologies",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://upcore.ai/logo.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://upcore.ai/insights/human-in-the-loop"
+      }
+    }
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #07101e;
+            color: #e5e7eb;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: #0a1628;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            border-bottom: 1px solid rgba(10, 191, 204, 0.1);
+        }
+        
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        nav .logo {
+            font-weight: 700;
+            color: #0abfcc;
+            font-size: 1.3rem;
+            text-decoration: none;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        nav a {
+            color: #e5e7eb;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #0abfcc;
+        }
+        
+        .cta-btn {
+            background: linear-gradient(135deg, #0891b2, #0abfcc, #3dddc4);
+            color: #07101e;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(10, 191, 204, 0.3);
+        }
+        
+        /* Breadcrumb */
+        .breadcrumb {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding: 0 2rem;
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+        
+        .breadcrumb a {
+            color: #0abfcc;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .breadcrumb a:hover {
+            color: #3dddc4;
+        }
+        
+        /* Article Header */
+        .article-header {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(8, 145, 178, 0.1), rgba(10, 191, 204, 0.1));
+            border-radius: 8px;
+            border-left: 4px solid #0abfcc;
+        }
+        
+        .category-tag {
+            display: inline-block;
+            background-color: rgba(10, 191, 204, 0.2);
+            color: #0abfcc;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            color: #f0f9ff;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+            font-weight: 700;
+        }
+        
+        .byline {
+            font-size: 0.95rem;
+            color: #9ca3af;
+            margin-bottom: 0.5rem;
+        }
+        
+        .byline-note {
+            font-size: 0.85rem;
+            color: #6b7280;
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+        
+        /* Article Content */
+        .article-content {
+            max-width: 760px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .article-content p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            color: #d1d5db;
+        }
+        
+        h2 {
+            font-size: 1.6rem;
+            color: #0abfcc;
+            margin-top: 2.5rem;
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+        
+        h3 {
+            font-size: 1.2rem;
+            color: #3dddc4;
+            margin-top: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        /* Key Takeaway Box */
+        .key-takeaway {
+            margin: 2.5rem 0;
+            padding: 1.5rem;
+            background-color: #0a1628;
+            border-left: 4px solid #0abfcc;
+            border-radius: 4px;
+            color: #e5e7eb;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            font-weight: 500;
+        }
+        
+        .key-takeaway::before {
+            content: "Key Takeaway";
+            display: block;
+            color: #0abfcc;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            max-width: 760px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(8, 145, 178, 0.15), rgba(10, 191, 204, 0.15));
+            border-radius: 8px;
+            border: 1px solid rgba(10, 191, 204, 0.3);
+            text-align: center;
+        }
+        
+        .cta-section h3 {
+            color: #0abfcc;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        
+        .cta-section p {
+            margin-bottom: 1.5rem;
+            color: #d1d5db;
+        }
+        
+        .cta-section a {
+            display: inline-block;
+            background: linear-gradient(135deg, #0891b2, #0abfcc, #3dddc4);
+            color: #07101e;
+            padding: 0.8rem 2rem;
+            border-radius: 6px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-size: 1rem;
+        }
+        
+        .cta-section a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(10, 191, 204, 0.4);
+        }
+        
+        /* Related Articles */
+        .related-section {
+            max-width: 760px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            border-top: 1px solid rgba(10, 191, 204, 0.2);
+            padding-top: 2rem;
+        }
+        
+        .related-section h3 {
+            font-size: 1.3rem;
+            color: #0abfcc;
+            margin-bottom: 1.5rem;
+        }
+        
+        .related-articles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .article-card {
+            background-color: #0a1628;
+            padding: 1.5rem;
+            border-radius: 6px;
+            border: 1px solid rgba(10, 191, 204, 0.2);
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .article-card:hover {
+            border-color: #0abfcc;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(10, 191, 204, 0.15);
+        }
+        
+        .article-card h4 {
+            color: #0abfcc;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
+        
+        .article-card p {
+            font-size: 0.9rem;
+            color: #9ca3af;
+            margin-bottom: 0;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #0a1628;
+            border-top: 1px solid rgba(10, 191, 204, 0.1);
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+        
+        footer a {
+            color: #0abfcc;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        footer a:hover {
+            color: #3dddc4;
+        }
+        
+        .footer-links {
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+            
+            h1 {
+                font-size: 1.6rem;
+            }
+            
+            h2 {
+                font-size: 1.3rem;
+            }
+            
+            .article-content {
+                padding: 0 1rem;
+            }
+            
+            .article-header {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+        }
+
+/* Use Cases Section */
+.use-cases-section {
+    max-width: 760px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+}
+.use-cases-section h2 {
+    font-size: 1.6rem;
+    color: #0abfcc;
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+}
+.use-cases-section > p {
+    color: #9ca3af;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+}
+.use-cases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.agent-card {
+    background-color: #0a1628;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba(10, 191, 204, 0.2);
+    transition: all 0.3s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+.agent-card:hover {
+    border-color: #0abfcc;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(10, 191, 204, 0.15);
+}
+.agent-card h3 {
+    color: #0abfcc;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-top: 0;
+}
+.agent-card p {
+    font-size: 0.875rem;
+    color: #9ca3af;
+    margin-bottom: 0.8rem;
+}
+.link-text {
+    color: #3dddc4;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+.industry-cta {
+    text-align: center;
+    margin-top: 1rem;
+}
+.industry-cta a {
+    color: #0abfcc;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: 1px solid rgba(10, 191, 204, 0.4);
+    padding: 0.6rem 1.4rem;
+    border-radius: 6px;
+    transition: all 0.3s;
+    display: inline-block;
+}
+.industry-cta a:hover {
+    background-color: rgba(10, 191, 204, 0.1);
+    border-color: #0abfcc;
+}
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="/" class="logo">Upcore</a>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/platform">Platform</a></li>
+                <li><a href="/industries">Industries</a></li>
+                <li><a href="/insights">Insights</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/assessment" class="cta-btn">Free Assessment</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="/insights">Insights</a> / <a href="/insights/platform">Platform</a> / Human in the Loop
+    </div>
+    
+    <!-- Article Header -->
+    <article>
+        <div class="article-header">
+            <span class="category-tag">Platform</span>
+            <h1>Human in the Loop Is Not a Feature. It's the Only Way Enterprise AI Actually Works.</h1>
+            <div class="byline">By Upcore Team · Mar 10, 2025 · 8 min read</div>
+            <div class="byline-note">Original content — verified for accuracy. Not AI-generated filler.</div>
+        </div>
+        
+        <!-- Article Content -->
+        <div class="article-content">
+            <p>A manufacturing company deploys an AI quality control system in 2023 with the explicit goal of removing human QC inspectors from the process. The system is trained on 10,000 historical images of defective and acceptable parts. In testing, it achieves 98% accuracy. In the first three months of deployment, it catches more defects than the previous human-led process. By month six, the performance begins to degrade. Defects that the system was not trained on — variations that appeared once every 5,000 parts — start escaping. By month twelve, the organization has experienced three significant escapes that damaged customer relationships. The project is rolled back. The company rehires the quality inspectors and treats the AI system as a tool to support human judgment, not replace it. That approach works. The defects per million units improves to 15% below the pre-AI baseline.</p>
+            
+            <p>This is not an exceptional story. It is a predictable pattern in enterprise AI deployment. Systems that are designed for maximal autonomy — those that aim to remove humans from the loop entirely — work well during the pilot phase when the environment is controlled and the edge cases are minimal. They fail during scale because edge cases are not rare in production. They are common. Every domain has a long tail of scenarios that appear infrequently but do appear, and those scenarios are exactly where autonomous systems fail.</p>
+            
+            <p>The path to successful enterprise AI is not the path of maximum autonomy. It is the path of strategic human oversight at the points where the cost of failure is highest. This is not a constraint imposed on AI. It is a design choice that unlocks scale and trust.</p>
+            
+            <h2>The Oversight Spectrum: Defining Where Humans Belong</h2>
+            
+            <p>Not all decisions require the same level of human involvement. A framework that Upcore uses with clients breaks oversight into four layers, and organizations need to define which decisions fall into which layer. Understanding this spectrum is where most AI implementations begin to improve.</p>
+            
+            <p>The first layer is automate. These are decisions where the AI system has such high confidence and such low stakes that human involvement would actually slow down the process without adding value. Sending a transactional email notification is automate-layer work. So is logging system activity or generating a routine status report. The system does it, the human never sees it, and nothing breaks if there is a mistake once in a thousand times. This is where autonomy should be highest.</p>
+            
+            <p>The second layer is notify. These are decisions where the system makes a choice and the human is informed of it, but not required to take action. An inventory management system that flags a product as low stock and automatically places a reorder is notify-layer work. The system takes the action. A human is informed. If the decision was wrong, the human can intervene. But the system does not wait for approval. It acts. This layer accelerates normal operations while keeping humans aware.</p>
+            
+            <p>The third layer is approve. These are decisions where the system has done the analysis, made a recommendation, but a human must sign off before action is taken. A lending system recommends a loan approval with 85% confidence, but a credit officer must review and approve before the loan is issued. A customer service AI recommends issuing a refund above a threshold amount, but a manager must approve. This is where most high-stakes business decisions live. The system does the heavy lifting, but the human owns the decision.</p>
+            
+            <p>The fourth layer is escalate. These are situations where the system recognizes that it is outside its competency and hands the entire matter to a human. A customer threatens legal action in a support chat. A fraud detection system identifies a pattern it has not seen before. An applicant provides contradictory information. The system does not try to handle these. It escalates immediately with context and lets the human decide.</p>
+            
+            <p>The critical error in many AI deployments is mis-categorizing decisions. A decision that should be approve-layer is treated as automate-layer, and the organization loses control. A decision that should be notify-layer is treated as approve-layer, and the system becomes slow. The first step in designing human-in-the-loop AI is categorizing every decision the system makes into one of these four layers.</p>
+            
+            <h2>Why Full Autonomy Fails in Complex Domains</h2>
+            
+            <p>The reason full autonomy fails is a problem in machine learning called the long tail. A well-trained AI system can handle 80% of cases very well — the cases it was trained on, the cases that are common, the cases that follow established patterns. But the remaining 20% of cases — the rare scenarios, the edge cases, the situations that have never quite happened before in exactly this way — are where systems falter.</p>
+            
+            <p>The critical insight is that in high-stakes domains, the 20% long tail contains a disproportionate amount of the risk. In lending, the unusual applications are often the fraudulent ones. In manufacturing, the defects that escape are often variants that the system was never trained on. In customer service, the complaints that escalate are exactly the ones the system did not handle well. An organization that optimizes its AI for the 80% common case and leaves the 20% long tail to chance is accepting that 20% of situations will be mishandled.</p>
+            
+            <p>If humans can handle the 20% long tail effectively, then the right design is one where the AI handles the 80% and humans handle the 20%. This is not a limitation of AI. It is leverage. The AI takes the volume work, the humans take the judgment work. The system scales because the humans are not overloaded with routine cases. Instead of a human trying to manually review 200 loan applications and reviewing 40 of them competently, an AI handles 160 routine applications with high quality and the human reviews 40 complex applications with full attention.</p>
+            
+            <p>This design also preserves regulatory accountability. In many regulated domains, someone has to own the decision. That someone is typically a human. A system that makes autonomous decisions in those domains puts the organization in a liability position. A system that makes recommendations that a human approves preserves clear accountability. The credit officer approved the loan. The QA engineer approved the release. The claims adjuster approved the payout. That clarity of ownership is legally important and operationally valuable.</p>
+            
+            <p>Customer trust also improves with appropriate human oversight. Many customers today have anxiety about AI systems making decisions about them. A customer going through a loan application wants to know a human will see their unique situation, not just a score from a black box. A customer with a complaint wants to know a human will listen, not just get routed to automation. Systems that are transparent about human oversight points actually generate more customer confidence than fully autonomous systems.</p>
+            
+            <div class="key-takeaway">The goal of human-in-the-loop design is not to slow AI down. It's to make AI trustworthy enough that the organisation lets it operate at scale. Trust is what unlocks volume — not autonomy.</div>
+            
+            <h2>How Upcore Implements Human-in-the-Loop Design</h2>
+            
+            <p>Upcore's approach to human-in-the-loop implementation has four components that work together. The first is defining the automation boundary for each use case. For a lending workflow, the boundary might be that applications from previously approved customers go into automate-layer if they have not changed economic profile. New applicants go into approve-layer. Applicants with fraud signals go into escalate-layer. That boundary is specific to the client's risk tolerance and regulatory requirements. It is not a generic vendor setting.</p>
+            
+            <p>The second component is building the escalation trigger logic. The system needs to know which conditions trigger a move from one layer to another. If a customer service AI is handling a refund request in notify-layer, what condition triggers an escalation to approve-layer? It might be "refund amount exceeds 10,000 rupees" or "customer has open disputes with the company" or "refund is requested more than 90 days after purchase." These rules are business rules, not AI rules. The business team defines them. The AI system enforces them.</p>
+            
+            <p>The third component is designing the handover experience. When a system escalates to a human, what context transfers with it? For a customer service escalation, the human sees the full conversation history, the customer's purchase history, the original reason for the request, and the refund amount being requested. They do not see just a flag saying "escalated." They see a complete picture. This handover quality determines whether the human is enabled or frustrated by the system.</p>
+            
+            <p>The fourth component is audit and review loops. The system logs which cases were handled in automate, which were approved, which escalated. Over time, this data shows patterns. It shows whether the automation boundary is correct. It shows whether escalations are actually necessary or whether the system could confidently handle more of them. It shows whether humans are overriding the system's recommendations in ways that suggest the boundaries are mis-calibrated. Quarterly or monthly reviews of these patterns allow the organization to improve the boundaries over time.</p>
+            
+            <h2>The Business Case: Why Oversight Enables Scale</h2>
+            
+            <p>The counter-intuitive claim is that organizations with strong human-in-the-loop designs scale faster than organizations trying to maximize autonomy. Here is why. An organization deploying a fully autonomous lending system that achieves 85% quality has a problem: they cannot trust it to operate at volume. They will deploy cautiously. They will use it only for a subset of applications. They will keep humans in the approval loop just to be safe. The system is technically autonomous but operationally cautious.</p>
+            
+            <p>An organization deploying a human-in-the-loop lending system that achieves 95% quality on its assigned cases knows exactly what will happen. The system will handle the routine 80% of cases flawlessly. Humans will handle the complex 20%. The organization knows this and can scale the system with confidence. They can increase volume because they trust the boundaries. They can add new features to the system because the oversight structure accommodates new edge cases. They can train employees on when to trust the system and when to override it.</p>
+            
+            <p>The business outcome is that human-in-the-loop systems deployed at cautious scale outperform fully autonomous systems deployed at conservative scale. The system with human involvement is used more widely because it is trusted more. Trust comes from transparency about where humans are involved and confidence that humans will catch edge cases. Autonomy does not generate trust. In high-stakes domains, it generates skepticism.</p>
+            
+            <h2>Closing: The Mature AI Organization</h2>
+            
+            <p>The mature AI organization is not one that has removed humans from decisions. It is one that has placed humans in exactly the right decisions. That placement requires specific work — defining the automation boundary, building escalation logic, designing handovers, and reviewing performance. It requires treating human oversight not as a cost center but as a core component of the system architecture.</p>
+            
+            <p>Organizations that do this work see their AI systems grow from pilots to core operations because they have structured them in a way that the business trusts them. Organizations that skip this work find their pilots work great and their production deployments underperform. The difference is not the AI capability. It is the AI design philosophy. And the design philosophy that works is one that keeps humans in control at the moments where control matters most.</p>
+        </div>
+        
+<!-- Use Cases Section -->
+<div class="use-cases-section">
+    <h2>See This in Action — Human-in-the-Loop Across Industries</h2>
+    <p>Every Upcore agent is designed with approval gates and escalation paths — keeping humans in control of every critical decision.</p>
+    <div class="use-cases-grid">
+        <a href="/industries/manufacturing" class="agent-card">
+            <h3>Manufacturing QC Agent</h3>
+            <p>Flags defect patterns for quality engineer review — only escalates after human approval</p>
+            <div class="link-text">See the agent →</div>
+        </a>
+        <a href="/industries/nbfc" class="agent-card">
+            <h3>NBFC Loan Approval Agent</h3>
+            <p>Scores and qualifies loans but routes all approvals through a human credit officer</p>
+            <div class="link-text">See the agent →</div>
+        </a>
+        <a href="/agent-builder" class="agent-card">
+            <h3>Studio — Agent Builder</h3>
+            <p>Configure exactly which decisions require human approval and which can be automated in your own agents</p>
+            <div class="link-text">Explore Studio →</div>
+        </a>
+    </div>
+    <div class="industry-cta">
+        <a href="/platform">Explore the Upcore Platform →</a>
+    </div>
+</div>
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h3>Ready to design human-in-the-loop AI for your organization?</h3>
+            <p>Discover how to build AI systems that scale because humans trust them.</p>
+            <a href="/assessment">Start Your Assessment</a>
+        </div>
+        
+        <!-- Related Articles -->
+        <div class="related-section">
+            <h3>Related Articles</h3>
+            <div class="related-articles">
+                <a href="/insights/manufacturing-ai-quality-control" class="article-card">
+                    <h4>Why Manufacturing Teams Catch Defects 3 Months Too Late</h4>
+                    <p>How AI QC agents change detection timeline with human oversight.</p>
+                </a>
+                <a href="/insights/nbfc-kyc-automation" class="article-card">
+                    <h4>How NBFCs Are Cutting KYC TAT from 7 Days to 4 Hours</h4>
+                    <p>Automating processes while keeping humans in critical decisions.</p>
+                </a>
+            </div>
+        </div>
+    </article>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/platform">Platform</a>
+            <a href="/industries">Industries</a>
+            <a href="/insights">Insights</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+        </div>
+        <p>&copy; 2025 Upcore Technologies. All rights reserved.</p>
+    </footer>
+</body>
+</html>

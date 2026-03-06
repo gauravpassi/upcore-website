@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Platform Overview — Upcore Technologies</title>
+<meta name="description" content="The Upcore AI platform: SDLC Agent, Agent Creator, and AI Workforce — custom AI built for your business, not off the shelf.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;background:#070f1d;color:#fff;overflow-x:hidden;line-height:1.6}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+
+:root{
+  --bg:#070f1d;--bg2:#09152a;--bg3:#0d1c35;--card:#0f2140;--card2:#0a1a32;
+  --teal:#0abfcc;--mint:#3ddcc4;--teal3:#0891b2;
+  --txt:#ffffff;--txt2:#8ab8cc;--txt3:#3a5e78;
+  --border:rgba(10,191,204,.12);--bh:rgba(10,191,204,.36);
+  --grad:linear-gradient(135deg,#0891b2,#0abfcc,#3ddcc4);
+  --ff:'Poppins',sans-serif;--nav-h:68px;--r:16px;--max:1280px;
+}
+
+.wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 40px}
+.grad-text{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.tag{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);background:rgba(10,191,204,.1);border:1px solid var(--border);border-radius:100px;padding:6px 14px}
+.tag .dot{width:6px;height:6px;border-radius:50%;background:var(--mint);flex-shrink:0}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--grad);color:#070f1d;font-family:var(--ff);font-size:.92rem;font-weight:700;padding:14px 28px;border-radius:100px;border:none;cursor:pointer;transition:.2s}
+.btn-primary:hover{opacity:.9;transform:translateY(-1px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--teal);font-family:var(--ff);font-size:.92rem;font-weight:600;padding:13px 28px;border-radius:100px;border:1.5px solid var(--teal);cursor:pointer;transition:.2s}
+.btn-ghost:hover{background:rgba(10,191,204,.08)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);background:rgba(7,15,29,.92);backdrop-filter:blur(18px);border-bottom:1px solid var(--border)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h)}
+.nav-logo img{height:36px}
+.nav-right{display:flex;align-items:center;gap:20px}
+.nav-back{font-size:.84rem;color:var(--txt2);transition:.2s}
+.nav-back:hover{color:var(--teal)}
+.nav-btn{font-family:var(--ff);font-size:.82rem;font-weight:600;padding:9px 20px;border-radius:100px;cursor:pointer;background:var(--grad);color:#070f1d;border:none}
+.nav-btn:hover{opacity:.88}
+
+/* HERO */
+.platform-hero{
+  padding:calc(var(--nav-h) + 80px) 0 80px;
+  text-align:center;
+  background:radial-gradient(ellipse 80% 50% at 50% 20%,rgba(10,191,204,.07),transparent 70%),var(--bg);
+}
+.platform-hero .tag{margin-bottom:24px}
+.platform-hero h1{font-size:clamp(2.2rem,5vw,3.4rem);font-weight:900;line-height:1.15;margin-bottom:18px}
+.platform-hero p{font-size:1.05rem;color:var(--txt2);max-width:620px;margin:0 auto 40px;line-height:1.8}
+.hero-btns{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
+
+/* PRODUCT TABS */
+.tabs-section{padding:80px 0;background:var(--bg2)}
+.tabs-nav{display:flex;gap:4px;background:var(--card2);border:1px solid var(--border);border-radius:100px;padding:4px;width:fit-content;margin:0 auto 56px}
+.tab-btn{font-family:var(--ff);font-size:.86rem;font-weight:600;padding:10px 24px;border-radius:100px;border:none;cursor:pointer;transition:.2s;color:var(--txt2);background:transparent}
+.tab-btn.active{background:var(--grad);color:#070f1d}
+.tab-btn:not(.active):hover{color:var(--txt);background:rgba(10,191,204,.06)}
+.tab-content{display:none}
+.tab-content.active{display:block}
+
+/* Product detail card */
+.product-detail{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.pd-badge{display:inline-flex;align-items:center;gap:8px;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:rgba(10,191,204,.08);border:1px solid var(--border);color:var(--teal);border-radius:100px;padding:6px 14px;margin-bottom:18px}
+.pd-title{font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:900;line-height:1.2;margin-bottom:16px}
+.pd-desc{font-size:.95rem;color:var(--txt2);line-height:1.8;margin-bottom:28px}
+.pd-features{display:flex;flex-direction:column;gap:12px;margin-bottom:32px}
+.pd-feat{display:flex;align-items:flex-start;gap:12px;font-size:.87rem;color:var(--txt2);line-height:1.55}
+.pd-check{width:18px;height:18px;border-radius:50%;background:rgba(61,220,196,.12);border:1px solid rgba(61,220,196,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.pd-check svg{width:9px;height:9px}
+.pd-actions{display:flex;gap:14px;flex-wrap:wrap}
+
+.pd-visual{background:var(--card);border:1px solid var(--border);border-radius:24px;overflow:hidden;min-height:380px;display:flex;align-items:center;justify-content:center;padding:28px}
+
+/* COMPARISON TABLE */
+.compare-section{padding:80px 0;background:var(--bg)}
+.compare-header{text-align:center;margin-bottom:48px}
+.compare-label{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
+.compare-title{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;line-height:1.2}
+
+.compare-table{
+  background:var(--card2);border:1px solid var(--border);border-radius:20px;overflow:hidden;
+}
+.compare-thead{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;background:rgba(10,191,204,.04);border-bottom:1px solid var(--border);}
+.compare-th{padding:16px 20px;font-size:.78rem;font-weight:700;color:var(--txt2);letter-spacing:.06em;text-transform:uppercase}
+.compare-th.highlight{color:var(--teal)}
+.compare-tr{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;border-bottom:1px solid var(--border)}
+.compare-tr:last-child{border-bottom:none}
+.compare-tr:nth-child(even){background:rgba(10,191,204,.02)}
+.compare-td{padding:16px 20px;font-size:.86rem;color:var(--txt2);display:flex;align-items:center}
+.compare-td:first-child{font-weight:600;color:var(--txt)}
+.compare-td.good{color:var(--mint)}
+.compare-td.bad{color:var(--txt3)}
+
+/* HOW IT'S DIFFERENT */
+.diff-section{padding:80px 0;background:var(--bg2)}
+.diff-header{text-align:center;max-width:640px;margin:0 auto 56px}
+.diff-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.diff-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px;transition:.3s}
+.diff-card:hover{transform:translateY(-4px);border-color:var(--bh)}
+.diff-icon{font-size:2rem;margin-bottom:14px}
+.diff-title{font-size:.95rem;font-weight:700;margin-bottom:8px}
+.diff-desc{font-size:.82rem;color:var(--txt2);line-height:1.65}
+
+/* CTA */
+.platform-cta{padding:80px 0;background:var(--bg);text-align:center}
+.platform-cta h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;margin-bottom:16px;line-height:1.2}
+.platform-cta p{font-size:1rem;color:var(--txt2);max-width:500px;margin:0 auto 36px;line-height:1.75}
+.cta-btns{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
+
+/* FOOTER */
+footer{background:var(--bg);border-top:1px solid var(--border);padding:32px 0}
+.footer-simple{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-copy{font-size:.78rem;color:var(--txt3)}
+
+@media(max-width:900px){
+  .wrap{padding:0 20px}
+  .product-detail{grid-template-columns:1fr}
+  .diff-grid{grid-template-columns:1fr 1fr}
+  .compare-thead,.compare-tr{grid-template-columns:1fr 1fr}
+  .compare-th:not(:first-child):not(.highlight),.compare-td:not(:first-child):not(:last-child){display:none}
+}
+@media(max-width:600px){
+  .tabs-nav{flex-direction:column;border-radius:16px;width:100%}
+  .tab-btn{border-radius:12px}
+  .diff-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a href="/" class="nav-logo">
+      <img src="upcore-logo.svg" alt="Upcore Technologies" height="36">
+    </a>
+    <div class="nav-right">
+      <a href="/" class="nav-back">← Home</a>
+      <a href="/industries" class="nav-back">Industries</a>
+      <a href="/insights" class="nav-back">Insights</a>
+      <a href="/about" class="nav-back">About</a>
+      <a href="/assessment" class="nav-btn">Free Assessment</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="platform-hero">
+  <div class="wrap">
+    <div class="tag"><span class="dot"></span>Platform Overview</div>
+    <h1>Three Products.<br><span class="grad-text">One AI Partner.</span></h1>
+    <p>SDLC Agent, Agent Creator, and AI Workforce — each custom-built for your business, each designed to replace manual work with intelligent automation.</p>
+    <div class="hero-btns">
+      <a href="/assessment" class="btn-primary">
+        Get Free Assessment
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="/" class="btn-ghost">Back to Home</a>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCT TABS -->
+<section class="tabs-section">
+  <div class="wrap">
+    <div class="tabs-nav">
+      <button class="tab-btn active" onclick="showTab('sdlc', this)">⚡ SDLC Agent</button>
+      <button class="tab-btn" onclick="showTab('creator', this)">🧠 Agent Creator</button>
+      <button class="tab-btn" onclick="showTab('workforce', this)">👥 AI Workforce</button>
+    </div>
+
+    <!-- SDLC -->
+    <div class="tab-content active" id="tab-sdlc">
+      <div class="product-detail">
+        <div>
+          <div class="pd-badge">⚡ Flagship Product</div>
+          <h2 class="pd-title">SDLC Agent — <span class="grad-text">End-to-End Software Delivery</span></h2>
+          <p class="pd-desc">You describe the feature or product in plain English. The SDLC Agent handles everything from planning and coding to testing, debugging, and deploying to production. No dev team handover. No waiting for sprints.</p>
+          <div class="pd-features">
+            <div class="pd-feat"><div class="pd-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#3ddcc4" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Understands your codebase structure, patterns & naming conventions</span></div>
+            <div class="pd-feat"><div class="pd-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#3ddcc4" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Plans architecture, writes code, creates unit + integration tests</span></div>
+            <div class="pd-feat"><div class="pd-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#3ddcc4" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Identifies and auto-fixes bugs — before they reach production</span></div>
+            <div class="pd-feat"><div class="pd-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#3ddcc4" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Deploys to your environment — fully automated CI/CD integration</span></div>
+            <div class="pd-feat"><div class="pd-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#3ddcc4" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Manages your entire product with a fraction of the team size</span></div>
+            <div class="pd-feat"><div class="pd-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#3ddcc4" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Iterate in hours — fail fast, learn fast, ship faster</span></div>
+          </div>
+          <div class="pd-actions">
+            <a href="/sdlc-agent" class="btn-primary">Explore Forge — SDLC Agent <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a href="/assessment" class="btn-ghost" style="margin-top:0">Book a Demo</a>
+          </div>
+        </div>
+        <div class="pd-visual">
+          <div style="width:100%;font-family:'Poppins',sans-serif">
+            <div style="font-size:.65rem;font-weight:700;color:var(--teal);letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px">SDLC Flow — Plain English → Production</div>
+            <!-- Input prompt -->
+            <div style="background:rgba(10,191,204,.04);border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:16px;font-size:.78rem;color:var(--txt2);font-style:italic;">"Add a Stripe checkout flow with webhook handling and subscription management..."</div>
+            <!-- Steps -->
+            <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">
+              <div style="display:flex;align-items:center;gap:10px;background:rgba(10,191,204,.04);border:1px solid var(--border);border-radius:10px;padding:11px 14px">
+                <span style="font-size:.9rem">📋</span>
+                <div style="flex:1"><div style="font-size:.78rem;font-weight:700;color:var(--txt)">Planning</div><div style="font-size:.68rem;color:var(--txt3)">Architecture + task breakdown</div></div>
+                <span style="font-size:.65rem;color:var(--mint);font-weight:600">Done ✓</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;background:rgba(10,191,204,.04);border:1px solid var(--border);border-radius:10px;padding:11px 14px">
+                <span style="font-size:.9rem">💻</span>
+                <div style="flex:1"><div style="font-size:.78rem;font-weight:700;color:var(--txt)">Coding</div><div style="font-size:.68rem;color:var(--txt3)">Matching your patterns & conventions</div></div>
+                <span style="font-size:.65rem;color:var(--mint);font-weight:600">Done ✓</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;background:rgba(10,191,204,.04);border:1px solid var(--border);border-radius:10px;padding:11px 14px">
+                <span style="font-size:.9rem">🧪</span>
+                <div style="flex:1"><div style="font-size:.78rem;font-weight:700;color:var(--txt)">Testing</div><div style="font-size:.68rem;color:var(--txt3)">Unit + integration + E2E</div></div>
+                <span style="font-size:.65rem;color:var(--mint);font-weight:600">Done ✓</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;background:rgba(10,191,204,.04);border:1px solid var(--border);border-radius:10px;padding:11px 14px">
+                <span style="font-size:.9rem">🔧</span>
+                <div style="flex:1"><div style="font-size:.78rem;font-weight:700;color:var(--txt)">Bug Fixing</div><div style="font-size:.68rem;color:var(--txt3)">2 issues found & resolved</div></div>
+                <span style="font-size:.65rem;color:var(--mint);font-weight:600">Done ✓</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;background:rgba(61,220,196,.06);border:1px solid rgba(61,220,196,.2);border-radius:10px;padding:11px 14px">
+                <span style="font-size:.9rem">🚀</span>
+                <div style="flex:1"><div style="font-size:.78rem;font-weight:700;color:var(--mint)">Deployed to Production</div><div style="font-size:.68rem;color:var(--txt3)">4h 12m total · Zero manual intervention</div></div>
+                <span style="font-size:.65rem;color:var(--mint);font-weight:700">Live ●</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AGENT CREATOR -->
+    <div class="tab-content" id="tab-creator">
+      <div class="product-detail">
+        <div>
+          <div class="pd-badge">🧠 Agent Creator</div>
+          <h2 class="pd-title">Write a Prompt. <span class="grad-text">Get a Deployed Agent.</span></h2>
+          <p class="pd-desc">Your team can build, configure, and deploy custom AI agents without writing a single line of code. Agent Creator turns natural language instructions into production-ready agents — connected to your tools and data.</p>
+          <div class="pd-features">
+            <div class="pd-feat"><div class="pd-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#3ddcc4" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Natural language interface — anyone on your team can build agents</span></div>
+            <div class="pd-feat"><div class="pd-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#3ddcc4" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Connects to CRM, email, Slack, databases, and your APIs</span></div>
+            <div class="pd-feat"><div class="pd-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#3ddcc4" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Built-in guardrails, audit trails, and role-based access control</span></div>
+            <div class="pd-feat"><div class="pd-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#3ddcc4" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Agents trained on your brand voice, product knowledge, and policies</span></div>
+            <div class="pd-feat"><div class="pd-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#3ddcc4" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Deploy to web, Slack, WhatsApp, API endpoint — anywhere</span></div>
+          </div>
+          <div class="pd-actions">
+            <a href="/agent-builder" class="btn-primary">Explore Studio — Agent Builder <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </div>
+        <div class="pd-visual">
+          <div style="width:100%">
+            <div style="font-size:.65rem;font-weight:700;color:var(--teal);letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px">4 Steps from Idea to Live Agent</div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <div style="background:rgba(10,191,204,.04);border:1px solid var(--border);border-radius:10px;padding:14px;display:flex;gap:12px;align-items:flex-start">
+                <div style="width:28px;height:28px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:#070f1d;flex-shrink:0">1</div>
+                <div><div style="font-size:.84rem;font-weight:700;color:var(--txt)">Describe Your Agent</div><div style="font-size:.72rem;color:var(--txt2);margin-top:2px">"Handle tier-1 customer support, escalate to human if unsure"</div></div>
+              </div>
+              <div style="background:rgba(10,191,204,.04);border:1px solid var(--border);border-radius:10px;padding:14px;display:flex;gap:12px;align-items:flex-start">
+                <div style="width:28px;height:28px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:#070f1d;flex-shrink:0">2</div>
+                <div><div style="font-size:.84rem;font-weight:700;color:var(--txt)">Set Behaviour & Rules</div><div style="font-size:.72rem;color:var(--txt2);margin-top:2px">Tone, guardrails, escalation paths, data access scope</div></div>
+              </div>
+              <div style="background:rgba(10,191,204,.04);border:1px solid var(--border);border-radius:10px;padding:14px;display:flex;gap:12px;align-items:flex-start">
+                <div style="width:28px;height:28px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:#070f1d;flex-shrink:0">3</div>
+                <div><div style="font-size:.84rem;font-weight:700;color:var(--txt)">Connect Your Data</div><div style="font-size:.72rem;color:var(--txt2);margin-top:2px">Link CRM, knowledge base, APIs, product docs</div></div>
+              </div>
+              <div style="background:rgba(61,220,196,.06);border:1px solid rgba(61,220,196,.2);border-radius:10px;padding:14px;display:flex;gap:12px;align-items:flex-start">
+                <div style="width:28px;height:28px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:#070f1d;flex-shrink:0">4</div>
+                <div><div style="font-size:.84rem;font-weight:700;color:var(--mint)">Deploy & Go Live</div><div style="font-size:.72rem;color:var(--txt2);margin-top:2px">One click to production — embed anywhere</div></div>
+              </div>
+            </div>
+            <div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:6px">
+              <span style="display:inline-flex;align-items:center;gap:5px;background:rgba(10,191,204,.08);border:1px solid var(--border);border-radius:100px;padding:4px 12px;font-size:.7rem;font-weight:600;color:var(--teal)"><span style="width:5px;height:5px;background:var(--mint);border-radius:50%"></span>Support Bot</span>
+              <span style="display:inline-flex;align-items:center;gap:5px;background:rgba(10,191,204,.08);border:1px solid var(--border);border-radius:100px;padding:4px 12px;font-size:.7rem;font-weight:600;color:var(--teal)"><span style="width:5px;height:5px;background:var(--mint);border-radius:50%"></span>Lead Qualifier</span>
+              <span style="display:inline-flex;align-items:center;gap:5px;background:rgba(10,191,204,.08);border:1px solid var(--border);border-radius:100px;padding:4px 12px;font-size:.7rem;font-weight:600;color:var(--teal)"><span style="width:5px;height:5px;background:var(--mint);border-radius:50%"></span>Invoice Checker</span>
+              <span style="display:inline-flex;align-items:center;gap:5px;background:rgba(10,191,204,.08);border:1px solid var(--border);border-radius:100px;padding:4px 12px;font-size:.7rem;font-weight:600;color:var(--teal)"><span style="width:5px;height:5px;background:var(--mint);border-radius:50%"></span>HR FAQ Agent</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WORKFORCE -->
+    <div class="tab-content" id="tab-workforce">
+      <div class="product-detail">
+        <div>
+          <div class="pd-badge">👥 AI Workforce</div>
+          <h2 class="pd-title">A Full AI Team <span class="grad-text">That Never Stops Working.</span></h2>
+          <p class="pd-desc">Coordinate a team of specialised AI agents — each an expert in their domain, all working together around the clock. Replace repetitive work across sales, support, operations, and analytics with a fully autonomous workforce.</p>
+          <div class="pd-features">
+            <div class="pd-feat"><div class="pd-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#3ddcc4" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Multiple specialised agents — sales, support, ops, analytics, comms</span></div>
+            <div class="pd-feat"><div class="pd-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#3ddcc4" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Agents coordinate — pass context, hand off tasks, escalate to humans</span></div>
+            <div class="pd-feat"><div class="pd-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#3ddcc4" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Domain-trained on your industry vertical, not generic business logic</span></div>
+            <div class="pd-feat"><div class="pd-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#3ddcc4" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Operates 24/7/365 — no downtime, no sick days, no onboarding lag</span></div>
+            <div class="pd-feat"><div class="pd-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#3ddcc4" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Scale instantly — add more agents as your business grows</span></div>
+          </div>
+          <div class="pd-actions">
+            <a href="/assessment" class="btn-primary">Design Your Workforce <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </div>
+        <div class="pd-visual">
+          <div style="width:100%">
+            <div style="font-size:.65rem;font-weight:700;color:var(--teal);letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px">Sample AI Workforce Configuration</div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px">
+              <div style="background:rgba(10,191,204,.04);border:1px solid var(--border);border-radius:12px;padding:14px 10px;text-align:center"><div style="font-size:1.3rem">📞</div><div style="font-size:.72rem;font-weight:700;color:var(--teal);margin-top:4px">Sales</div><div style="font-size:.62rem;color:var(--txt3)">Qualify leads</div></div>
+              <div style="background:rgba(10,191,204,.04);border:1px solid var(--border);border-radius:12px;padding:14px 10px;text-align:center"><div style="font-size:1.3rem">🎯</div><div style="font-size:.72rem;font-weight:700;color:var(--teal);margin-top:4px">Support</div><div style="font-size:.62rem;color:var(--txt3)">Resolve tickets</div></div>
+              <div style="background:rgba(10,191,204,.04);border:1px solid var(--border);border-radius:12px;padding:14px 10px;text-align:center"><div style="font-size:1.3rem">📊</div><div style="font-size:.72rem;font-weight:700;color:var(--teal);margin-top:4px">Analytics</div><div style="font-size:.62rem;color:var(--txt3)">Surface insights</div></div>
+              <div style="background:rgba(10,191,204,.04);border:1px solid var(--border);border-radius:12px;padding:14px 10px;text-align:center"><div style="font-size:1.3rem">⚙️</div><div style="font-size:.72rem;font-weight:700;color:var(--teal);margin-top:4px">Ops</div><div style="font-size:.62rem;color:var(--txt3)">Back-office tasks</div></div>
+              <div style="background:rgba(10,191,204,.04);border:1px solid var(--border);border-radius:12px;padding:14px 10px;text-align:center"><div style="font-size:1.3rem">✉️</div><div style="font-size:.72rem;font-weight:700;color:var(--teal);margin-top:4px">Comms</div><div style="font-size:.62rem;color:var(--txt3)">Draft & send</div></div>
+              <div style="background:rgba(10,191,204,.04);border:1px solid var(--border);border-radius:12px;padding:14px 10px;text-align:center"><div style="font-size:1.3rem">🔍</div><div style="font-size:.72rem;font-weight:700;color:var(--teal);margin-top:4px">Research</div><div style="font-size:.62rem;color:var(--txt3)">Market intel</div></div>
+            </div>
+            <div style="background:rgba(61,220,196,.05);border:1px solid rgba(61,220,196,.15);border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:10px">
+              <div style="width:8px;height:8px;background:var(--mint);border-radius:50%;animation:pulse 2s infinite"></div>
+              <span style="font-size:.78rem;font-weight:600;color:var(--mint)">All 6 agents coordinating — 24/7/365</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section class="compare-section">
+  <div class="wrap">
+    <div class="compare-header">
+      <p class="compare-label">Why Custom Beats Generic</p>
+      <h2 class="compare-title">Upcore vs. <span class="grad-text">Off-The-Shelf AI</span></h2>
+    </div>
+    <div class="compare-table">
+      <div class="compare-thead">
+        <div class="compare-th">Feature</div>
+        <div class="compare-th">Generic AI Tools</div>
+        <div class="compare-th">Other Custom Dev</div>
+        <div class="compare-th highlight">Upcore AI ★</div>
+      </div>
+      <div class="compare-tr">
+        <div class="compare-td">Built for your workflows</div>
+        <div class="compare-td bad">✗ Template-based</div>
+        <div class="compare-td bad">~ Partial</div>
+        <div class="compare-td good">✓ 100% Custom</div>
+      </div>
+      <div class="compare-tr">
+        <div class="compare-td">Ownership model</div>
+        <div class="compare-td bad">✗ Monthly license</div>
+        <div class="compare-td bad">~ Depends</div>
+        <div class="compare-td good">✓ You own it</div>
+      </div>
+      <div class="compare-tr">
+        <div class="compare-td">Time to deploy</div>
+        <div class="compare-td bad">Weeks–months</div>
+        <div class="compare-td bad">Months+</div>
+        <div class="compare-td good">Days</div>
+      </div>
+      <div class="compare-tr">
+        <div class="compare-td">Ongoing cost model</div>
+        <div class="compare-td bad">Subscription forever</div>
+        <div class="compare-td bad">High retainer</div>
+        <div class="compare-td good">Pay-as-you-go</div>
+      </div>
+      <div class="compare-tr">
+        <div class="compare-td">Industry domain knowledge</div>
+        <div class="compare-td bad">✗ Generic</div>
+        <div class="compare-td bad">~ Variable</div>
+        <div class="compare-td good">✓ Deep training</div>
+      </div>
+      <div class="compare-tr">
+        <div class="compare-td">Agent coordination</div>
+        <div class="compare-td bad">✗ Siloed</div>
+        <div class="compare-td bad">~ Custom build</div>
+        <div class="compare-td good">✓ Built-in</div>
+      </div>
+      <div class="compare-tr">
+        <div class="compare-td">Vendor lock-in</div>
+        <div class="compare-td bad">High</div>
+        <div class="compare-td bad">Medium</div>
+        <div class="compare-td good">Zero</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT MAKES US DIFFERENT -->
+<section class="diff-section">
+  <div class="wrap">
+    <div class="diff-header">
+      <p style="font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);margin-bottom:12px">Our Approach</p>
+      <h2 style="font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:800;margin-bottom:16px">What Makes <span class="grad-text">Upcore Different</span></h2>
+      <p style="font-size:.95rem;color:var(--txt2);line-height:1.75">We're not a platform. We're a team that builds your AI workforce from the ground up.</p>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-card">
+        <div class="diff-icon">🎯</div>
+        <div class="diff-title">Start with Your Business</div>
+        <div class="diff-desc">Every engagement starts with deep discovery — we map your processes before touching a keyboard.</div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-icon">🏗️</div>
+        <div class="diff-title">Build from Scratch</div>
+        <div class="diff-desc">No templates. No adapters. Agents built from the ground up to match your exact requirements.</div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-icon">🔑</div>
+        <div class="diff-title">You Own Everything</div>
+        <div class="diff-desc">All code, models, and data are yours. We hand over full control after deployment.</div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-icon">🤝</div>
+        <div class="diff-title">Long-Term Partnership</div>
+        <div class="diff-desc">We stay with you — retraining, expanding, and optimising as your business evolves.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="platform-cta">
+  <div class="wrap">
+    <div class="tag" style="margin:0 auto 24px;width:fit-content;"><span class="dot"></span>Ready to get started?</div>
+    <h2>See What Custom AI<br><span class="grad-text">Can Do for Your Business</span></h2>
+    <p>Book a free 30-minute assessment. We'll map your biggest opportunities and show you exactly which products fit your needs.</p>
+    <div class="cta-btns">
+      <a href="/assessment" class="btn-primary" style="font-size:1rem;padding:16px 36px">
+        Get Free Assessment
+        <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="/" class="btn-ghost" style="font-size:1rem;padding:15px 36px">Back to Home</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-simple">
+      <img src="upcore-logo.svg" alt="Upcore" height="28">
+      <span class="footer-copy">© 2025 Upcore Technologies. All rights reserved.</span>
+      <a href="/" style="font-size:.82rem;color:var(--txt2)">← Home</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+</style>
+<script>
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>

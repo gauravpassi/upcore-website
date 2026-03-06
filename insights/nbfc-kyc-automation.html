@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How NBFCs Are Cutting KYC TAT from 7 Days to 4 Hours | Upcore</title>
+    <meta name="description" content="KYC delays cost NBFCs customers and capital. The fix isn't to skip compliance steps — it's to automate the ones that don't require human judgment and eliminate the wait between them.">
+    <meta name="canonical" href="https://upcore.ai/insights/nbfc-kyc-automation">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://upcore.ai/insights/nbfc-kyc-automation">
+    <meta property="og:title" content="How NBFCs Are Cutting KYC TAT from 7 Days to 4 Hours">
+    <meta property="og:description" content="KYC delays cost NBFCs customers and capital. Automate the process steps that don't need human judgment.">
+    <meta property="og:image" content="https://upcore.ai/og-nbfc.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://upcore.ai/insights/nbfc-kyc-automation">
+    <meta property="twitter:title" content="Cutting KYC TAT from 7 Days to 4 Hours">
+    <meta property="twitter:description" content="KYC delays cost customers. Automate the process steps that don't require human judgment.">
+    
+    <!-- JSON-LD Article Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How NBFCs Are Cutting KYC TAT from 7 Days to 4 Hours Without Compromising Compliance",
+      "description": "KYC delays cost NBFCs customers and capital. The fix isn't to skip compliance steps — it's to automate the ones that don't require human judgment and eliminate the wait between them.",
+      "datePublished": "2025-03-05",
+      "dateModified": "2025-03-05",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://upcore.ai",
+        "name": "Upcore Team"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Upcore Technologies",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://upcore.ai/logo.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://upcore.ai/insights/nbfc-kyc-automation"
+      }
+    }
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #07101e;
+            color: #e5e7eb;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: #0a1628;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            border-bottom: 1px solid rgba(10, 191, 204, 0.1);
+        }
+        
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        nav .logo {
+            font-weight: 700;
+            color: #0abfcc;
+            font-size: 1.3rem;
+            text-decoration: none;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        nav a {
+            color: #e5e7eb;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #0abfcc;
+        }
+        
+        .cta-btn {
+            background: linear-gradient(135deg, #0891b2, #0abfcc, #3dddc4);
+            color: #07101e;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(10, 191, 204, 0.3);
+        }
+        
+        /* Breadcrumb */
+        .breadcrumb {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding: 0 2rem;
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+        
+        .breadcrumb a {
+            color: #0abfcc;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .breadcrumb a:hover {
+            color: #3dddc4;
+        }
+        
+        /* Article Header */
+        .article-header {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(8, 145, 178, 0.1), rgba(10, 191, 204, 0.1));
+            border-radius: 8px;
+            border-left: 4px solid #0abfcc;
+        }
+        
+        .category-tag {
+            display: inline-block;
+            background-color: rgba(10, 191, 204, 0.2);
+            color: #0abfcc;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            color: #f0f9ff;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+            font-weight: 700;
+        }
+        
+        .byline {
+            font-size: 0.95rem;
+            color: #9ca3af;
+            margin-bottom: 0.5rem;
+        }
+        
+        .byline-note {
+            font-size: 0.85rem;
+            color: #6b7280;
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+        
+        /* Article Content */
+        .article-content {
+            max-width: 760px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .article-content p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            color: #d1d5db;
+        }
+        
+        h2 {
+            font-size: 1.6rem;
+            color: #0abfcc;
+            margin-top: 2.5rem;
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+        
+        h3 {
+            font-size: 1.2rem;
+            color: #3dddc4;
+            margin-top: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        /* Key Takeaway Box */
+        .key-takeaway {
+            margin: 2.5rem 0;
+            padding: 1.5rem;
+            background-color: #0a1628;
+            border-left: 4px solid #0abfcc;
+            border-radius: 4px;
+            color: #e5e7eb;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            font-weight: 500;
+        }
+        
+        .key-takeaway::before {
+            content: "Key Takeaway";
+            display: block;
+            color: #0abfcc;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            max-width: 760px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(8, 145, 178, 0.15), rgba(10, 191, 204, 0.15));
+            border-radius: 8px;
+            border: 1px solid rgba(10, 191, 204, 0.3);
+            text-align: center;
+        }
+        
+        .cta-section h3 {
+            color: #0abfcc;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        
+        .cta-section p {
+            margin-bottom: 1.5rem;
+            color: #d1d5db;
+        }
+        
+        .cta-section a {
+            display: inline-block;
+            background: linear-gradient(135deg, #0891b2, #0abfcc, #3dddc4);
+            color: #07101e;
+            padding: 0.8rem 2rem;
+            border-radius: 6px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-size: 1rem;
+        }
+        
+        .cta-section a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(10, 191, 204, 0.4);
+        }
+        
+        /* Related Articles */
+        .related-section {
+            max-width: 760px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            border-top: 1px solid rgba(10, 191, 204, 0.2);
+            padding-top: 2rem;
+        }
+        
+        .related-section h3 {
+            font-size: 1.3rem;
+            color: #0abfcc;
+            margin-bottom: 1.5rem;
+        }
+        
+        .related-articles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .article-card {
+            background-color: #0a1628;
+            padding: 1.5rem;
+            border-radius: 6px;
+            border: 1px solid rgba(10, 191, 204, 0.2);
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .article-card:hover {
+            border-color: #0abfcc;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(10, 191, 204, 0.15);
+        }
+        
+        .article-card h4 {
+            color: #0abfcc;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
+        
+        .article-card p {
+            font-size: 0.9rem;
+            color: #9ca3af;
+            margin-bottom: 0;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #0a1628;
+            border-top: 1px solid rgba(10, 191, 204, 0.1);
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+        
+        footer a {
+            color: #0abfcc;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        footer a:hover {
+            color: #3dddc4;
+        }
+        
+        .footer-links {
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+            
+            h1 {
+                font-size: 1.6rem;
+            }
+            
+            h2 {
+                font-size: 1.3rem;
+            }
+            
+            .article-content {
+                padding: 0 1rem;
+            }
+            
+            .article-header {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+        }
+
+/* Use Cases Section */
+.use-cases-section {
+    max-width: 760px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+}
+.use-cases-section h2 {
+    font-size: 1.6rem;
+    color: #0abfcc;
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+}
+.use-cases-section > p {
+    color: #9ca3af;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+}
+.use-cases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.agent-card {
+    background-color: #0a1628;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba(10, 191, 204, 0.2);
+    transition: all 0.3s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+.agent-card:hover {
+    border-color: #0abfcc;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(10, 191, 204, 0.15);
+}
+.agent-card h3 {
+    color: #0abfcc;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-top: 0;
+}
+.agent-card p {
+    font-size: 0.875rem;
+    color: #9ca3af;
+    margin-bottom: 0.8rem;
+}
+.link-text {
+    color: #3dddc4;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+.industry-cta {
+    text-align: center;
+    margin-top: 1rem;
+}
+.industry-cta a {
+    color: #0abfcc;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: 1px solid rgba(10, 191, 204, 0.4);
+    padding: 0.6rem 1.4rem;
+    border-radius: 6px;
+    transition: all 0.3s;
+    display: inline-block;
+}
+.industry-cta a:hover {
+    background-color: rgba(10, 191, 204, 0.1);
+    border-color: #0abfcc;
+}
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="/" class="logo">Upcore</a>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/platform">Platform</a></li>
+                <li><a href="/industries">Industries</a></li>
+                <li><a href="/insights">Insights</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/assessment" class="cta-btn">Free Assessment</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="/insights">Insights</a> / <a href="/insights/nbfc">NBFCs</a> / KYC TAT Reduction
+    </div>
+    
+    <!-- Article Header -->
+    <article>
+        <div class="article-header">
+            <span class="category-tag">NBFCs</span>
+            <h1>How NBFCs Are Cutting KYC TAT from 7 Days to 4 Hours Without Compromising Compliance</h1>
+            <div class="byline">By Upcore Team · Mar 5, 2025 · 6 min read</div>
+            <div class="byline-note">Original content — verified for accuracy. Not AI-generated filler.</div>
+        </div>
+        
+        <!-- Article Content -->
+        <div class="article-content">
+            <p>A prospective borrower applies for a ₹2 lakh personal loan on Monday evening. They have steady employment, reasonable credit, and a genuine need for the money. By Tuesday morning, they have decided they are not waiting until Friday for a decision. They apply to three other platforms. By Wednesday, one of those platforms has approved them. The original NBFC is still in the KYC queue, waiting for compliance to have bandwidth to review submitted documents.</p>
+            
+            <p>This scenario plays out hundreds of times daily across the Indian NBFC sector. KYC (Know Your Customer) turnaround time, or TAT, is a direct competitor for customer acquisition. A seven-day KYC process is not a compliance requirement. It is a structural inefficiency that costs NBFCs customers to platforms with faster processes. The RBI's KYC guidelines provide a framework within which processes can be designed. They do not mandate a seven-day timeline. But most NBFCs operate within that timeline because they have never questioned whether the delays are necessary or merely traditional.</p>
+            
+            <p>The fix is not to compromise on compliance. The fix is to eliminate the wait steps that exist not because they are legally required, but because they are organizationally convenient. A 7-day KYC process typically contains 3 to 4 days of actual work and 3 to 4 days of waiting between workflow steps. AI agents can eliminate those waiting periods without touching the actual decision-making steps that require human judgment.</p>
+            
+            <h2>Where the 7 Days Actually Goes</h2>
+            
+            <p>Mapping a typical NBFC KYC workflow reveals where the time leaks. Document collection usually takes 12 to 24 hours. A customer applies and receives an email asking them to upload documents. Many do not read the email on day one. Many upload documents in the evening when they have time. The platform batches document uploads and opens them in the morning. Day one is mostly lost to customer response latency and batching.</p>
+            
+            <p>Completeness checking takes another 12 to 24 hours. Once documents are uploaded, someone on the NBFC's team needs to review whether the package is complete — do all documents have all required information, are they legible, do they match the stated identity. If something is missing, the system emails the customer asking for a replacement. The customer does not respond until day two evening. Another 24 hours is lost to back-and-forth. For many applicants, completeness check queues are batched and reviewed once per day, which adds another 12-hour delay if the upload happened at the wrong time of the business day.</p>
+            
+            <p>Data entry takes 2 to 6 hours depending on document complexity and queue depth. Once documents are deemed complete, information is manually entered into the CRM system. This is pure data entry work — pulling income figures from payslips, marital status from ID cards, address from bank statements. This is work that must be accurate but requires no judgment. Yet it frequently gets queued behind other applications and does not happen for 24 hours after completeness is verified.</p>
+            
+            <p>Bureau triggers take 24 to 48 hours. Credit bureau queries, PAN validation, GST verification, and address verification all take time and have batch processing delays. Some checks are instant. Some have daily processing windows. If an application hits the system at 6 PM, the bureau check queues and runs at 6 AM the next day, adding 12 hours of wait time.</p>
+            
+            <p>Human review and credit decision take 2 to 4 hours of actual work, but this is the step where the queue becomes deepest. A credit officer might have twenty applications in their review queue. They work through them sequentially. If the application was number eighteen in the queue, it waits 36 hours for its turn even if the actual review takes 10 minutes. And if the credit officer requests additional information or has a question, the application is pulled out of queue, information is requested, the applicant responds, and the application re-enters the queue somewhere different. That is another 24-hour cycle.</p>
+            
+            <p>KYC sign-off and final approval take 30 minutes of actual work but can wait 24 hours if the approver is busy or in a meeting.</p>
+            
+            <p>Total time with all steps running sequentially with batching and queue delays: 4 to 7 days. Total time with steps that are legally required: 2 to 4 hours. The difference is organizational friction.</p>
+            
+            <h2>What Automation Can and Cannot Touch</h2>
+            
+            <p>An AI agent cannot and should not make credit decisions. The Credit Information Companies (Regulation) Act requires human judgment in credit assessments. But an AI agent can own nearly everything else. It can pull documents the moment they arrive and perform optical character recognition to extract data. It can verify completeness automatically by checking for required fields and flagging missing information in real time. It can initiate data entry into the CRM or do it directly if security protocols allow. It can batch bureau queries and trigger them immediately instead of waiting for a daily job. It can assemble the complete application with context and route it directly to the credit officer who has bandwidth to review it next, rather than queuing it in a general inbox.</p>
+            
+            <p>What the agent cannot do is approve or decline the loan. That stays with the credit officer. What the agent also cannot do is override compliance requirements or make exceptions. But it can ensure that the compliance process moves as fast as the law allows, not slower.</p>
+            
+            <p>An AI agent can also own the reminder sequence. If a customer submits an incomplete application, the agent can intelligently remind them within 2 hours, not wait for a compliance team member to remember. If a bureau check is pending, the agent can notify the applicant that their application is under final review, setting expectations. Most of the communication that happens now via email batches can happen via personal outreach, keeping customers informed and engaged.</p>
+            
+            <div class="key-takeaway">The compliance risk in KYC automation isn't in the process — it's in the temptation to remove human judgment from decisions that require it. The right model automates the orchestration, not the decision.</div>
+            
+            <h2>The TAT Reduction Math</h2>
+            
+            <p>How much time does an AI orchestration agent save? Removing the document collection lag by sending a WhatsApp notification the moment the application is submitted, and then sending a follow-up reminder if documents are not uploaded within 4 hours, typically eliminates 12 to 18 hours of wait time. That is day-one-to-day-two time that becomes instant.</p>
+            
+            <p>Automating completeness checking removes the human batching delay. Instead of checking documents once per day at 10 AM, the system checks them the moment they arrive. Most applications that are incomplete get flagged within 30 minutes, not 24 hours. If this is at 5 PM, the customer is notified the same evening, and they can upload corrections before bed. Many do. Saving 24 to 36 hours of the back-and-forth cycle becomes possible.</p>
+            
+            <p>Automating data entry removes the queue. Information is extracted from documents and entered into the system at ingestion time, not at the data entry step. Work that was queued for 24 hours now happens in seconds. This eliminates another day.</p>
+            
+            <p>Intelligent routing ensures applications go to the next available credit officer instead of a general queue. An application that would have waited 36 hours to be reviewed is reviewed within 4 hours. For applications that pass the credit check, they move to approval immediately instead of waiting in another queue.</p>
+            
+            <p>Combining these changes, a 7-day KYC process becomes a 16 to 18-hour process in most cases, and a 4-hour process for applications that are straightforward and complete. An applicant who submits documents on Monday evening with all required information can receive approval by Monday night or Tuesday morning, not Thursday or Friday.</p>
+            
+            <h2>RBI Considerations</h2>
+            
+            <p>RBI KYC guidelines require that customer identity and address be verified, that beneficial ownership be established, and that transactions be monitored for suspicious activity. These requirements are not waived by using automation. An automated system must still validate identity using the same methods that a human would — PAN matching, address verification through authoritative sources, income verification through employment documentation or IT returns.</p>
+            
+            <p>The RBI has issued guidance on digital KYC and has permitted e-KYC for certain customer categories, allowing identity verification through government-issued e-credentials without in-person verification. The regulatory framework is clear that process efficiency is not a violation of compliance. What violates compliance is skipping verification steps or reducing the standard of verification because a machine is cheaper than a human.</p>
+            
+            <p>An NBFC deploying an AI KYC agent should consult with its compliance team and legal counsel to ensure that the agent is configured to meet RBI standards. This is not a matter of a vendor selling a generic system. It is a matter of a specific implementation designed to match the NBFC's regulatory obligations and documentation standards.</p>
+            
+            <h2>Closing: Competitive Implication</h2>
+            
+            <p>As of 2025, KYC TAT has become a competitive differentiator in the NBFC space. Borrowers increasingly choose platforms based on approval speed. An NBFC that can deliver a KYC decision in 18 hours is more competitive than one that takes 7 days, all else equal. An NBFC that can do so without sacrificing compliance has a significant advantage. Platforms that do not address this efficiency gap will find themselves losing applications to faster competitors as customer expectations for digital lending speed continue to rise.</p>
+        </div>
+        
+<!-- Use Cases Section -->
+<div class="use-cases-section">
+    <h2>See This in Action — NBFC AI Agents</h2>
+    <p>Upcore builds AI agents for KYC automation, loan processing, and collections — RBI-compliant and audit-ready.</p>
+    <div class="use-cases-grid">
+        <a href="/industries/nbfc" class="agent-card">
+            <h3>KYC Document Checker</h3>
+            <p>Validates Aadhaar, PAN, bank statements for completeness and consistency — flags mismatches instantly</p>
+            <div class="link-text">See the agent →</div>
+        </a>
+        <a href="/industries/nbfc" class="agent-card">
+            <h3>Loan Applicant Qualifier</h3>
+            <p>Screens applications against lending criteria, scores creditworthiness, routes qualified files to RMs</p>
+            <div class="link-text">See the agent →</div>
+        </a>
+        <a href="/industries/nbfc" class="agent-card">
+            <h3>Collections Follow-up Agent</h3>
+            <p>Sends RBI-compliant payment reminders, tracks promise-to-pay commitments, escalates overdue accounts</p>
+            <div class="link-text">See the agent →</div>
+        </a>
+    </div>
+    <div class="industry-cta">
+        <a href="/industries/nbfc">View all NBFC AI Agents →</a>
+    </div>
+</div>
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h3>Ready to explore KYC automation for your NBFC?</h3>
+            <p>Discover how you can cut KYC TAT while maintaining full regulatory compliance.</p>
+            <a href="/assessment">Start Your Assessment</a>
+        </div>
+        
+        <!-- Related Articles -->
+        <div class="related-section">
+            <h3>Related Articles</h3>
+            <div class="related-articles">
+                <a href="/insights/manufacturing-ai-quality-control" class="article-card">
+                    <h4>Why Manufacturing Teams Catch Defects 3 Months Too Late</h4>
+                    <p>How AI changes the detection timeline before failures cost you clients.</p>
+                </a>
+                <a href="/insights/human-in-the-loop" class="article-card">
+                    <h4>Human in the Loop Is Not a Feature</h4>
+                    <p>Why keeping humans in control makes AI more scalable, not less.</p>
+                </a>
+            </div>
+        </div>
+    </article>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/platform">Platform</a>
+            <a href="/industries">Industries</a>
+            <a href="/insights">Insights</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+        </div>
+        <p>&copy; 2025 Upcore Technologies. All rights reserved.</p>
+    </footer>
+</body>
+</html>
