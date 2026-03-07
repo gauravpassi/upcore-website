@@ -593,7 +593,18 @@
         </div>
     </nav>
     
-    <!-- Breadcrumb -->
+    
+  <div class="article-layout">
+  <aside class="toc-sidebar">
+    <div class="toc-inner">
+      <div class="toc-label">On this page</div>
+      <nav class="toc-nav" id="toc-nav"></nav>
+      <div class="toc-divider"></div>
+      <a href="/assessment" class="toc-cta">Start Free Assessment &#8594;</a>
+    </div>
+  </aside>
+  <div class="article-main">
+<!-- Breadcrumb -->
     <div class="breadcrumb">
         <a href="/insights">Insights</a> / <a href="/insights/platform">Platform</a> / Human in the Loop
     </div>
@@ -731,10 +742,12 @@
         <p>&copy; 2025 Upcore Technologies. All rights reserved.</p>
     </footer>
 
+
+  </div></div><!-- /.article-main /.article-layout -->
+
 <script>
 (function() {
-  // Build TOC from h2 and h3 headings in the article body
-  var body = document.querySelector('.article-body');
+  var body = document.querySelector('.article-body') || document.querySelector('.article-content');
   var tocNav = document.getElementById('toc-nav');
   if (!body || !tocNav) return;
 
@@ -744,7 +757,6 @@
   headings.forEach(function(h, i) {
     var id = 'toc-' + i;
     h.id = id;
-
     var a = document.createElement('a');
     a.href = '#' + id;
     a.textContent = h.textContent;
@@ -753,31 +765,24 @@
       e.preventDefault();
       var target = document.getElementById(id);
       if (target) {
-        var offset = 90;
-        var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        var top = target.getBoundingClientRect().top + window.pageYOffset - 90;
         window.scrollTo({ top: top, behavior: 'smooth' });
       }
     });
     tocNav.appendChild(a);
   });
 
-  // Highlight active section on scroll
   var links = tocNav.querySelectorAll('.toc-link');
-  var activeIndex = 0;
-
   function setActive(index) {
     links.forEach(function(l) { l.classList.remove('active'); });
     if (links[index]) links[index].classList.add('active');
-    activeIndex = index;
   }
-
   setActive(0);
 
   var observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
       if (entry.isIntersecting) {
-        var id = entry.target.id;
-        var idx = Array.from(headings).findIndex(function(h) { return h.id === id; });
+        var idx = Array.from(headings).findIndex(function(h) { return h.id === entry.target.id; });
         if (idx !== -1) setActive(idx);
       }
     });
@@ -786,6 +791,7 @@
   headings.forEach(function(h) { observer.observe(h); });
 })();
 </script>
+
 
 </body>
 </html>
