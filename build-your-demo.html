@@ -507,7 +507,9 @@ function finishBuild() {
 }
 
 function showDoneState(result) {
-  demoUrl = result.url;
+  // Always build the URL from the current origin so it's never wrong regardless of env vars
+  var slug = result.slug || (result.url || '').split('/demos/')[1] || '';
+  demoUrl = window.location.origin + '/demos/' + slug;
   document.getElementById('done-url').textContent = demoUrl;
   document.getElementById('open-demo-btn').href = demoUrl;
   if (formData.email) {
