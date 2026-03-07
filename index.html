@@ -7,6 +7,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <style>
+nav{width:100%;background:rgba(7,16,30,.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 48px;height:72px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:99;}
+.nav-logo a{display:flex;align-items:center;}.nav-logo img{height:68px;width:auto;}
+.nav-links{display:flex;gap:4px;list-style:none;}
+.nav-links a{padding:8px 16px;border-radius:8px;font-size:14px;font-weight:500;color:var(--txt2);transition:all .2s;}
+.nav-links a:hover{color:var(--txt);background:rgba(10,191,204,.08);}
+.nav-links a.active{color:var(--teal);}
+.nav-cta{display:inline-flex;align-items:center;gap:8px;background:var(--grad);color:#07101e;font-family:var(--ff);font-size:14px;font-weight:700;padding:10px 22px;border-radius:10px;}
+.nav-cta:hover{opacity:.9;transform:translateY(-1px);}
+@media(max-width:768px){nav{padding:0 20px;}.nav-links{display:none;}}
 :root{
   --bg:     #07101e;
   --bg2:    #0a1628;
@@ -32,12 +41,7 @@ img{display:block;max-width:100%;}
 a{text-decoration:none;color:inherit;}
 
 /* ── NAV ─────────────────────────────────────────────────── */
-nav{
-  width:100%;background:rgba(7,16,30,.94);backdrop-filter:blur(20px);
-  border-bottom:1px solid var(--border);
-  padding:0 48px;height:72px;display:flex;align-items:center;
-  justify-content:space-between;position:sticky;top:0;z-index:99;
-}
+
 .nav-logo a{display:flex;align-items:center;}
 .nav-logo img{height:68px;width:auto;display:block;}
 .nav-links{display:flex;gap:4px;list-style:none;}
@@ -387,18 +391,16 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:64px 48px
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">
-    <a href="/"><img src="upcore-logo.png" alt="Upcore" height="56"/></a>
-  </div>
+  <div class="nav-logo"><a href="/"><img src="/upcore-logo.png" alt="Upcore Technologies"/></a></div>
   <ul class="nav-links">
-    <li><a href="#solution">Solutions</a></li>
-    <li><a href="#products">Products</a></li>
+    <li><a href="/#solution" class="active">Solutions</a></li>
+    <li><a href="/#products">Products</a></li>
     <li><a href="/industries">Industries</a></li>
     <li><a href="/insights">Insights</a></li>
     <li><a href="/about">About</a></li>
-    <li><a href="#engage">How It Works</a></li>
-    <li><a href="/assessment" class="nav-cta">Book a Discovery Call</a></li>
+    <li><a href="/#engage">How It Works</a></li>
   </ul>
+  <a href="/assessment" class="nav-cta">Book a Discovery Call</a>
 </nav>
 
 <!-- HERO -->
