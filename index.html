@@ -292,6 +292,50 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:48px 48px
   .ind-cases{grid-template-columns:1fr;}
   .ind-tabs{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;padding-bottom:8px;}
 }
+
+/* ── Accolades Strip ─────────────────────────────────────────── */
+#accolades{
+  width:100%;
+  background:rgba(0,212,180,0.03);
+  border-bottom:1px solid var(--border);
+  padding:24px 0 20px;
+  overflow:hidden;
+}
+.acc-label{
+  padding:0 48px;
+  font-size:10px;font-weight:700;letter-spacing:2.5px;
+  text-transform:uppercase;color:var(--txt3);
+  margin-bottom:18px;
+}
+.acc-track-wrap{overflow:hidden;width:100%;}
+.acc-track{
+  display:flex;align-items:center;gap:48px;
+  width:max-content;
+  animation:accMarquee 30s linear infinite;
+}
+.acc-track:hover{animation-play-state:paused;}
+@keyframes accMarquee{
+  0%{transform:translateX(0);}
+  100%{transform:translateX(-50%);}
+}
+.acc-badge{
+  display:flex;align-items:center;gap:10px;
+  opacity:0.7;
+  transition:opacity 0.2s;
+  flex-shrink:0;
+  cursor:default;
+}
+.acc-badge:hover{opacity:1;}
+.acc-badge svg{height:36px;width:auto;flex-shrink:0;}
+.acc-badge-text{
+  font-size:11px;font-weight:700;letter-spacing:0.5px;
+  color:var(--txt2);line-height:1.3;
+}
+.acc-divider{
+  width:1px;height:28px;
+  background:rgba(255,255,255,0.1);
+  flex-shrink:0;
+}
 </style>
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -464,6 +508,158 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:48px 48px
       <span class="trust-pill">📦 Supply Chain &amp; Logistics</span>
       <span class="trust-pill">🎯 Marketing &amp; Agencies</span>
       <span class="trust-pill">🔐 Legal &amp; Compliance</span>
+    </div>
+  </div>
+</div>
+
+<!-- ACCOLADES STRIP -->
+<div id="accolades">
+  <div class="acc-label">Recognised &amp; Certified</div>
+  <div class="acc-track-wrap">
+    <div class="acc-track">
+
+      <!-- Set 1 -->
+
+      <!-- SelectedFirms -->
+      <div class="acc-badge">
+        <svg viewBox="0 0 120 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="18" cy="18" r="17" stroke="#4ade80" stroke-width="1.5" fill="rgba(74,222,128,0.06)"/>
+          <path d="M11 18l5 5 9-10" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="42" y="13" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="#e8edf2" letter-spacing="0.5">SELECTED</text>
+          <text x="42" y="23" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="#4ade80" letter-spacing="0.5">FIRMS</text>
+          <text x="42" y="31" font-family="Arial,sans-serif" font-size="6" fill="#94a3b8" letter-spacing="0.3">Top AI Company</text>
+        </svg>
+      </div>
+      <div class="acc-divider"></div>
+
+      <!-- ISO 9001 -->
+      <div class="acc-badge">
+        <svg viewBox="0 0 110 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="34" height="34" rx="4" stroke="#fbbf24" stroke-width="1.5" fill="rgba(251,191,36,0.06)"/>
+          <text x="18" y="15" font-family="Arial,sans-serif" font-size="8" font-weight="900" fill="#fbbf24" text-anchor="middle" letter-spacing="0.3">ISO</text>
+          <text x="18" y="24" font-family="Arial,sans-serif" font-size="7.5" font-weight="700" fill="#fbbf24" text-anchor="middle">9001</text>
+          <text x="44" y="14" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#e8edf2" letter-spacing="0.3">CERTIFIED</text>
+          <text x="44" y="25" font-family="Arial,sans-serif" font-size="7" fill="#94a3b8">Quality Management</text>
+          <text x="44" y="33" font-family="Arial,sans-serif" font-size="7" fill="#94a3b8">System</text>
+        </svg>
+      </div>
+      <div class="acc-divider"></div>
+
+      <!-- ISO 27001 -->
+      <div class="acc-badge">
+        <svg viewBox="0 0 116 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="34" height="34" rx="4" stroke="#60a5fa" stroke-width="1.5" fill="rgba(96,165,250,0.06)"/>
+          <text x="18" y="15" font-family="Arial,sans-serif" font-size="8" font-weight="900" fill="#60a5fa" text-anchor="middle" letter-spacing="0.3">ISO</text>
+          <text x="18" y="25" font-family="Arial,sans-serif" font-size="6.5" font-weight="700" fill="#60a5fa" text-anchor="middle">27001</text>
+          <text x="44" y="14" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#e8edf2" letter-spacing="0.3">CERTIFIED</text>
+          <text x="44" y="25" font-family="Arial,sans-serif" font-size="7" fill="#94a3b8">Information Security</text>
+          <text x="44" y="33" font-family="Arial,sans-serif" font-size="7" fill="#94a3b8">Management</text>
+        </svg>
+      </div>
+      <div class="acc-divider"></div>
+
+      <!-- CMMI Level 3 -->
+      <div class="acc-badge">
+        <svg viewBox="0 0 108 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="4" width="32" height="28" rx="3" stroke="#a78bfa" stroke-width="1.5" fill="rgba(167,139,250,0.06)"/>
+          <rect x="5" y="8" width="4" height="20" rx="1" fill="#a78bfa" opacity="0.4"/>
+          <rect x="11" y="13" width="4" height="15" rx="1" fill="#a78bfa" opacity="0.6"/>
+          <rect x="17" y="17" width="4" height="11" rx="1" fill="#a78bfa" opacity="0.8"/>
+          <rect x="23" y="11" width="4" height="17" rx="1" fill="#a78bfa"/>
+          <text x="40" y="15" font-family="Arial,sans-serif" font-size="10" font-weight="900" fill="#e8edf2" letter-spacing="-0.3">CMMI</text>
+          <text x="40" y="26" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="#a78bfa">Level 3</text>
+          <text x="40" y="34" font-family="Arial,sans-serif" font-size="6.5" fill="#94a3b8">Dev + Services</text>
+        </svg>
+      </div>
+      <div class="acc-divider"></div>
+
+      <!-- Nasscom -->
+      <div class="acc-badge">
+        <svg viewBox="0 0 108 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="6" width="30" height="22" rx="3" fill="#0f3460" stroke="#3b82f6" stroke-width="1.2"/>
+          <text x="16" y="21" font-family="Arial,sans-serif" font-size="7.5" font-weight="900" fill="#60a5fa" text-anchor="middle" letter-spacing="0.5">nasscom</text>
+          <text x="38" y="15" font-family="Arial,sans-serif" font-size="11" font-weight="900" fill="#e8edf2" letter-spacing="-0.5">nasscom</text>
+          <text x="38" y="27" font-family="Arial,sans-serif" font-size="7" fill="#94a3b8">Member · India Tech</text>
+        </svg>
+      </div>
+      <div class="acc-divider"></div>
+
+      <!-- Clutch -->
+      <div class="acc-badge">
+        <svg viewBox="0 0 96 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="6" width="28" height="22" rx="3" fill="#17313b" stroke="#e8572a" stroke-width="1.2"/>
+          <text x="15" y="20" font-family="Arial,sans-serif" font-size="7.5" font-weight="900" fill="#e8572a" text-anchor="middle">clutch</text>
+          <text x="36" y="16" font-family="Arial,sans-serif" font-size="13" font-weight="900" fill="#e8edf2" letter-spacing="-0.5">clutch</text>
+          <text x="36" y="28" font-family="Arial,sans-serif" font-size="7" fill="#94a3b8">Top Rated · AI</text>
+        </svg>
+      </div>
+
+      <!-- Set 2 — duplicate for seamless infinite loop -->
+      <div class="acc-divider"></div>
+
+      <div class="acc-badge">
+        <svg viewBox="0 0 120 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="18" cy="18" r="17" stroke="#4ade80" stroke-width="1.5" fill="rgba(74,222,128,0.06)"/>
+          <path d="M11 18l5 5 9-10" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="42" y="13" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="#e8edf2" letter-spacing="0.5">SELECTED</text>
+          <text x="42" y="23" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="#4ade80" letter-spacing="0.5">FIRMS</text>
+          <text x="42" y="31" font-family="Arial,sans-serif" font-size="6" fill="#94a3b8" letter-spacing="0.3">Top AI Company</text>
+        </svg>
+      </div>
+      <div class="acc-divider"></div>
+      <div class="acc-badge">
+        <svg viewBox="0 0 110 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="34" height="34" rx="4" stroke="#fbbf24" stroke-width="1.5" fill="rgba(251,191,36,0.06)"/>
+          <text x="18" y="15" font-family="Arial,sans-serif" font-size="8" font-weight="900" fill="#fbbf24" text-anchor="middle" letter-spacing="0.3">ISO</text>
+          <text x="18" y="24" font-family="Arial,sans-serif" font-size="7.5" font-weight="700" fill="#fbbf24" text-anchor="middle">9001</text>
+          <text x="44" y="14" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#e8edf2" letter-spacing="0.3">CERTIFIED</text>
+          <text x="44" y="25" font-family="Arial,sans-serif" font-size="7" fill="#94a3b8">Quality Management</text>
+          <text x="44" y="33" font-family="Arial,sans-serif" font-size="7" fill="#94a3b8">System</text>
+        </svg>
+      </div>
+      <div class="acc-divider"></div>
+      <div class="acc-badge">
+        <svg viewBox="0 0 116 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="34" height="34" rx="4" stroke="#60a5fa" stroke-width="1.5" fill="rgba(96,165,250,0.06)"/>
+          <text x="18" y="15" font-family="Arial,sans-serif" font-size="8" font-weight="900" fill="#60a5fa" text-anchor="middle" letter-spacing="0.3">ISO</text>
+          <text x="18" y="25" font-family="Arial,sans-serif" font-size="6.5" font-weight="700" fill="#60a5fa" text-anchor="middle">27001</text>
+          <text x="44" y="14" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#e8edf2" letter-spacing="0.3">CERTIFIED</text>
+          <text x="44" y="25" font-family="Arial,sans-serif" font-size="7" fill="#94a3b8">Information Security</text>
+          <text x="44" y="33" font-family="Arial,sans-serif" font-size="7" fill="#94a3b8">Management</text>
+        </svg>
+      </div>
+      <div class="acc-divider"></div>
+      <div class="acc-badge">
+        <svg viewBox="0 0 108 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="4" width="32" height="28" rx="3" stroke="#a78bfa" stroke-width="1.5" fill="rgba(167,139,250,0.06)"/>
+          <rect x="5" y="8" width="4" height="20" rx="1" fill="#a78bfa" opacity="0.4"/>
+          <rect x="11" y="13" width="4" height="15" rx="1" fill="#a78bfa" opacity="0.6"/>
+          <rect x="17" y="17" width="4" height="11" rx="1" fill="#a78bfa" opacity="0.8"/>
+          <rect x="23" y="11" width="4" height="17" rx="1" fill="#a78bfa"/>
+          <text x="40" y="15" font-family="Arial,sans-serif" font-size="10" font-weight="900" fill="#e8edf2" letter-spacing="-0.3">CMMI</text>
+          <text x="40" y="26" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="#a78bfa">Level 3</text>
+          <text x="40" y="34" font-family="Arial,sans-serif" font-size="6.5" fill="#94a3b8">Dev + Services</text>
+        </svg>
+      </div>
+      <div class="acc-divider"></div>
+      <div class="acc-badge">
+        <svg viewBox="0 0 108 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="6" width="30" height="22" rx="3" fill="#0f3460" stroke="#3b82f6" stroke-width="1.2"/>
+          <text x="16" y="21" font-family="Arial,sans-serif" font-size="7.5" font-weight="900" fill="#60a5fa" text-anchor="middle" letter-spacing="0.5">nasscom</text>
+          <text x="38" y="15" font-family="Arial,sans-serif" font-size="11" font-weight="900" fill="#e8edf2" letter-spacing="-0.5">nasscom</text>
+          <text x="38" y="27" font-family="Arial,sans-serif" font-size="7" fill="#94a3b8">Member · India Tech</text>
+        </svg>
+      </div>
+      <div class="acc-divider"></div>
+      <div class="acc-badge">
+        <svg viewBox="0 0 96 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="6" width="28" height="22" rx="3" fill="#17313b" stroke="#e8572a" stroke-width="1.2"/>
+          <text x="15" y="20" font-family="Arial,sans-serif" font-size="7.5" font-weight="900" fill="#e8572a" text-anchor="middle">clutch</text>
+          <text x="36" y="16" font-family="Arial,sans-serif" font-size="13" font-weight="900" fill="#e8edf2" letter-spacing="-0.5">clutch</text>
+          <text x="36" y="28" font-family="Arial,sans-serif" font-size="7" fill="#94a3b8">Top Rated · AI</text>
+        </svg>
+      </div>
+
     </div>
   </div>
 </div>
