@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>MyAgent — XYZ Agent Demo · Upcore</title>
+<meta name="description" content="Live AI agent demo for XYZ built by Upcore Technologies. Uses simulated demo data."/>
+<meta name="robots" content="noindex,nofollow"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<style>
+:root{
+  --bg:#07101e;--bg2:#0a1628;--bg3:#0d1c34;--card:#0f2040;
+  --teal:#0abfcc;--mint:#3dddc4;--teal3:#0891b2;
+  --txt:#ffffff;--txt2:#8bbed4;--txt3:#3a6080;
+  --border:rgba(10,191,204,.13);--bh:rgba(10,191,204,.38);
+  --glow:rgba(10,191,204,.08);--red:#f87171;--green:#4ade80;--amber:#fbbf24;
+  --grad:linear-gradient(135deg,#0891b2,#0abfcc,#3dddc4);
+  --ff:'Poppins',sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:var(--ff);background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+.grad-text{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+/* Sticky CTA */
+.sticky-cta{position:fixed;bottom:24px;right:24px;z-index:999;background:var(--grad);color:#07101e;font-family:var(--ff);font-size:13px;font-weight:800;padding:14px 24px;border-radius:100px;box-shadow:0 8px 32px rgba(10,191,204,.35);display:flex;align-items:center;gap:8px;transition:transform .2s;}
+.sticky-cta:hover{transform:translateY(-2px);}
+/* Scrollable table */
+.table-scroll{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;min-width:800px;}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(74,222,128,.4);}50%{opacity:.7;box-shadow:0 0 0 6px rgba(74,222,128,0);}}
+@media(max-width:768px){
+  .page-inner{padding:20px 16px!important;}
+  .demo-grid{grid-template-columns:1fr!important;}
+  .metrics-row{flex-wrap:wrap!important;}
+  .sticky-cta{bottom:16px;right:16px;font-size:12px;padding:12px 18px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav style="width:100%;background:rgba(7,16,30,.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 48px;height:72px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:99;">
+  <a href="/" style="display:flex;align-items:center;"><img src="/upcore-logo.png" alt="Upcore" style="height:52px;width:auto;display:block;"/></a>
+  <div style="display:flex;align-items:center;gap:16px;">
+    <a href="/build-your-demo" style="font-size:14px;color:var(--txt2);font-weight:500;">Build Another Demo</a>
+    <a href="/assessment" style="background:var(--grad);color:#07101e;font-family:var(--ff);font-size:14px;font-weight:700;padding:10px 22px;border-radius:10px;">Book a Discovery Call</a>
+  </div>
+</nav>
+
+<!-- DEMO BANNER -->
+<div style="background:rgba(251,191,36,.07);border-bottom:1px solid rgba(251,191,36,.18);padding:9px 48px;display:flex;align-items:center;justify-content:center;gap:10px;font-size:12px;font-weight:600;color:#e5c87a;">
+  <span>⚠</span> <strong>Demo Data Only</strong> — This demo uses 20 simulated records. Not connected to any real system. · Expires 21 March 2026
+</div>
+
+<!-- PAGE CONTENT -->
+<div class="page-inner" style="max-width:1280px;margin:0 auto;padding:40px 32px 80px;">
+
+  <!-- HEADER -->
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:20px;margin-bottom:36px;">
+    <div>
+      <div style="display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--teal);background:rgba(10,191,204,.1);border:1px solid var(--border);border-radius:100px;padding:6px 16px;margin-bottom:14px;">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 1.8s ease-in-out infinite;"></span>
+        🏭 Manufacturing Agent Demo
+      </div>
+      <h1 style="font-size:clamp(26px,3.5vw,42px);font-weight:900;letter-spacing:-2px;line-height:1.1;margin-bottom:10px;">MyAgent<br/><span class="grad-text">for XYZ</span></h1>
+      <p style="font-size:15px;color:var(--txt2);line-height:1.75;max-width:600px;">MyAgent automates end-to-end invoice processing by validating PO matches, extracting line items, and routing approvals based on amount thresholds and vendor risk profiles. It reduces manual data entry errors by 94% and accelerates invoice-to-payment cycles from weeks to days.</p>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 20px;font-size:13px;color:var(--txt2);max-width:260px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--txt3);margin-bottom:8px;">Demo Details</div>
+      <div style="margin-bottom:5px;"><strong style="color:var(--txt);">Industry:</strong> Manufacturing</div>
+      <div style="margin-bottom:5px;"><strong style="color:var(--txt);">Agent:</strong> MyAgent</div>
+      <div style="margin-bottom:5px;"><strong style="color:var(--txt);">Records:</strong> 20 simulated</div>
+      <div style="color:var(--amber);font-size:11px;margin-top:8px;">⚠ All data is fictional</div>
+    </div>
+  </div>
+
+  <!-- METRICS -->
+  <div style="margin-bottom:28px;">
+    <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:14px;">Performance Overview</div>
+    <div class="metrics-row" style="display:flex;gap:14px;"><div style="background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center;flex:1;min-width:100px;">
+      <div style="font-size:26px;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-1px;">94%</div>
+      <div style="font-size:11px;color:var(--txt3);margin-top:4px;font-weight:500;">Auto-Resolved</div>
+    </div><div style="background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center;flex:1;min-width:100px;">
+      <div style="font-size:26px;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-1px;">8min</div>
+      <div style="font-size:11px;color:var(--txt3);margin-top:4px;font-weight:500;">Avg Resolution Time</div>
+    </div><div style="background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center;flex:1;min-width:100px;">
+      <div style="font-size:26px;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-1px;">20</div>
+      <div style="font-size:11px;color:var(--txt3);margin-top:4px;font-weight:500;">Records Processed</div>
+    </div><div style="background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center;flex:1;min-width:100px;">
+      <div style="font-size:26px;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-1px;">4.1/5</div>
+      <div style="font-size:11px;color:var(--txt3);margin-top:4px;font-weight:500;">Quality Score</div>
+    </div></div>
+  </div>
+
+  <!-- MAIN GRID -->
+  <div class="demo-grid" style="display:grid;grid-template-columns:1fr 360px;gap:20px;margin-bottom:28px;">
+
+    <!-- LEFT: DATA TABLE -->
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;">
+      <div style="background:var(--bg3);padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+        <div>
+          <div style="font-size:14px;font-weight:800;">Quality Alerts Queue</div>
+          <div style="font-size:11px;color:var(--teal);">20 records · Demo data · Processed by MyAgent</div>
+        </div>
+        <div style="font-size:11px;font-weight:700;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2);color:var(--green);padding:4px 12px;border-radius:100px;">● Live Demo</div>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr style="background:var(--bg2);">
+              <th style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--txt3);padding:10px 12px;text-align:left;">ID</th>
+              <th style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--txt3);padding:10px 12px;text-align:left;">Subject</th>
+              <th style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--txt3);padding:10px 12px;text-align:left;">Entity</th>
+              <th style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--txt3);padding:10px 12px;text-align:left;">Value</th>
+              <th style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--txt3);padding:10px 12px;text-align:left;">Priority</th>
+              <th style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--txt3);padding:10px 12px;text-align:left;">Status</th>
+              <th style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--txt3);padding:10px 12px;text-align:left;">Agent Action</th>
+            </tr>
+          </thead>
+          <tbody>
+    <tr>
+      <td style="font-size:12px;color:var(--teal);font-family:monospace;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">INV-2024-47821</td>
+      <td style="font-size:13px;font-weight:600;color:var(--txt);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Precision Steel Industries invoice mismatch</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Precision Steel Industries Pvt Ltd</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">₹2,47,500</td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#f87171;background:#f8717115;border:1px solid #f8717130;border-radius:100px;padding:2px 9px;">High</span>
+      </td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#f87171;background:#f8717115;border:1px solid #f8717130;border-radius:100px;padding:2px 9px;white-space:nowrap;">Escalated to Supervisor</span>
+      </td>
+      <td style="font-size:12px;color:var(--txt3);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Detected 15% quantity variance between PO and invoice; routed to procurement for vendor clarification.</td>
+    </tr>
+    <tr>
+      <td style="font-size:12px;color:var(--teal);font-family:monospace;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">INV-2024-47822</td>
+      <td style="font-size:13px;font-weight:600;color:var(--txt);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Vektor Components three-way match pass</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Vektor Components Ltd</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">₹89,300</td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#4ade80;background:#4ade8015;border:1px solid #4ade8030;border-radius:100px;padding:2px 9px;">Low</span>
+      </td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#4ade80;background:#4ade8015;border:1px solid #4ade8030;border-radius:100px;padding:2px 9px;white-space:nowrap;">Auto-Resolved ✓</span>
+      </td>
+      <td style="font-size:12px;color:var(--txt3);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Validated PO, receipt, and invoice alignment; automatically scheduled payment for net-30 terms.</td>
+    </tr>
+    <tr>
+      <td style="font-size:12px;color:var(--teal);font-family:monospace;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">INV-2024-47823</td>
+      <td style="font-size:13px;font-weight:600;color:var(--txt);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Rajesh Polymers duplicate invoice detection</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Rajesh Polymers Manufacturing</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">₹1,56,800</td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#f87171;background:#f8717115;border:1px solid #f8717130;border-radius:100px;padding:2px 9px;">High</span>
+      </td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#4ade80;background:#4ade8015;border:1px solid #4ade8030;border-radius:100px;padding:2px 9px;white-space:nowrap;">Auto-Resolved ✓</span>
+      </td>
+      <td style="font-size:12px;color:var(--txt3);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Identified duplicate invoice within 48-hour window; flagged and prevented duplicate payment processing.</td>
+    </tr>
+    <tr>
+      <td style="font-size:12px;color:var(--teal);font-family:monospace;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">INV-2024-47824</td>
+      <td style="font-size:13px;font-weight:600;color:var(--txt);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Global Fasteners price variance check</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Global Fasteners India</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">₹3,42,100</td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#fbbf24;background:#fbbf2415;border:1px solid #fbbf2430;border-radius:100px;padding:2px 9px;">Medium</span>
+      </td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#fbbf24;background:#fbbf2415;border:1px solid #fbbf2430;border-radius:100px;padding:2px 9px;white-space:nowrap;">Pending QC Review</span>
+      </td>
+      <td style="font-size:12px;color:var(--txt3);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Found 8% unit price increase vs historical average; routed to finance manager for approval override.</td>
+    </tr>
+    <tr>
+      <td style="font-size:12px;color:var(--teal);font-family:monospace;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">INV-2024-47825</td>
+      <td style="font-size:13px;font-weight:600;color:var(--txt);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Shree Metals tax compliance verified</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Shree Metals Trading Co</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">₹5,12,400</td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#fbbf24;background:#fbbf2415;border:1px solid #fbbf2430;border-radius:100px;padding:2px 9px;">Medium</span>
+      </td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#4ade80;background:#4ade8015;border:1px solid #4ade8030;border-radius:100px;padding:2px 9px;white-space:nowrap;">Auto-Resolved ✓</span>
+      </td>
+      <td style="font-size:12px;color:var(--txt3);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Verified GSTIN validity and tax calculation accuracy; approved for payment processing.</td>
+    </tr>
+    <tr>
+      <td style="font-size:12px;color:var(--teal);font-family:monospace;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">INV-2024-47826</td>
+      <td style="font-size:13px;font-weight:600;color:var(--txt);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Innovate Castings missing GL code</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Innovate Castings Pvt Ltd</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">₹76,250</td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#f87171;background:#f8717115;border:1px solid #f8717130;border-radius:100px;padding:2px 9px;">High</span>
+      </td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#f87171;background:#f8717115;border:1px solid #f8717130;border-radius:100px;padding:2px 9px;white-space:nowrap;">Escalated to Supervisor</span>
+      </td>
+      <td style="font-size:12px;color:var(--txt3);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Detected missing cost center allocation; escalated to accounting for proper GL mapping.</td>
+    </tr>
+    <tr>
+      <td style="font-size:12px;color:var(--teal);font-family:monospace;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">INV-2024-47827</td>
+      <td style="font-size:13px;font-weight:600;color:var(--txt);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Axis Rubber exceeds approval limit</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Axis Rubber Industries</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">₹8,94,600</td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#f87171;background:#f8717115;border:1px solid #f8717130;border-radius:100px;padding:2px 9px;">High</span>
+      </td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#f87171;background:#f8717115;border:1px solid #f8717130;border-radius:100px;padding:2px 9px;white-space:nowrap;">Escalated to Supervisor</span>
+      </td>
+      <td style="font-size:12px;color:var(--txt3);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Invoice amount exceeded departmental approval threshold; routed to CFO for executive sign-off.</td>
+    </tr>
+    <tr>
+      <td style="font-size:12px;color:var(--teal);font-family:monospace;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">INV-2024-47828</td>
+      <td style="font-size:13px;font-weight:600;color:var(--txt);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Centum Electronics standard processing</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Centum Electronics Ltd</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">₹2,18,900</td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#4ade80;background:#4ade8015;border:1px solid #4ade8030;border-radius:100px;padding:2px 9px;">Low</span>
+      </td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#4ade80;background:#4ade8015;border:1px solid #4ade8030;border-radius:100px;padding:2px 9px;white-space:nowrap;">Auto-Resolved ✓</span>
+      </td>
+      <td style="font-size:12px;color:var(--txt3);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Processed recurring vendor invoice with matching history; auto-approved and scheduled payment.</td>
+    </tr>
+    <tr>
+      <td style="font-size:12px;color:var(--teal);font-family:monospace;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">INV-2024-47829</td>
+      <td style="font-size:13px;font-weight:600;color:var(--txt);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">TechFlow Systems invoice date error</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">TechFlow Systems India</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">₹1,34,500</td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#fbbf24;background:#fbbf2415;border:1px solid #fbbf2430;border-radius:100px;padding:2px 9px;">Medium</span>
+      </td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#fbbf24;background:#fbbf2415;border:1px solid #fbbf2430;border-radius:100px;padding:2px 9px;white-space:nowrap;">Pending QC Review</span>
+      </td>
+      <td style="font-size:12px;color:var(--txt3);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Found invoice date 45 days after delivery; flagged for late-invoice compliance check.</td>
+    </tr>
+    <tr>
+      <td style="font-size:12px;color:var(--teal);font-family:monospace;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">INV-2024-47830</td>
+      <td style="font-size:13px;font-weight:600;color:var(--txt);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Dynamo Tools blocked vendor status</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Dynamo Tools Manufacturing</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">₹4,27,800</td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#f87171;background:#f8717115;border:1px solid #f8717130;border-radius:100px;padding:2px 9px;">High</span>
+      </td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#f87171;background:#f8717115;border:1px solid #f8717130;border-radius:100px;padding:2px 9px;white-space:nowrap;">Production Hold</span>
+      </td>
+      <td style="font-size:12px;color:var(--txt3);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Detected vendor on hold list due to compliance issues; blocked payment and alerted procurement.</td>
+    </tr>
+    <tr>
+      <td style="font-size:12px;color:var(--teal);font-family:monospace;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">INV-2024-47831</td>
+      <td style="font-size:13px;font-weight:600;color:var(--txt);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Prakash Tubes quantity receipt verified</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Prakash Tubes Ltd</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">₹3,89,200</td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#4ade80;background:#4ade8015;border:1px solid #4ade8030;border-radius:100px;padding:2px 9px;">Low</span>
+      </td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#4ade80;background:#4ade8015;border:1px solid #4ade8030;border-radius:100px;padding:2px 9px;white-space:nowrap;">Auto-Resolved ✓</span>
+      </td>
+      <td style="font-size:12px;color:var(--txt3);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Cross-referenced goods receipt note; confirmed delivery match and approved for payment.</td>
+    </tr>
+    <tr>
+      <td style="font-size:12px;color:var(--teal);font-family:monospace;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">INV-2024-47832</td>
+      <td style="font-size:13px;font-weight:600;color:var(--txt);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Apex Motors invoice line item split</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Apex Motors Components</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">₹6,21,700</td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#fbbf24;background:#fbbf2415;border:1px solid #fbbf2430;border-radius:100px;padding:2px 9px;">Medium</span>
+      </td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#fbbf24;background:#fbbf2415;border:1px solid #fbbf2430;border-radius:100px;padding:2px 9px;white-space:nowrap;">Pending QC Review</span>
+      </td>
+      <td style="font-size:12px;color:var(--txt3);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Identified split delivery across three POs; routed to operations for consolidation review.</td>
+    </tr>
+    <tr>
+      <td style="font-size:12px;color:var(--teal);font-family:monospace;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">INV-2024-47833</td>
+      <td style="font-size:13px;font-weight:600;color:var(--txt);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Bright Alloys early payment discount applied</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Bright Alloys Pvt Ltd</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">₹2,56,400</td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#4ade80;background:#4ade8015;border:1px solid #4ade8030;border-radius:100px;padding:2px 9px;">Low</span>
+      </td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#4ade80;background:#4ade8015;border:1px solid #4ade8030;border-radius:100px;padding:2px 9px;white-space:nowrap;">Auto-Resolved ✓</span>
+      </td>
+      <td style="font-size:12px;color:var(--txt3);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Calculated 2% early payment discount; processed for 10-day payment window with savings.</td>
+    </tr>
+    <tr>
+      <td style="font-size:12px;color:var(--teal);font-family:monospace;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">INV-2024-47834</td>
+      <td style="font-size:13px;font-weight:600;color:var(--txt);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Stellar Valves dimensional invoice review</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Stellar Valves Industries</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">₹7,83,900</td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#f87171;background:#f8717115;border:1px solid #f8717130;border-radius:100px;padding:2px 9px;">High</span>
+      </td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#fbbf24;background:#fbbf2415;border:1px solid #fbbf2430;border-radius:100px;padding:2px 9px;white-space:nowrap;">Rework Required</span>
+      </td>
+      <td style="font-size:12px;color:var(--txt3);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Item descriptions missing dimensions; returned to vendor for corrected invoice resubmission.</td>
+    </tr>
+    <tr>
+      <td style="font-size:12px;color:var(--teal);font-family:monospace;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">INV-2024-47835</td>
+      <td style="font-size:13px;font-weight:600;color:var(--txt);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Matrix Logistics freight charge validation</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Matrix Logistics Services</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">₹1,89,600</td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#fbbf24;background:#fbbf2415;border:1px solid #fbbf2430;border-radius:100px;padding:2px 9px;">Medium</span>
+      </td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#fbbf24;background:#fbbf2415;border:1px solid #fbbf2430;border-radius:100px;padding:2px 9px;white-space:nowrap;">Pending QC Review</span>
+      </td>
+      <td style="font-size:12px;color:var(--txt3);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Verified freight charges against contracted rates; flagged 6% overage for vendor discussion.</td>
+    </tr>
+    <tr>
+      <td style="font-size:12px;color:var(--teal);font-family:monospace;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">INV-2024-47836</td>
+      <td style="font-size:13px;font-weight:600;color:var(--txt);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Harmony Chemicals PO quantity confirmation</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Harmony Chemicals Pvt Ltd</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">₹4,12,300</td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#4ade80;background:#4ade8015;border:1px solid #4ade8030;border-radius:100px;padding:2px 9px;">Low</span>
+      </td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#4ade80;background:#4ade8015;border:1px solid #4ade8030;border-radius:100px;padding:2px 9px;white-space:nowrap;">Auto-Resolved ✓</span>
+      </td>
+      <td style="font-size:12px;color:var(--txt3);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Confirmed batch numbers and expiry dates; released payment with QC attachments archived.</td>
+    </tr>
+    <tr>
+      <td style="font-size:12px;color:var(--teal);font-family:monospace;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">INV-2024-47837</td>
+      <td style="font-size:13px;font-weight:600;color:var(--txt);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Nitro Precision credit memo processing</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Nitro Precision Tools</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">₹(45,800)</td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#fbbf24;background:#fbbf2415;border:1px solid #fbbf2430;border-radius:100px;padding:2px 9px;">Medium</span>
+      </td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#4ade80;background:#4ade8015;border:1px solid #4ade8030;border-radius:100px;padding:2px 9px;white-space:nowrap;">Auto-Resolved ✓</span>
+      </td>
+      <td style="font-size:12px;color:var(--txt3);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Processed credit memo for returned components; netted against pending invoices automatically.</td>
+    </tr>
+    <tr>
+      <td style="font-size:12px;color:var(--teal);font-family:monospace;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">INV-2024-47838</td>
+      <td style="font-size:13px;font-weight:600;color:var(--txt);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Quantum Rubber invoice attachment missing</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Quantum Rubber India</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">₹5,67,200</td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#f87171;background:#f8717115;border:1px solid #f8717130;border-radius:100px;padding:2px 9px;">High</span>
+      </td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#f87171;background:#f8717115;border:1px solid #f8717130;border-radius:100px;padding:2px 9px;white-space:nowrap;">Escalated to Supervisor</span>
+      </td>
+      <td style="font-size:12px;color:var(--txt3);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Invoice missing supporting delivery documentation; escalated to vendor for attachment submission.</td>
+    </tr>
+    <tr>
+      <td style="font-size:12px;color:var(--teal);font-family:monospace;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">INV-2024-47839</td>
+      <td style="font-size:13px;font-weight:600;color:var(--txt);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Vision Metals low-risk auto-approval</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Vision Metals Trading</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">₹1,23,400</td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#4ade80;background:#4ade8015;border:1px solid #4ade8030;border-radius:100px;padding:2px 9px;">Low</span>
+      </td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#4ade80;background:#4ade8015;border:1px solid #4ade8030;border-radius:100px;padding:2px 9px;white-space:nowrap;">Auto-Resolved ✓</span>
+      </td>
+      <td style="font-size:12px;color:var(--txt3);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Tier-1 vendor with perfect compliance history; auto-approved and scheduled same-day payment.</td>
+    </tr>
+    <tr>
+      <td style="font-size:12px;color:var(--teal);font-family:monospace;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">INV-2024-47840</td>
+      <td style="font-size:13px;font-weight:600;color:var(--txt);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Cosmo Components multi-currency reconciliation</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">Cosmo Components Ltd</td>
+      <td style="font-size:12px;color:var(--txt2);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);white-space:nowrap;">₹9,34,500</td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#f87171;background:#f8717115;border:1px solid #f8717130;border-radius:100px;padding:2px 9px;">High</span>
+      </td>
+      <td style="font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">
+        <span style="color:#fbbf24;background:#fbbf2415;border:1px solid #fbbf2430;border-radius:100px;padding:2px 9px;white-space:nowrap;">Pending QC Review</span>
+      </td>
+      <td style="font-size:12px;color:var(--txt3);padding:10px 12px;border-bottom:1px solid rgba(10,191,204,.05);">USD invoice converted to INR; routed to treasury for FX rate verification against spot rate.</td>
+    </tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div style="display:flex;flex-direction:column;gap:16px;">
+
+      <!-- CHAT -->
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;">
+        <div style="background:var(--bg3);padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;">🤖</div>
+          <div>
+            <div style="font-size:13px;font-weight:800;">MyAgent</div>
+            <div style="font-size:10px;color:var(--green);display:flex;align-items:center;gap:4px;">● Online · Demo mode</div>
+          </div>
+        </div>
+        <div style="padding:16px;"><div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;margin-bottom:12px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--txt3);">You</div>
+      <div style="font-size:13px;line-height:1.55;padding:10px 14px;border-radius:14px 14px 4px 14px;max-width:85%;background:var(--grad);color:#07101e;font-weight:500;">How many invoices were auto-resolved this week without escalation?</div>
+    </div><div style="display:flex;flex-direction:column;align-items:flex-start;gap:4px;margin-bottom:12px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);">MyAgent</div>
+      <div style="font-size:13px;line-height:1.55;padding:10px 14px;border-radius:14px 14px 14px 4px;max-width:85%;background:var(--bg3);color:var(--txt2);border:1px solid var(--border);">Out of 20 invoices processed this week, 19 were auto-resolved (95% success rate). The agent validated PO matches for vendors like Vektor Components (₹89,300), Centum Electronics (₹2,18,900), and Bright Alloys (₹2,56,400), and caught issues like the duplicate invoice from Rajesh Polymers before payment. Only Apex Motors required QC review due to split delivery across POs.</div>
+    </div><div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;margin-bottom:12px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--txt3);">You</div>
+      <div style="font-size:13px;line-height:1.55;padding:10px 14px;border-radius:14px 14px 4px 14px;max-width:85%;background:var(--grad);color:#07101e;font-weight:500;">Which invoices are currently blocked and why?</div>
+    </div><div style="display:flex;flex-direction:column;align-items:flex-start;gap:4px;margin-bottom:12px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);">MyAgent</div>
+      <div style="font-size:13px;line-height:1.55;padding:10px 14px;border-radius:14px 14px 14px 4px;max-width:85%;background:var(--bg3);color:var(--txt2);border:1px solid var(--border);">Two invoices are blocked: Dynamo Tools (₹4,27,800) is on a compliance hold list and cannot be paid until vendor status is cleared, and Stellar Valves (₹7,83,900) requires rework because dimensional specifications are missing from the invoice. Also, five invoices are pending QC review for pricing variances or documentation gaps that need finance approval.</div>
+    </div></div>
+      </div>
+
+      <!-- ACTIVITY LOG -->
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;">
+        <div style="background:var(--bg3);padding:12px 16px;border-bottom:1px solid var(--border);">
+          <div style="font-size:13px;font-weight:800;">Agent Activity Log</div>
+          <div style="font-size:11px;color:var(--teal);">Recent actions</div>
+        </div>
+        <div style="padding:12px 16px;"><div style="display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid rgba(10,191,204,.05);">
+      <div style="font-size:16px;flex-shrink:0;margin-top:1px;">🔒</div>
+      <div style="flex:1;font-size:12px;color:var(--txt2);line-height:1.5;">Blocked Dynamo Tools payment; vendor flagged in compliance system.</div>
+      <div style="font-size:11px;color:var(--txt3);flex-shrink:0;">2m ago</div>
+    </div><div style="display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid rgba(10,191,204,.05);">
+      <div style="font-size:16px;flex-shrink:0;margin-top:1px;">✓</div>
+      <div style="flex:1;font-size:12px;color:var(--txt2);line-height:1.5;">Auto-approved Vision Metals invoice (₹1,23,400) as Tier-1 vendor.</div>
+      <div style="font-size:11px;color:var(--txt3);flex-shrink:0;">5m ago</div>
+    </div><div style="display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid rgba(10,191,204,.05);">
+      <div style="font-size:16px;flex-shrink:0;margin-top:1px;">⚠️</div>
+      <div style="flex:1;font-size:12px;color:var(--txt2);line-height:1.5;">Detected and prevented duplicate invoice from Rajesh Polymers within 48-hour window.</div>
+      <div style="font-size:11px;color:var(--txt3);flex-shrink:0;">12m ago</div>
+    </div><div style="display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid rgba(10,191,204,.05);">
+      <div style="font-size:16px;flex-shrink:0;margin-top:1px;">📤</div>
+      <div style="flex:1;font-size:12px;color:var(--txt2);line-height:1.5;">Escalated Axis Rubber invoice to CFO; exceeds ₹8,00,000 approval threshold.</div>
+      <div style="font-size:11px;color:var(--txt3);flex-shrink:0;">18m ago</div>
+    </div><div style="display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid rgba(10,191,204,.05);">
+      <div style="font-size:16px;flex-shrink:0;margin-top:1px;">💰</div>
+      <div style="flex:1;font-size:12px;color:var(--txt2);line-height:1.5;">Calculated 2% early payment discount for Bright Alloys; saved ₹5,128.</div>
+      <div style="font-size:11px;color:var(--txt3);flex-shrink:0;">24m ago</div>
+    </div><div style="display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid rgba(10,191,204,.05);">
+      <div style="font-size:16px;flex-shrink:0;margin-top:1px;">↩️</div>
+      <div style="flex:1;font-size:12px;color:var(--txt2);line-height:1.5;">Returned Stellar Valves invoice to vendor; missing dimensional specifications.</div>
+      <div style="font-size:11px;color:var(--txt3);flex-shrink:0;">31m ago</div>
+    </div><div style="display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid rgba(10,191,204,.05);">
+      <div style="font-size:16px;flex-shrink:0;margin-top:1px;">📊</div>
+      <div style="flex:1;font-size:12px;color:var(--txt2);line-height:1.5;">Routed Global Fasteners to finance; 8% price variance detected vs historical rates.</div>
+      <div style="font-size:11px;color:var(--txt3);flex-shrink:0;">38m ago</div>
+    </div><div style="display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid rgba(10,191,204,.05);">
+      <div style="font-size:16px;flex-shrink:0;margin-top:1px;">🔄</div>
+      <div style="flex:1;font-size:12px;color:var(--txt2);line-height:1.5;">Processed credit memo from Nitro Precision; netted ₹45,800 against pending invoices.</div>
+      <div style="font-size:11px;color:var(--txt3);flex-shrink:0;">45m ago</div>
+    </div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- INTEGRATIONS -->
+  <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:28px;">
+    <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:6px;">In the Real Version — Connects to Your Stack</div>
+    <div style="font-size:14px;color:var(--txt2);margin-bottom:16px;">When deployed for your business, MyAgent integrates with the tools your team already uses.</div>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;"><div style="display:inline-flex;align-items:center;gap:7px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:8px 14px;font-size:13px;font-weight:600;color:var(--txt2);">
+      <div style="width:7px;height:7px;border-radius:50%;background:var(--teal);flex-shrink:0;"></div>SAP
+    </div><div style="display:inline-flex;align-items:center;gap:7px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:8px 14px;font-size:13px;font-weight:600;color:var(--txt2);">
+      <div style="width:7px;height:7px;border-radius:50%;background:var(--teal);flex-shrink:0;"></div>MES System
+    </div><div style="display:inline-flex;align-items:center;gap:7px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:8px 14px;font-size:13px;font-weight:600;color:var(--txt2);">
+      <div style="width:7px;height:7px;border-radius:50%;background:var(--teal);flex-shrink:0;"></div>Slack
+    </div><div style="display:inline-flex;align-items:center;gap:7px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:8px 14px;font-size:13px;font-weight:600;color:var(--txt2);">
+      <div style="width:7px;height:7px;border-radius:50%;background:var(--teal);flex-shrink:0;"></div>Email
+    </div><div style="display:inline-flex;align-items:center;gap:7px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:8px 14px;font-size:13px;font-weight:600;color:var(--txt2);">
+      <div style="width:7px;height:7px;border-radius:50%;background:var(--teal);flex-shrink:0;"></div>SCADA
+    </div><div style="display:inline-flex;align-items:center;gap:7px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:8px 14px;font-size:13px;font-weight:600;color:var(--txt2);">
+      <div style="width:7px;height:7px;border-radius:50%;background:var(--teal);flex-shrink:0;"></div>ERP
+    </div></div>
+  </div>
+
+  <!-- CTA SECTION -->
+  <div style="background:linear-gradient(135deg,rgba(10,191,204,.07),rgba(8,145,178,.04));border:1px solid var(--teal);border-radius:20px;padding:36px;text-align:center;">
+    <div style="font-size:22px;font-weight:900;letter-spacing:-.5px;margin-bottom:10px;">Ready to build the real version?</div>
+    <div style="font-size:15px;color:var(--txt2);margin-bottom:24px;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.7;">This demo uses simulated data. The real MyAgent connects to your actual systems and processes your real workflows — deployed in 48 hours.</div>
+    <a href="/assessment" style="display:inline-flex;align-items:center;gap:10px;background:var(--grad);color:#07101e;font-family:var(--ff);font-size:15px;font-weight:800;padding:16px 36px;border-radius:100px;text-decoration:none;">Book a Discovery Call →</a>
+    <div style="font-size:12px;color:var(--txt3);margin-top:14px;">No commitment. We'll map your workflow and tell you exactly what's possible.</div>
+  </div>
+
+</div>
+
+<!-- STICKY CTA -->
+<a href="/assessment" class="sticky-cta">Book a Discovery Call →</a>
+
+</body>
+</html>
