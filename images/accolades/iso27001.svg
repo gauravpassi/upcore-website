@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- ISO 27001 certification badge -->
+  <circle cx="50" cy="50" r="47" stroke="#2563EB" stroke-width="2.5" fill="none"/>
+  <circle cx="50" cy="50" r="43" stroke="#2563EB" stroke-width="0.8" stroke-dasharray="3 2" fill="none"/>
+  <circle cx="50" cy="50" r="40" fill="#001130" opacity="0.6"/>
+  <!-- Shield icon -->
+  <path d="M50 22 L62 28 L62 42 Q62 54 50 60 Q38 54 38 42 L38 28 Z" fill="none" stroke="#60a5fa" stroke-width="1.5"/>
+  <!-- Check inside shield -->
+  <path d="M44 41 L48 45 L56 37" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- ISO text -->
+  <text x="50" y="75" font-family="Arial Black, Arial, sans-serif" font-size="11" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">ISO 27001</text>
+  <!-- Bottom text -->
+  <path id="bottomArc27" d="M 16 76 A 36 36 0 0 0 84 76" fill="none"/>
+  <text font-family="Arial, sans-serif" font-size="6.5" fill="#60a5fa" letter-spacing="0.3">
+    <textPath href="#bottomArc27" startOffset="5%">INFORMATION SECURITY</textPath>
+  </text>
+</svg>

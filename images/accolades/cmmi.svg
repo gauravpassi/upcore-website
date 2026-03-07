@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 60" fill="none">
+  <!-- CMMI Institute logo recreation -->
+  <!-- Triangle/pyramid icon (CMMI's characteristic mark) -->
+  <polygon points="30,8 54,50 6,50" fill="none" stroke="#7C3AED" stroke-width="2.2" stroke-linejoin="round"/>
+  <!-- Inner triangle levels -->
+  <polygon points="30,20 44,44 16,44" fill="rgba(124,58,237,0.15)" stroke="none"/>
+  <polygon points="30,8 54,50 6,50" fill="rgba(124,58,237,0.06)" stroke="none"/>
+  <!-- Level marker dot -->
+  <circle cx="30" cy="8" r="3.5" fill="#7C3AED"/>
+  <!-- Text: CMMI -->
+  <text x="64" y="26" font-family="Arial Black, Arial, sans-serif" font-size="18" font-weight="900" fill="#FFFFFF" letter-spacing="1">CMMI</text>
+  <!-- Level 3 -->
+  <rect x="64" y="33" width="60" height="14" rx="2" fill="#7C3AED" opacity="0.25"/>
+  <text x="94" y="44" font-family="Arial, sans-serif" font-size="9" font-weight="700" fill="#a78bfa" text-anchor="middle" letter-spacing="1.5">LEVEL 3</text>
+</svg>

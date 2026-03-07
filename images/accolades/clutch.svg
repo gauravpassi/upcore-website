@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 44" fill="none">
+  <!-- Clutch logo recreation: wordmark + rating stars -->
+  <text x="0" y="26" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="700" fill="#FFFFFF" letter-spacing="-1">clutch</text>
+  <circle cx="107" cy="14" r="5" fill="#FF3D2E"/>
+  <!-- 5 stars row -->
+  <g fill="#FF3D2E" transform="translate(0, 32)">
+    <polygon points="5,0 6.2,3.6 10,3.6 7,5.8 8.1,9.4 5,7.2 1.9,9.4 3,5.8 0,3.6 3.8,3.6" transform="scale(0.7)"/>
+    <polygon points="5,0 6.2,3.6 10,3.6 7,5.8 8.1,9.4 5,7.2 1.9,9.4 3,5.8 0,3.6 3.8,3.6" transform="translate(8,0) scale(0.7)"/>
+    <polygon points="5,0 6.2,3.6 10,3.6 7,5.8 8.1,9.4 5,7.2 1.9,9.4 3,5.8 0,3.6 3.8,3.6" transform="translate(16,0) scale(0.7)"/>
+    <polygon points="5,0 6.2,3.6 10,3.6 7,5.8 8.1,9.4 5,7.2 1.9,9.4 3,5.8 0,3.6 3.8,3.6" transform="translate(24,0) scale(0.7)"/>
+    <polygon points="5,0 6.2,3.6 10,3.6 7,5.8 8.1,9.4 5,7.2 1.9,9.4 3,5.8 0,3.6 3.8,3.6" transform="translate(32,0) scale(0.7)"/>
+  </g>
+  <text x="42" y="43" font-family="Arial, sans-serif" font-size="8" fill="#94a3b8">Top AI Company</text>
+</svg>
