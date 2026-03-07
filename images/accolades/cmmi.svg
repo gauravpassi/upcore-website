@@ -15,26 +15,21 @@
       <stop offset="70%"  stop-color="#1a9dd9" stop-opacity="0.5"/>
       <stop offset="100%" stop-color="#1a9dd9" stop-opacity="0"/>
     </radialGradient>
-    <!-- Clip to keep swoosh inside badge area -->
+    <!-- Clip to keep swoosh inside viewBox -->
     <clipPath id="badgeClip">
-      <rect width="220" height="220" rx="6"/>
+      <rect width="220" height="220"/>
     </clipPath>
   </defs>
 
-  <!-- White background -->
-  <rect width="220" height="220" fill="white" rx="6"/>
-  <!-- Thin outer border -->
-  <rect x="1.5" y="1.5" width="217" height="217" rx="5" fill="none" stroke="#cccccc" stroke-width="1.5"/>
+  <!-- Transparent background (no fill rect) -->
 
   <!-- Blue swoosh: starts lower-left, arcs over top, ends upper-right with dot -->
   <g clip-path="url(#badgeClip)">
-    <!-- Main swoosh stroke rendered as thick path -->
     <path d="M 18,200 C 30,130 70,45 185,62"
       stroke="url(#swooshGrad)"
       stroke-width="16"
       stroke-linecap="round"
       fill="none"/>
-
     <!-- Glow halo around dot -->
     <circle cx="185" cy="62" r="20" fill="#1a9dd9" opacity="0.18"/>
     <circle cx="185" cy="62" r="13" fill="#1a9dd9" opacity="0.35"/>
@@ -42,24 +37,24 @@
     <circle cx="185" cy="62" r="8" fill="url(#dotGlow)"/>
   </g>
 
-  <!-- CMMI — bold italic black, large -->
+  <!-- CMMI — bold italic WHITE for dark backgrounds -->
   <text
     x="110" y="148"
     font-family="'Arial Black', 'Arial Bold', Impact, Arial, sans-serif"
     font-size="84"
     font-weight="900"
     font-style="italic"
-    fill="#000000"
+    fill="#ffffff"
     text-anchor="middle"
     letter-spacing="-1">CMMI</text>
 
-  <!-- LEVEL 3 — smaller, dark, slightly right-shifted to match reference -->
+  <!-- LEVEL 3 — light gray -->
   <text
     x="118" y="180"
     font-family="Arial, Helvetica, sans-serif"
     font-size="24"
     font-weight="600"
-    fill="#111111"
+    fill="#cccccc"
     text-anchor="middle"
     letter-spacing="3">LEVEL 3</text>
 </svg>
