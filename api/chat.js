@@ -1,5 +1,3 @@
-const Anthropic = require('@anthropic-ai/sdk');
-
 const SYSTEM_PROMPT = `You are Kai, the AI assistant for Upcore Technologies. You help website visitors learn about Upcore, understand how AI agents can transform their business, and guide them toward booking a Discovery Call.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -123,16 +121,28 @@ module.exports = async (req, res) => {
       return res.status(400).json({ error: 'messages array required' });
     }
 
-    const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-
-    const response = await client.messages.create({
-      model: 'claude-haiku-4-5-20251001',
-      max_tokens: 600,
-      system: SYSTEM_PROMPT,
-      messages: messages.slice(-20) // keep last 20 messages for context
+    const apiRes = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': process.env.ANTHROPIC_API_KEY,
+        'anthropic-version': '2023-06-01'
+      },
+      body: JSON.stringify({
+        model: 'claude-haiku-4-5-20251001',
+        max_tokens: 600,
+        system: SYSTEM_PROMPT,
+        messages: messages.slice(-20)
+      })
     });
 
-    let reply = response.content[0].text.trim();
+    if (!apiRes.ok) {
+      const errText = await apiRes.text();
+      throw new Error('Anthropic API error ' + apiRes.status + ': ' + errText);
+    }
+
+    const data = await apiRes.json();
+    let reply = data.content[0].text.trim();
 
     // Extract booking marker if present
     const bookingMatch = reply.match(/\[BOOK_APPOINTMENT:([\s\S]*?)\]/);
