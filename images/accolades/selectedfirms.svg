@@ -1,32 +1,47 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
-  <!-- SelectedFirms award badge recreation -->
-  <!-- Outer scalloped ring -->
-  <circle cx="50" cy="50" r="46" fill="none" stroke="#22c55e" stroke-width="2"/>
-  <!-- Decorative notches around ring -->
-  <circle cx="50" cy="4" r="2.5" fill="#22c55e"/>
-  <circle cx="50" cy="96" r="2.5" fill="#22c55e"/>
-  <circle cx="4" cy="50" r="2.5" fill="#22c55e"/>
-  <circle cx="96" cy="50" r="2.5" fill="#22c55e"/>
-  <circle cx="18" cy="18" r="2" fill="#22c55e"/>
-  <circle cx="82" cy="18" r="2" fill="#22c55e"/>
-  <circle cx="18" cy="82" r="2" fill="#22c55e"/>
-  <circle cx="82" cy="82" r="2" fill="#22c55e"/>
-  <!-- Inner circle -->
-  <circle cx="50" cy="50" r="40" fill="#001a0a" opacity="0.7"/>
-  <circle cx="50" cy="50" r="38" stroke="#22c55e" stroke-width="0.8" fill="none" opacity="0.4"/>
-  <!-- Trophy/award icon -->
-  <path d="M42 28 L58 28 L56 42 Q50 48 44 42 Z" fill="none" stroke="#4ade80" stroke-width="1.8" stroke-linejoin="round"/>
-  <line x1="35" y1="28" x2="42" y2="32" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="65" y1="28" x2="58" y2="32" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="50" y1="48" x2="50" y2="54" stroke="#4ade80" stroke-width="1.5"/>
-  <line x1="44" y1="54" x2="56" y2="54" stroke="#4ade80" stroke-width="1.8" stroke-linecap="round"/>
-  <!-- "TOP" text -->
-  <text x="50" y="68" font-family="Arial Black, Arial, sans-serif" font-size="10" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="2">TOP</text>
-  <!-- "COMPANY" text -->
-  <text x="50" y="78" font-family="Arial, sans-serif" font-size="7" fill="#4ade80" text-anchor="middle" letter-spacing="1.5">COMPANY</text>
-  <!-- Top arc text -->
-  <path id="topArcSF" d="M 14 46 A 38 38 0 0 1 86 46" fill="none"/>
-  <text font-family="Arial, sans-serif" font-size="6.5" fill="#4ade80">
-    <textPath href="#topArcSF" startOffset="8%">SELECTED FIRMS</textPath>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <radialGradient id="sfBg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#2196c4"/>
+      <stop offset="100%" stop-color="#1565a8"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Outer circle with dotted/dashed border -->
+  <circle cx="100" cy="100" r="98" fill="url(#sfBg)"/>
+
+  <!-- Dotted outer ring pattern -->
+  <circle cx="100" cy="100" r="95" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="3 5" opacity="0.5"/>
+  <circle cx="100" cy="100" r="90" fill="none" stroke="#ffffff" stroke-width="0.5" opacity="0.3"/>
+
+  <!-- White inner circle -->
+  <circle cx="100" cy="100" r="82" fill="#ffffff"/>
+
+  <!-- SelectedFirms S-check logo mark (blue circle with white S-check) -->
+  <circle cx="100" cy="62" r="22" fill="#1a73c8"/>
+  <!-- S-curve / checkmark combo mark -->
+  <path d="M91 55 Q94 50 100 52 Q107 54 105 60 Q103 64 97 65 Q91 67 90 73 Q89 79 96 81 Q103 83 107 78"
+    fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
+
+  <!-- "SelectedFirms" text -->
+  <text x="100" y="100" font-family="Arial,sans-serif" font-size="14" font-weight="700"
+    fill="#1a73c8" text-anchor="middle" letter-spacing="0.5">SelectedFirms</text>
+
+  <!-- Green ribbon banner -->
+  <rect x="8" y="108" width="184" height="46" fill="#3cb371"/>
+  <!-- Left ribbon notch -->
+  <polygon points="8,108 8,154 20,131" fill="#2e8b57"/>
+  <!-- Right ribbon notch -->
+  <polygon points="192,108 192,154 180,131" fill="#2e8b57"/>
+  <!-- Banner text line 1 -->
+  <text x="100" y="127" font-family="Arial Black,Arial,sans-serif" font-size="11" font-weight="900"
+    fill="#ffffff" text-anchor="middle" letter-spacing="0.3">Top Software</text>
+  <!-- Banner text line 2 -->
+  <text x="100" y="143" font-family="Arial Black,Arial,sans-serif" font-size="10" font-weight="900"
+    fill="#ffffff" text-anchor="middle" letter-spacing="0.3">Development Company</text>
+
+  <!-- Bottom arc text: "selectedfirms.co" -->
+  <path id="sfBottomArc" d="M 20,140 A 83,83 0 0,0 180,140" fill="none"/>
+  <text font-family="Arial,sans-serif" font-size="9" fill="#ffffff" opacity="0.8">
+    <textPath href="#sfBottomArc" startOffset="18%">selectedfirms.co</textPath>
   </text>
 </svg>
