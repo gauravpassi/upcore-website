@@ -294,7 +294,125 @@
             color: #0abfcc;
             text-decoration: none;
         }
-    </style>
+  
+    /* ── Sticky TOC Layout ── */
+    .article-layout {
+      display: flex;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      gap: 52px;
+      align-items: flex-start;
+    }
+
+    .toc-sidebar {
+      width: 228px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 80px;
+      max-height: calc(100vh - 100px);
+      overflow-y: auto;
+    }
+
+    .toc-sidebar::-webkit-scrollbar { width: 3px; }
+    .toc-sidebar::-webkit-scrollbar-track { background: transparent; }
+    .toc-sidebar::-webkit-scrollbar-thumb { background: rgba(10,191,204,0.3); border-radius: 2px; }
+
+    .toc-inner {
+      background: rgba(13,31,56,0.85);
+      border: 1px solid rgba(10,191,204,0.15);
+      border-radius: 12px;
+      padding: 20px 16px;
+    }
+
+    .toc-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: #0abfcc;
+      margin-bottom: 14px;
+      padding-left: 10px;
+    }
+
+    .toc-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .toc-link {
+      display: block;
+      padding: 7px 10px;
+      font-size: 12.5px;
+      color: #5a7f9c;
+      text-decoration: none;
+      border-radius: 6px;
+      border-left: 2px solid transparent;
+      line-height: 1.45;
+      transition: all 0.18s ease;
+    }
+
+    .toc-link:hover {
+      color: #c8dde8;
+      background: rgba(10,191,204,0.06);
+    }
+
+    .toc-link.active {
+      color: #0abfcc;
+      border-left-color: #0abfcc;
+      background: rgba(10,191,204,0.08);
+      font-weight: 600;
+    }
+
+    .toc-link.toc-sub {
+      padding-left: 22px;
+      font-size: 12px;
+      color: #4a6f88;
+    }
+
+    .toc-link.toc-sub.active {
+      color: #3dddc4;
+      border-left-color: #3dddc4;
+    }
+
+    .toc-divider {
+      height: 1px;
+      background: rgba(10,191,204,0.1);
+      margin: 16px 0;
+    }
+
+    .toc-cta {
+      display: block;
+      padding: 11px 14px;
+      background: linear-gradient(135deg, #0891b2, #0abfcc, #3dddc4);
+      color: #07101e !important;
+      font-size: 12.5px;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 8px;
+      text-align: center;
+      transition: opacity 0.2s;
+      line-height: 1.4;
+    }
+
+    .toc-cta:hover { opacity: 0.88; }
+
+    .article-main {
+      flex: 1;
+      min-width: 0;
+    }
+
+    /* Override main padding — handled by .article-layout now */
+    main { max-width: none; margin: 0; padding: 0; }
+
+    @media (max-width: 1060px) {
+      .article-layout { flex-direction: column; gap: 0; padding: 2rem 1rem; }
+      .toc-sidebar { display: none; }
+      main { padding: 0; }
+    }
+
+  </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -511,5 +629,62 @@
             <a href="https://linkedin.com/company/upcore">LinkedIn</a>
         </footer-links>
     </footer>
+
+<script>
+(function() {
+  // Build TOC from h2 and h3 headings in the article body
+  var body = document.querySelector('.article-body');
+  var tocNav = document.getElementById('toc-nav');
+  if (!body || !tocNav) return;
+
+  var headings = body.querySelectorAll('h2, h3');
+  if (headings.length === 0) return;
+
+  headings.forEach(function(h, i) {
+    var id = 'toc-' + i;
+    h.id = id;
+
+    var a = document.createElement('a');
+    a.href = '#' + id;
+    a.textContent = h.textContent;
+    a.className = 'toc-link' + (h.tagName === 'H3' ? ' toc-sub' : '');
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      var target = document.getElementById(id);
+      if (target) {
+        var offset = 90;
+        var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
+    });
+    tocNav.appendChild(a);
+  });
+
+  // Highlight active section on scroll
+  var links = tocNav.querySelectorAll('.toc-link');
+  var activeIndex = 0;
+
+  function setActive(index) {
+    links.forEach(function(l) { l.classList.remove('active'); });
+    if (links[index]) links[index].classList.add('active');
+    activeIndex = index;
+  }
+
+  setActive(0);
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var id = entry.target.id;
+        var idx = Array.from(headings).findIndex(function(h) { return h.id === id; });
+        if (idx !== -1) setActive(idx);
+      }
+    });
+  }, { rootMargin: '-80px 0px -55% 0px', threshold: 0 });
+
+  headings.forEach(function(h) { observer.observe(h); });
+})();
+</script>
+
 </body>
 </html>
