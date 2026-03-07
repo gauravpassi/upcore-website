@@ -56,6 +56,15 @@
   </script>
 
   <style>
+nav{width:100%;background:rgba(7,16,30,.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 48px;height:72px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:99;}
+.nav-logo a{display:flex;align-items:center;}.nav-logo img{height:68px;width:auto;}
+.nav-links{display:flex;gap:4px;list-style:none;}
+.nav-links a{padding:8px 16px;border-radius:8px;font-size:14px;font-weight:500;color:var(--txt2);transition:all .2s;}
+.nav-links a:hover{color:var(--txt);background:rgba(10,191,204,.08);}
+.nav-links a.active{color:var(--teal);}
+.nav-cta{display:inline-flex;align-items:center;gap:8px;background:var(--grad);color:#07101e;font-family:var(--ff);font-size:14px;font-weight:700;padding:10px 22px;border-radius:10px;}
+.nav-cta:hover{opacity:.9;transform:translateY(-1px);}
+@media(max-width:768px){nav{padding:0 20px;}.nav-links{display:none;}}
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
@@ -66,34 +75,7 @@
     }
 
     /* Sticky Navigation */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(7, 16, 30, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(10, 191, 204, 0.13);
-      padding: 1rem 2rem;
-    }
-
-    nav .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    nav .logo {
-      height: 32px;
-      width: auto;
-    }
-
-    nav .links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
+    
 
     nav a {
       color: #8bbed4;
@@ -105,21 +87,6 @@
 
     nav a:hover, nav a.active {
       color: #0abfcc;
-    }
-
-    nav .cta {
-      background: linear-gradient(135deg, #0891b2, #0abfcc, #3dddc4);
-      color: #07101e;
-      padding: 0.6rem 1.2rem;
-      border-radius: 6px;
-      font-weight: 600;
-      font-size: 0.85rem;
-      text-decoration: none;
-      transition: transform 0.3s;
-    }
-
-    nav .cta:hover {
-      transform: scale(1.05);
     }
 
     /* Main Content */
@@ -416,12 +383,9 @@
     }
 
     @media (max-width: 768px) {
-      nav .links { gap: 1rem; }
       h1 { font-size: 1.8rem; }
       .article-body h2 { font-size: 1.3rem; }
       main { padding: 2rem 1rem; }
-      nav .container { flex-direction: column; gap: 1rem; }
-      nav .links { flex-wrap: wrap; justify-content: center; }
     }
 
     /* ── Sticky TOC Layout ── */
@@ -464,11 +428,7 @@
       padding-left: 10px;
     }
 
-    .toc-nav {
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
-    }
+    .toc-
 
     .toc-link {
       display: block;
@@ -593,19 +553,17 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:64px 48px
 <body>
   <!-- Sticky Navigation -->
   <nav>
-    <div class="container">
-      <img src="/upcore-logo.png" alt="Upcore" class="logo">
-      <ul class="links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/platform">Platform</a></li>
-        <li><a href="/industries">Industries</a></li>
-        <li><a href="/insights" class="active">Insights</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/contact">Contact</a></li>
-      </ul>
-      <a href="/assessment" class="cta">Book a Discovery Call</a>
-    </div>
-  </nav>
+  <div class="nav-logo"><a href="/"><img src="/upcore-logo.png" alt="Upcore Technologies"/></a></div>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/platform">Platform</a></li>
+    <li><a href="/industries">Industries</a></li>
+    <li><a href="/insights" class="active">Insights</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+  <a href="/assessment" class="nav-cta">Book a Discovery Call</a>
+</nav>
 
   <!-- Main Content -->
   <div class="article-layout">
