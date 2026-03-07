@@ -476,6 +476,116 @@ async function updateManifest(entry) {
   });
 }
 
+// ─── EMAIL NOTIFICATION ───────────────────────────────────────────────────────
+// Uses Resend (https://resend.com) — set RESEND_API_KEY in Vercel env vars.
+// Free tier: 3,000 emails/month. Sign up at resend.com, verify upcoretechnologies.com domain.
+
+const NOTIFY_TO   = 'gaurav@upcoretechnologies.com';
+const RESEND_API_KEY = process.env.RESEND_API_KEY;
+
+async function sendLeadNotification({ userName, email, phone, industry, companyName, agentName, painPoint, actions, demoUrl, slug }) {
+  if (!RESEND_API_KEY) {
+    console.warn('RESEND_API_KEY not set — skipping email notification');
+    return;
+  }
+
+  const cfg = INDUSTRY_CONFIG[industry] || {};
+  const actionsStr = (actions || []).join(', ') || 'Not specified';
+  const createdAt = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', dateStyle: 'medium', timeStyle: 'short' });
+
+  const htmlBody = `
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/></head>
+<body style="font-family:'Segoe UI',Arial,sans-serif;background:#f4f6f9;margin:0;padding:0;">
+  <div style="max-width:560px;margin:32px auto;background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);">
+
+    <!-- Header -->
+    <div style="background:linear-gradient(135deg,#0891b2,#0abfcc,#3dddc4);padding:28px 32px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(7,16,30,.7);margin-bottom:6px;">Upcore · Demo Builder</div>
+      <div style="font-size:22px;font-weight:900;color:#07101e;letter-spacing:-.5px;">🤖 New Demo Lead</div>
+      <div style="font-size:13px;color:rgba(7,16,30,.65);margin-top:4px;">${createdAt} IST</div>
+    </div>
+
+    <!-- Lead Info -->
+    <div style="padding:28px 32px;">
+      <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#6b7280;margin-bottom:14px;">Contact Details</div>
+
+      <table style="width:100%;border-collapse:collapse;">
+        <tr>
+          <td style="padding:9px 0;border-bottom:1px solid #f0f0f0;font-size:13px;color:#6b7280;width:130px;">Name</td>
+          <td style="padding:9px 0;border-bottom:1px solid #f0f0f0;font-size:14px;font-weight:600;color:#111827;">${esc(userName || 'Not provided')}</td>
+        </tr>
+        <tr>
+          <td style="padding:9px 0;border-bottom:1px solid #f0f0f0;font-size:13px;color:#6b7280;">Email</td>
+          <td style="padding:9px 0;border-bottom:1px solid #f0f0f0;font-size:14px;font-weight:600;color:#0891b2;"><a href="mailto:${esc(email)}" style="color:#0891b2;text-decoration:none;">${esc(email)}</a></td>
+        </tr>
+        <tr>
+          <td style="padding:9px 0;border-bottom:1px solid #f0f0f0;font-size:13px;color:#6b7280;">Phone</td>
+          <td style="padding:9px 0;border-bottom:1px solid #f0f0f0;font-size:14px;font-weight:600;color:#111827;">${esc(phone || 'Not provided')}</td>
+        </tr>
+        <tr>
+          <td style="padding:9px 0;border-bottom:1px solid #f0f0f0;font-size:13px;color:#6b7280;">Company</td>
+          <td style="padding:9px 0;border-bottom:1px solid #f0f0f0;font-size:14px;font-weight:600;color:#111827;">${esc(companyName || 'Not provided')}</td>
+        </tr>
+      </table>
+
+      <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#6b7280;margin:20px 0 14px;">Demo Details</div>
+
+      <table style="width:100%;border-collapse:collapse;">
+        <tr>
+          <td style="padding:9px 0;border-bottom:1px solid #f0f0f0;font-size:13px;color:#6b7280;width:130px;">Industry</td>
+          <td style="padding:9px 0;border-bottom:1px solid #f0f0f0;font-size:14px;font-weight:600;color:#111827;">${cfg.emoji || ''} ${esc(cfg.label || industry)}</td>
+        </tr>
+        <tr>
+          <td style="padding:9px 0;border-bottom:1px solid #f0f0f0;font-size:13px;color:#6b7280;">Agent Name</td>
+          <td style="padding:9px 0;border-bottom:1px solid #f0f0f0;font-size:14px;font-weight:600;color:#111827;">${esc(agentName)}</td>
+        </tr>
+        <tr>
+          <td style="padding:9px 0;border-bottom:1px solid #f0f0f0;font-size:13px;color:#6b7280;">Actions</td>
+          <td style="padding:9px 0;border-bottom:1px solid #f0f0f0;font-size:14px;color:#111827;">${esc(actionsStr)}</td>
+        </tr>
+        <tr>
+          <td style="padding:9px 0;font-size:13px;color:#6b7280;vertical-align:top;padding-top:12px;">Pain Point</td>
+          <td style="padding:9px 0;font-size:14px;color:#111827;line-height:1.6;padding-top:12px;">"${esc(painPoint)}"</td>
+        </tr>
+      </table>
+
+      <!-- Demo Link -->
+      <div style="background:#f0fafa;border:1px solid #0abfcc30;border-radius:10px;padding:16px 18px;margin-top:20px;">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#0891b2;margin-bottom:8px;">Live Demo Link</div>
+        <a href="${esc(demoUrl)}" style="font-size:14px;color:#0891b2;font-family:monospace;word-break:break-all;text-decoration:none;">${esc(demoUrl)}</a>
+      </div>
+
+      <!-- CTA -->
+      <div style="text-align:center;margin-top:24px;">
+        <a href="mailto:${esc(email)}" style="display:inline-block;background:linear-gradient(135deg,#0891b2,#0abfcc);color:#07101e;font-size:14px;font-weight:700;padding:13px 28px;border-radius:100px;text-decoration:none;">Reply to ${esc(userName ? userName.split(' ')[0] : 'This Lead')} →</a>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div style="background:#f9fafb;border-top:1px solid #e5e7eb;padding:16px 32px;text-align:center;font-size:11px;color:#9ca3af;">
+      Upcore Technologies · Agent Demo Builder · Demo ID: ${esc(slug)}
+    </div>
+  </div>
+</body>
+</html>`;
+
+  await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${RESEND_API_KEY}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      from: 'Upcore Demo Builder <demos@upcoretechnologies.com>',
+      to: [NOTIFY_TO],
+      subject: `🤖 New Demo Lead — ${userName || email} · ${cfg.label || industry}`,
+      html: htmlBody
+    })
+  });
+}
+
 // ─── MAIN HANDLER ─────────────────────────────────────────────────────────────
 
 export default async function handler(req, res) {
@@ -496,7 +606,7 @@ export default async function handler(req, res) {
   try { body = req.body; }
   catch(e) { return res.status(400).json({ error: 'Invalid request body' }); }
 
-  const { industry, painPoint, actions = [], companyName = '', agentName: rawAgent = '', userName = '', email = '' } = body;
+  const { industry, painPoint, actions = [], companyName = '', agentName: rawAgent = '', userName = '', email = '', phone = '' } = body;
 
   // Validate
   if (!industry || !['manufacturing', 'ecommerce'].includes(industry)) {
@@ -504,6 +614,15 @@ export default async function handler(req, res) {
   }
   if (!painPoint || painPoint.length < 10) {
     return res.status(400).json({ error: 'Pain point is required (min 10 characters).' });
+  }
+  if (!userName || !userName.trim()) {
+    return res.status(400).json({ error: 'Name is required.' });
+  }
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return res.status(400).json({ error: 'A valid email address is required.' });
+  }
+  if (!phone || phone.length < 7) {
+    return res.status(400).json({ error: 'A valid phone number is required.' });
   }
 
   const cfg = INDUSTRY_CONFIG[industry];
@@ -524,19 +643,28 @@ export default async function handler(req, res) {
     // 3. Push to GitHub
     await pushToGitHub(slug, html);
 
-    // 4. Update manifest (fire and forget — don't block response)
-    updateManifest({
+    const demoUrl = `${SITE_BASE_URL}/demos/${slug}`;
+
+    // 4. Update manifest + send lead notification (fire and forget — don't block response)
+    const manifestEntry = {
       slug, industry, agentName,
       companyName: companyName || cfg.label + ' Demo',
       painPoint: painPoint.slice(0, 200),
       actions,
-      email: email || null,
       userName: userName || null,
+      email: email || null,
+      phone: phone || null,
       created: new Date().toISOString(),
       expires: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString()
-    }).catch(err => console.error('Manifest update failed:', err));
+    };
 
-    const demoUrl = `${SITE_BASE_URL}/demos/${slug}`;
+    updateManifest(manifestEntry).catch(err => console.error('Manifest update failed:', err));
+
+    sendLeadNotification({
+      userName, email, phone, industry, companyName, agentName,
+      painPoint, actions, demoUrl, slug
+    }).catch(err => console.error('Lead notification email failed:', err));
+
     return res.status(200).json({ url: demoUrl, slug });
 
   } catch(err) {
