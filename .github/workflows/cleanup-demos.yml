@@ -1,0 +1,70 @@
+name: Cleanup Expired Demos
+
+on:
+  schedule:
+    # Run every night at 2:00 AM IST (8:30 PM UTC)
+    - cron: '30 20 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Delete expired demo files
+        run: |
+          node -e "
+          const fs = require('fs');
+          const path = require('path');
+
+          const manifestPath = './demos/manifest.json';
+          if (!fs.existsSync(manifestPath)) {
+            console.log('No manifest found. Nothing to clean up.');
+            process.exit(0);
+          }
+
+          const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+          const now = Date.now();
+          let deletedCount = 0;
+          const active = [];
+
+          manifest.forEach(entry => {
+            const expiry = new Date(entry.expires).getTime();
+            const demoFile = './demos/' + entry.slug + '.html';
+
+            if (now > expiry) {
+              if (fs.existsSync(demoFile)) {
+                fs.unlinkSync(demoFile);
+                console.log('Deleted expired demo:', entry.slug, '(expired', entry.expires, ')');
+                deletedCount++;
+              } else {
+                console.log('Already removed:', entry.slug);
+              }
+            } else {
+              active.push(entry);
+              console.log('Keeping active demo:', entry.slug, '(expires', entry.expires, ')');
+            }
+          });
+
+          fs.writeFileSync(manifestPath, JSON.stringify(active, null, 2));
+          console.log('Cleanup complete. Deleted:', deletedCount, '| Active:', active.length);
+          "
+
+      - name: Commit cleanup
+        run: |
+          git config user.name "Upcore Demo Bot"
+          git config user.email "demo-bot@upcore.ai"
+          git add demos/
+          # Only commit if there are changes
+          git diff --staged --quiet || git commit -m "chore: cleanup expired demos [automated]"
+          git push

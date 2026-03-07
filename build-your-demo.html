@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Build Your Agent Demo · Upcore Technologies</title>
+<meta name="description" content="Describe your workflow. We'll build a live AI agent demo for your industry in under 60 seconds — complete with realistic demo data."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<style>
+:root{
+  --bg:#07101e;--bg2:#0a1628;--bg3:#0d1c34;--card:#0f2040;--card2:#0a1a32;
+  --teal:#0abfcc;--mint:#3dddc4;--teal3:#0891b2;
+  --txt:#ffffff;--txt2:#8bbed4;--txt3:#3a6080;
+  --border:rgba(10,191,204,.13);--bh:rgba(10,191,204,.38);
+  --glow:rgba(10,191,204,.08);--red:#f87171;--green:#4ade80;--amber:#fbbf24;
+  --grad:linear-gradient(135deg,#0891b2,#0abfcc,#3dddc4);
+  --ff:'Poppins',sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--ff);background:var(--bg);color:var(--txt);line-height:1.6;min-height:100vh;overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+.grad-text{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+
+/* NAV */
+nav{width:100%;background:rgba(7,16,30,.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 48px;height:72px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:99;}
+.nav-logo a{display:flex;align-items:center;}.nav-logo img{height:52px;width:auto;}
+.nav-links{display:flex;gap:4px;list-style:none;}
+.nav-links a{padding:8px 16px;border-radius:8px;font-size:14px;font-weight:500;color:var(--txt2);transition:all .2s;}
+.nav-links a:hover{color:var(--txt);background:var(--glow);}
+.nav-cta{background:var(--grad)!important;color:#07101e!important;font-weight:700!important;border-radius:10px!important;padding:10px 22px!important;}
+
+/* DEMO BADGE (persistent) */
+.demo-banner{background:rgba(251,191,36,.07);border-bottom:1px solid rgba(251,191,36,.18);padding:9px 48px;display:flex;align-items:center;justify-content:center;gap:10px;font-size:12px;font-weight:600;color:#e5c87a;}
+.demo-banner span{font-weight:800;}
+
+/* PAGE SHELL */
+.page{min-height:calc(100vh - 120px);display:flex;align-items:center;justify-content:center;padding:48px 24px;
+  background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(10,191,204,.07),transparent 55%),var(--bg);}
+.page::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:linear-gradient(rgba(10,191,204,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(10,191,204,.02) 1px,transparent 1px);
+  background-size:60px 60px;}
+
+/* CARD CONTAINER */
+.demo-card{position:relative;z-index:1;width:100%;max-width:620px;background:var(--card);border:1px solid var(--border);border-radius:24px;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.4);}
+.card-header{background:var(--bg3);padding:20px 28px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.card-header-left{display:flex;align-items:center;gap:12px;}
+.ch-icon{width:38px;height:38px;border-radius:12px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:18px;}
+.ch-title{font-size:15px;font-weight:800;}
+.ch-sub{font-size:12px;color:var(--teal);}
+.step-dots{display:flex;gap:6px;}
+.step-dot{width:8px;height:8px;border-radius:50%;background:var(--border);transition:all .3s;}
+.step-dot.active{background:var(--teal);}
+.step-dot.done{background:var(--mint);}
+
+/* FORM STATES */
+.state{display:none;padding:32px 28px 28px;}
+.state.active{display:block;}
+
+/* EYEBROW */
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:10px;}
+.state-title{font-size:clamp(20px,3vw,28px);font-weight:900;letter-spacing:-1px;line-height:1.1;margin-bottom:8px;}
+.state-sub{font-size:14px;color:var(--txt2);line-height:1.7;margin-bottom:28px;}
+
+/* FORM ELEMENTS */
+.field{margin-bottom:20px;}
+.field-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--txt3);margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+.field-label .req{color:var(--red);}
+.field-label .opt{color:var(--txt3);font-weight:400;font-size:10px;text-transform:none;letter-spacing:0;}
+
+/* INDUSTRY SELECTOR */
+.industry-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.ind-option{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:10px;}
+.ind-option:hover{border-color:rgba(10,191,204,.4);}
+.ind-option.selected{border-color:var(--teal);background:rgba(10,191,204,.06);}
+.ind-option input{display:none;}
+.ind-icon{font-size:22px;}
+.ind-label{font-size:14px;font-weight:700;}
+.ind-desc{font-size:11px;color:var(--txt3);margin-top:1px;}
+
+/* TEXT INPUTS */
+.input-wrap{position:relative;}
+input[type="text"],input[type="email"],textarea{
+  width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:12px;
+  padding:13px 16px;font-family:var(--ff);font-size:14px;color:var(--txt);
+  outline:none;transition:border-color .2s;resize:none;}
+input[type="text"]:focus,input[type="email"]:focus,textarea:focus{border-color:var(--bh);}
+input[type="text"]::placeholder,input[type="email"]::placeholder,textarea::placeholder{color:var(--txt3);}
+.char-count{position:absolute;right:12px;bottom:10px;font-size:10px;color:var(--txt3);}
+
+/* ACTION CHIPS */
+.chip-grid{display:flex;flex-wrap:wrap;gap:8px;}
+.chip{background:var(--bg2);border:1px solid var(--border);border-radius:100px;padding:7px 14px;font-size:13px;font-weight:600;color:var(--txt2);cursor:pointer;transition:all .2s;user-select:none;}
+.chip:hover{border-color:rgba(10,191,204,.4);color:var(--txt);}
+.chip.selected{background:rgba(10,191,204,.1);border-color:var(--teal);color:var(--teal);}
+
+/* OPTIONAL FIELDS ROW */
+.optional-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+
+/* BUTTONS */
+.btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--grad);color:#07101e;font-family:var(--ff);font-size:15px;font-weight:800;padding:16px 32px;border-radius:100px;border:none;cursor:pointer;width:100%;transition:all .2s;margin-top:8px;}
+.btn-primary:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 12px 40px rgba(10,191,204,.35);}
+.btn-primary:disabled{opacity:.5;cursor:not-allowed;transform:none;}
+.btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:transparent;color:var(--txt2);font-family:var(--ff);font-size:14px;font-weight:600;padding:12px 24px;border-radius:100px;border:1px solid var(--border);cursor:pointer;width:100%;transition:all .2s;margin-top:8px;}
+.btn-ghost:hover{border-color:var(--teal);color:var(--teal);}
+
+/* ERROR */
+.field-error{font-size:12px;color:var(--red);margin-top:6px;display:none;}
+.field-error.visible{display:block;}
+
+/* ── PROGRESS STATE ── */
+.progress-header{text-align:center;margin-bottom:28px;}
+.progress-agent-name{font-size:22px;font-weight:900;letter-spacing:-.5px;margin-bottom:4px;}
+.progress-sub{font-size:13px;color:var(--txt2);}
+.build-steps{display:flex;flex-direction:column;gap:4px;margin-bottom:20px;}
+.build-step{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:12px;transition:all .3s;}
+.build-step.bs-wait{opacity:.35;}
+.build-step.bs-active{background:rgba(10,191,204,.06);border:1px solid rgba(10,191,204,.12);}
+.build-step.bs-done{opacity:1;}
+.bs-icon{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
+.bs-wait .bs-icon{background:var(--bg3);color:var(--txt3);}
+.bs-active .bs-icon{background:rgba(10,191,204,.12);border:1px solid var(--border);}
+.bs-done .bs-icon{background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.2);color:var(--green);}
+.bs-spinner{display:inline-block;width:14px;height:14px;border:2px solid var(--border);border-top-color:var(--teal);border-radius:50%;animation:spin 0.8s linear infinite;}
+.bs-text{font-size:13px;font-weight:500;}
+.bs-wait .bs-text{color:var(--txt3);}
+.bs-active .bs-text{color:var(--txt);}
+.bs-done .bs-text{color:var(--txt2);}
+.bs-badge{margin-left:auto;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:100px;flex-shrink:0;}
+.bs-wait .bs-badge{background:var(--bg3);border:1px solid var(--border);color:var(--txt3);}
+.bs-active .bs-badge{background:rgba(10,191,204,.08);border:1px solid var(--border);color:var(--teal);}
+.bs-done .bs-badge{background:rgba(74,222,128,.06);border:1px solid rgba(74,222,128,.2);color:var(--green);}
+.progress-bar-wrap{background:var(--bg2);border-radius:100px;height:5px;overflow:hidden;margin-bottom:8px;}
+.progress-bar{height:100%;background:var(--grad);border-radius:100px;transition:width .6s ease;width:0%;}
+.progress-pct{font-size:11px;color:var(--txt3);text-align:right;}
+.progress-msg{font-size:12px;color:var(--teal);font-style:italic;text-align:center;margin-top:14px;min-height:18px;}
+
+/* ── DONE STATE ── */
+.done-hero{text-align:center;margin-bottom:28px;}
+.done-pulse{width:64px;height:64px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 16px;animation:pulse-ring 2s ease-in-out infinite;}
+@keyframes pulse-ring{0%,100%{box-shadow:0 0 0 0 rgba(10,191,204,.4);}50%{box-shadow:0 0 0 16px rgba(10,191,204,0);}}
+.done-title{font-size:24px;font-weight:900;letter-spacing:-.5px;margin-bottom:6px;}
+.done-sub{font-size:14px;color:var(--txt2);line-height:1.65;}
+.url-box{background:var(--bg2);border:1px solid var(--teal);border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:10px;margin:20px 0;}
+.url-text{font-size:13px;font-family:monospace;color:var(--teal);flex:1;word-break:break-all;}
+.copy-btn{background:rgba(10,191,204,.1);border:1px solid var(--border);border-radius:8px;padding:7px 14px;font-family:var(--ff);font-size:12px;font-weight:700;color:var(--teal);cursor:pointer;flex-shrink:0;transition:all .2s;}
+.copy-btn:hover{background:rgba(10,191,204,.2);}
+.copy-btn.copied{color:var(--green);border-color:rgba(74,222,128,.3);}
+.done-actions{display:flex;flex-direction:column;gap:10px;}
+.btn-open{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--grad);color:#07101e;font-family:var(--ff);font-size:15px;font-weight:800;padding:16px 32px;border-radius:100px;border:none;cursor:pointer;width:100%;transition:all .2s;text-decoration:none;}
+.btn-open:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(10,191,204,.35);}
+.done-note{font-size:12px;color:var(--txt3);text-align:center;margin-top:16px;line-height:1.6;}
+
+/* DIVIDER */
+.form-divider{height:1px;background:var(--border);margin:20px 0;}
+
+@keyframes spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(74,222,128,.4);}50%{opacity:.7;box-shadow:0 0 0 6px rgba(74,222,128,0);}}
+
+@media(max-width:640px){
+  nav{padding:0 20px;}
+  .demo-banner{padding:9px 20px;font-size:11px;}
+  .demo-card{border-radius:16px;}
+  .state{padding:24px 20px 20px;}
+  .industry-grid{grid-template-columns:1fr;}
+  .optional-row{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo"><a href="/"><img src="/upcore-logo.png" alt="Upcore Technologies"/></a></div>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/platform">Platform</a></li>
+    <li><a href="/agent-builder">Studio</a></li>
+    <li><a href="/industries">Industries</a></li>
+    <li><a href="/insights">Insights</a></li>
+    <li><a href="/about">About</a></li>
+  </ul>
+  <a href="/assessment" style="display:inline-flex;align-items:center;gap:8px;background:var(--grad);color:#07101e;font-family:var(--ff);font-size:14px;font-weight:700;padding:10px 22px;border-radius:10px;">Book a Discovery Call</a>
+</nav>
+
+<div class="demo-banner">
+  <span>⚠</span> This tool generates a live demo using <span>simulated data only</span> — not connected to your systems
+</div>
+
+<div class="page">
+  <div class="demo-card">
+
+    <!-- CARD HEADER -->
+    <div class="card-header">
+      <div class="card-header-left">
+        <div class="ch-icon">🤖</div>
+        <div>
+          <div class="ch-title">Agent Demo Builder</div>
+          <div class="ch-sub">Powered by Upcore · Uses demo data</div>
+        </div>
+      </div>
+      <div class="step-dots">
+        <div class="step-dot active" id="dot-1"></div>
+        <div class="step-dot" id="dot-2"></div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════ -->
+    <!-- STATE 1: WORKFLOW CONTEXT          -->
+    <!-- ═══════════════════════════════════ -->
+    <div class="state active" id="state-1">
+      <div class="eyebrow">Step 1 of 2 — Your Workflow</div>
+      <h1 class="state-title">What does your<br/><span class="grad-text">team do every day?</span></h1>
+      <p class="state-sub">Describe the repetitive work you want to automate. We'll build a live agent demo around it in under 60 seconds.</p>
+
+      <!-- INDUSTRY -->
+      <div class="field">
+        <div class="field-label">Industry <span class="req">*</span></div>
+        <div class="industry-grid">
+          <label class="ind-option" id="ind-manufacturing">
+            <input type="radio" name="industry" value="manufacturing"/>
+            <div class="ind-icon">🏭</div>
+            <div>
+              <div class="ind-label">Manufacturing</div>
+              <div class="ind-desc">Quality, production &amp; supply chain</div>
+            </div>
+          </label>
+          <label class="ind-option" id="ind-ecommerce">
+            <input type="radio" name="industry" value="ecommerce"/>
+            <div class="ind-icon">🛒</div>
+            <div>
+              <div class="ind-label">eCommerce</div>
+              <div class="ind-desc">Orders, returns &amp; customer support</div>
+            </div>
+          </label>
+        </div>
+        <div class="field-error" id="err-industry">Please select your industry.</div>
+      </div>
+
+      <!-- PAIN POINT -->
+      <div class="field">
+        <div class="field-label">What does your team spend time on? <span class="req">*</span></div>
+        <div class="input-wrap">
+          <textarea id="pain-point" rows="3" maxlength="200" placeholder="e.g. Our quality team manually reviews defect reports each shift. It takes 2 hours and delays production decisions."></textarea>
+          <div class="char-count"><span id="pain-chars">0</span>/200</div>
+        </div>
+        <div class="field-error" id="err-pain">Please describe the workflow (at least 20 characters).</div>
+      </div>
+
+      <!-- AGENT ACTIONS -->
+      <div class="field">
+        <div class="field-label">What should the agent do? <span class="req">*</span> <span class="opt">(select all that apply)</span></div>
+        <div class="chip-grid" id="actions-grid">
+          <div class="chip" data-val="triage">🔍 Triage</div>
+          <div class="chip" data-val="classify">🏷️ Classify</div>
+          <div class="chip" data-val="escalate">🚨 Escalate</div>
+          <div class="chip" data-val="notify">🔔 Notify</div>
+          <div class="chip" data-val="summarise">📝 Summarise</div>
+          <div class="chip" data-val="approve">✅ Approve / Reject</div>
+          <div class="chip" data-val="route">↪️ Route</div>
+          <div class="chip" data-val="draft-reply">✉️ Draft Reply</div>
+        </div>
+        <div class="field-error" id="err-actions">Please select at least one action.</div>
+      </div>
+
+      <div class="form-divider"></div>
+
+      <!-- OPTIONAL -->
+      <div class="optional-row">
+        <div class="field" style="margin-bottom:0;">
+          <div class="field-label">Company name <span class="opt">(optional)</span></div>
+          <input type="text" id="company-name" placeholder="e.g. Acme Manufacturing" maxlength="60"/>
+        </div>
+        <div class="field" style="margin-bottom:0;">
+          <div class="field-label">Agent name <span class="opt">(optional)</span></div>
+          <input type="text" id="agent-name" placeholder="e.g. QualityBot" maxlength="40"/>
+        </div>
+      </div>
+
+      <button class="btn-primary" onclick="goToStep2()">Continue — Add Contact Details →</button>
+    </div>
+
+    <!-- ═══════════════════════════════════ -->
+    <!-- STATE 2: CONTACT INFO              -->
+    <!-- ═══════════════════════════════════ -->
+    <div class="state" id="state-2">
+      <div class="eyebrow">Step 2 of 2 — Your Details</div>
+      <h2 class="state-title">Almost there.<br/><span class="grad-text">Where should we send the link?</span></h2>
+      <p class="state-sub">Your demo will be live for 14 days at a unique URL. We'll email you the link so you can share it with your team — or skip and grab it on-screen.</p>
+
+      <div class="field">
+        <div class="field-label">Your name <span class="opt">(optional)</span></div>
+        <input type="text" id="user-name" placeholder="e.g. Priya Sharma" maxlength="60"/>
+      </div>
+
+      <div class="field">
+        <div class="field-label">Work email <span class="opt">(optional — for demo link delivery)</span></div>
+        <input type="email" id="user-email" placeholder="you@yourcompany.com" maxlength="120"/>
+        <div class="field-error" id="err-email">Please enter a valid email address.</div>
+      </div>
+
+      <div style="background:rgba(10,191,204,.04);border:1px solid var(--border);border-radius:12px;padding:14px 16px;margin-bottom:20px;font-size:12px;color:var(--txt3);line-height:1.65;">
+        ⚠️ <strong style="color:var(--txt2);">Demo data only.</strong> Your agent demo will use 20 realistic but entirely fictional records. No real company or customer data is ever used or required.
+      </div>
+
+      <button class="btn-primary" onclick="startBuild()">Build My Agent Demo →</button>
+      <button class="btn-ghost" onclick="goToStep1()">← Back</button>
+    </div>
+
+    <!-- ═══════════════════════════════════ -->
+    <!-- STATE 3: BUILDING PROGRESS         -->
+    <!-- ═══════════════════════════════════ -->
+    <div class="state" id="state-building">
+      <div class="progress-header">
+        <div class="progress-agent-name" id="prog-agent-name">Building your agent…</div>
+        <div class="progress-sub">Your personalised demo is being assembled</div>
+      </div>
+
+      <div class="build-steps" id="build-steps-list">
+        <!-- Populated by JS -->
+      </div>
+
+      <div class="progress-bar-wrap">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
+      <div class="progress-pct" id="progress-pct">0%</div>
+      <div class="progress-msg" id="progress-msg">Starting build…</div>
+    </div>
+
+    <!-- ═══════════════════════════════════ -->
+    <!-- STATE 4: DONE                      -->
+    <!-- ═══════════════════════════════════ -->
+    <div class="state" id="state-done">
+      <div class="done-hero">
+        <div class="done-pulse">🚀</div>
+        <div class="done-title">Your Agent Is <span class="grad-text">Live!</span></div>
+        <div class="done-sub">Your personalised demo is ready. Share it with your team or book a call to see the real version built for your systems.</div>
+      </div>
+
+      <div class="url-box">
+        <div class="url-text" id="done-url"></div>
+        <button class="copy-btn" id="copy-btn" onclick="copyUrl()">Copy</button>
+      </div>
+
+      <div class="done-actions">
+        <a class="btn-open" id="open-demo-btn" href="#" target="_blank">Open Your Demo →</a>
+        <a href="/assessment" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;color:var(--teal);font-family:var(--ff);font-size:14px;font-weight:600;padding:14px;border-radius:100px;border:1px solid var(--border);transition:all .2s;text-align:center;" onmouseover="this.style.borderColor='var(--teal)'" onmouseout="this.style.borderColor='var(--border)'">Book a Discovery Call — Build the Real Version →</a>
+      </div>
+      <div class="done-note" id="done-note">Demo available for 14 days. No account needed.</div>
+    </div>
+
+  </div><!-- /.demo-card -->
+</div><!-- /.page -->
+
+<script>
+// ─── STATE ───────────────────────────────
+var formData = {
+  industry: null, painPoint: '', actions: [], companyName: '', agentName: '', userName: '', email: ''
+};
+var demoUrl = '';
+
+// ─── INDUSTRY SELECTION ──────────────────
+document.querySelectorAll('.ind-option').forEach(function(opt) {
+  opt.addEventListener('click', function() {
+    document.querySelectorAll('.ind-option').forEach(function(o){ o.classList.remove('selected'); });
+    opt.classList.add('selected');
+    formData.industry = opt.querySelector('input').value;
+    document.getElementById('err-industry').classList.remove('visible');
+    // auto-suggest agent name if blank
+    var nameField = document.getElementById('agent-name');
+    if (!nameField.value) {
+      var suggestions = { manufacturing: 'QualityBot', ecommerce: 'OrderBot' };
+      nameField.placeholder = suggestions[formData.industry] || 'e.g. MyAgent';
+    }
+  });
+});
+
+// ─── CHAR COUNTER ────────────────────────
+document.getElementById('pain-point').addEventListener('input', function() {
+  document.getElementById('pain-chars').textContent = this.value.length;
+});
+
+// ─── ACTION CHIPS ────────────────────────
+document.getElementById('actions-grid').addEventListener('click', function(e) {
+  var chip = e.target.closest('.chip');
+  if (!chip) return;
+  chip.classList.toggle('selected');
+  var val = chip.dataset.val;
+  var idx = formData.actions.indexOf(val);
+  if (idx === -1) formData.actions.push(val);
+  else formData.actions.splice(idx, 1);
+  document.getElementById('err-actions').classList.remove('visible');
+});
+
+// ─── NAVIGATION ──────────────────────────
+function goToStep1() {
+  showState('state-1');
+  document.getElementById('dot-1').classList.add('active');
+  document.getElementById('dot-1').classList.remove('done');
+  document.getElementById('dot-2').classList.remove('active');
+}
+
+function goToStep2() {
+  // Validate step 1
+  var valid = true;
+  if (!formData.industry) {
+    document.getElementById('err-industry').classList.add('visible'); valid = false;
+  }
+  formData.painPoint = document.getElementById('pain-point').value.trim();
+  if (formData.painPoint.length < 20) {
+    document.getElementById('err-pain').classList.add('visible'); valid = false;
+  }
+  if (formData.actions.length === 0) {
+    document.getElementById('err-actions').classList.add('visible'); valid = false;
+  }
+  if (!valid) return;
+  formData.companyName = document.getElementById('company-name').value.trim();
+  formData.agentName = document.getElementById('agent-name').value.trim();
+
+  document.getElementById('dot-1').classList.remove('active');
+  document.getElementById('dot-1').classList.add('done');
+  document.getElementById('dot-2').classList.add('active');
+  showState('state-2');
+}
+
+function showState(id) {
+  document.querySelectorAll('.state').forEach(function(s){ s.classList.remove('active'); });
+  document.getElementById(id).classList.add('active');
+}
+
+// ─── BUILD STEPS CONFIG ──────────────────
+function getBuildSteps() {
+  var ind = formData.industry === 'manufacturing' ? 'manufacturing' : 'ecommerce';
+  var actionStr = formData.actions.slice(0, 3).map(function(a){
+    return a.charAt(0).toUpperCase() + a.slice(1);
+  }).join(' · ');
+  var entityLabel = ind === 'manufacturing' ? 'quality alert records' : 'order records';
+  var agentLabel  = ind === 'manufacturing' ? formData.agentName || 'QualityBot' : formData.agentName || 'OrderBot';
+  return [
+    { icon: '🗺️', text: 'Mapping your ' + ind + ' workflow context', msg: 'Analysing your pain point and workflow patterns…' },
+    { icon: '⚙️', text: 'Identifying capabilities: ' + (actionStr || 'Triage · Classify · Escalate'), msg: 'Matching agent actions to your use case…' },
+    { icon: '🗄️', text: 'Generating 20 realistic ' + entityLabel, msg: 'Creating authentic-looking demo data for ' + ind + '…' },
+    { icon: '🧠', text: 'Configuring ' + agentLabel + ' decision logic', msg: 'Building agent rules and decision trees…' },
+    { icon: '🔨', text: 'Assembling your personalised demo page', msg: 'Putting together your live demo interface…' },
+    { icon: '🚀', text: 'Deploying to Upcore Demo Hub', msg: 'Publishing your unique demo URL…' }
+  ];
+}
+
+// ─── PROGRESS ANIMATION ──────────────────
+var buildSteps = [];
+var currentStep = 0;
+var buildTimer = null;
+var stepTimings = [3000, 4000, 8000, 10000, 6000, 8000]; // ms per step
+var stepProgress = [8, 20, 42, 65, 82, 100];
+var apiDone = false;
+var apiResult = null;
+
+function renderBuildSteps() {
+  var list = document.getElementById('build-steps-list');
+  list.innerHTML = '';
+  buildSteps.forEach(function(step, i) {
+    var state = i < currentStep ? 'bs-done' : (i === currentStep ? 'bs-active' : 'bs-wait');
+    var iconContent = i < currentStep ? '✓' : (i === currentStep ? '<span class="bs-spinner"></span>' : step.icon);
+    var badgeText = i < currentStep ? 'Done' : (i === currentStep ? 'In progress' : 'Queued');
+    list.innerHTML += '<div class="build-step ' + state + '">' +
+      '<div class="bs-icon">' + iconContent + '</div>' +
+      '<div class="bs-text">' + step.text + '</div>' +
+      '<div class="bs-badge">' + badgeText + '</div>' +
+    '</div>';
+  });
+}
+
+function advanceStep() {
+  if (currentStep >= buildSteps.length - 1) {
+    // Last step — wait for API to finish
+    if (apiDone) {
+      finishBuild();
+    } else {
+      buildTimer = setTimeout(advanceStep, 1000);
+    }
+    return;
+  }
+  currentStep++;
+  renderBuildSteps();
+  var pct = stepProgress[currentStep - 1] || 0;
+  document.getElementById('progress-bar').style.width = pct + '%';
+  document.getElementById('progress-pct').textContent = pct + '%';
+  document.getElementById('progress-msg').textContent = buildSteps[currentStep] ? buildSteps[currentStep].msg : '';
+  var delay = stepTimings[currentStep] || 5000;
+  buildTimer = setTimeout(advanceStep, delay);
+}
+
+function finishBuild() {
+  currentStep = buildSteps.length;
+  renderBuildSteps();
+  document.getElementById('progress-bar').style.width = '100%';
+  document.getElementById('progress-pct').textContent = '100%';
+  document.getElementById('progress-msg').textContent = '✓ Your agent is live!';
+  setTimeout(function() {
+    showDoneState(apiResult);
+  }, 800);
+}
+
+function showDoneState(result) {
+  demoUrl = result.url;
+  document.getElementById('done-url').textContent = demoUrl;
+  document.getElementById('open-demo-btn').href = demoUrl;
+  if (formData.email) {
+    document.getElementById('done-note').textContent = 'Demo link sent to ' + formData.email + '. Available for 14 days.';
+  }
+  showState('state-done');
+}
+
+// ─── COPY URL ────────────────────────────
+function copyUrl() {
+  navigator.clipboard.writeText(demoUrl).then(function() {
+    var btn = document.getElementById('copy-btn');
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(function(){ btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+// ─── START BUILD ─────────────────────────
+function startBuild() {
+  // Validate email if provided
+  var email = document.getElementById('user-email').value.trim();
+  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    document.getElementById('err-email').classList.add('visible'); return;
+  }
+  formData.userName = document.getElementById('user-name').value.trim();
+  formData.email = email;
+
+  // Set agent name
+  if (!formData.agentName) {
+    formData.agentName = formData.industry === 'manufacturing' ? 'QualityBot' : 'OrderBot';
+  }
+
+  // Update progress header
+  document.getElementById('prog-agent-name').textContent =
+    'Building ' + (formData.companyName ? formData.companyName + '\u2019s ' : 'Your ') + formData.agentName + '…';
+
+  // Prepare steps
+  buildSteps = getBuildSteps();
+  currentStep = 0;
+  apiDone = false;
+  apiResult = null;
+
+  // Hide dots in progress/done states
+  document.getElementById('dot-2').classList.remove('active');
+  document.getElementById('dot-2').classList.add('done');
+
+  showState('state-building');
+  renderBuildSteps();
+  document.getElementById('progress-msg').textContent = buildSteps[0].msg;
+  document.getElementById('progress-bar').style.width = '3%';
+
+  // Start animation
+  buildTimer = setTimeout(advanceStep, stepTimings[0]);
+
+  // Fire API call
+  callBuildAPI();
+}
+
+// ─── API CALL ────────────────────────────
+function callBuildAPI() {
+  var payload = {
+    industry: formData.industry,
+    painPoint: formData.painPoint,
+    actions: formData.actions,
+    companyName: formData.companyName,
+    agentName: formData.agentName,
+    userName: formData.userName,
+    email: formData.email
+  };
+
+  fetch('/api/build-demo', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  })
+  .then(function(res) {
+    if (!res.ok) throw new Error('Build failed: ' + res.status);
+    return res.json();
+  })
+  .then(function(data) {
+    apiResult = data;
+    apiDone = true;
+    // If animation already reached last step, finish immediately
+    if (currentStep >= buildSteps.length - 1) {
+      if (buildTimer) clearTimeout(buildTimer);
+      finishBuild();
+    }
+  })
+  .catch(function(err) {
+    console.error(err);
+    // Show error state
+    document.getElementById('progress-msg').textContent = '⚠ Something went wrong. Please try again.';
+    document.getElementById('progress-bar').style.background = 'var(--red)';
+    setTimeout(function() {
+      showState('state-2');
+      document.getElementById('dot-2').classList.remove('done');
+      document.getElementById('dot-2').classList.add('active');
+    }, 2000);
+  });
+}
+
+// ─── PRE-FILL FROM URL PARAMS ────────────
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  var ind = params.get('industry');
+  if (ind === 'manufacturing' || ind === 'ecommerce') {
+    var el = document.getElementById('ind-' + ind);
+    if (el) { el.click(); }
+  }
+})();
+</script>
+
+</body>
+</html>

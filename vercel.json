@@ -2,6 +2,12 @@
   "version": 2,
   "cleanUrls": true,
   "trailingSlash": false,
+  "functions": {
+    "api/build-demo.js": {
+      "maxDuration": 60,
+      "memory": 256
+    }
+  },
   "headers": [
     {
       "source": "/(.*)",
