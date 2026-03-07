@@ -1,6 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 190" fill="none">
   <defs>
-    <!-- Gradient for the blue swoosh arc -->
     <linearGradient id="swooshGrad" x1="0" y1="1" x2="1" y2="0" gradientUnits="objectBoundingBox">
       <stop offset="0%"   stop-color="#1499cc" stop-opacity="0.05"/>
       <stop offset="25%"  stop-color="#1a9dd9" stop-opacity="0.7"/>
@@ -8,53 +7,49 @@
       <stop offset="80%"  stop-color="#1a9dd9" stop-opacity="1"/>
       <stop offset="100%" stop-color="#55c8ee" stop-opacity="0.5"/>
     </linearGradient>
-    <!-- Radial glow for the dot -->
     <radialGradient id="dotGlow" cx="50%" cy="50%" r="50%">
       <stop offset="0%"   stop-color="#66d4f5" stop-opacity="1"/>
       <stop offset="40%"  stop-color="#1a9dd9" stop-opacity="1"/>
       <stop offset="70%"  stop-color="#1a9dd9" stop-opacity="0.5"/>
       <stop offset="100%" stop-color="#1a9dd9" stop-opacity="0"/>
     </radialGradient>
-    <!-- Clip to keep swoosh inside viewBox -->
     <clipPath id="badgeClip">
-      <rect width="220" height="220"/>
+      <rect width="340" height="190"/>
     </clipPath>
   </defs>
 
-  <!-- Transparent background (no fill rect) -->
-
-  <!-- Blue swoosh: starts lower-left, arcs over top, ends upper-right with dot -->
+  <!-- Blue swoosh: lower-left → arcs up → upper-right dot -->
   <g clip-path="url(#badgeClip)">
-    <path d="M 18,200 C 30,130 70,45 185,62"
+    <path d="M 14,178 C 35,110 100,28 305,50"
       stroke="url(#swooshGrad)"
-      stroke-width="16"
+      stroke-width="15"
       stroke-linecap="round"
       fill="none"/>
-    <!-- Glow halo around dot -->
-    <circle cx="185" cy="62" r="20" fill="#1a9dd9" opacity="0.18"/>
-    <circle cx="185" cy="62" r="13" fill="#1a9dd9" opacity="0.35"/>
+    <!-- Glow halo -->
+    <circle cx="305" cy="50" r="22" fill="#1a9dd9" opacity="0.15"/>
+    <circle cx="305" cy="50" r="14" fill="#1a9dd9" opacity="0.32"/>
     <!-- Solid dot -->
-    <circle cx="185" cy="62" r="8" fill="url(#dotGlow)"/>
+    <circle cx="305" cy="50" r="9" fill="url(#dotGlow)"/>
   </g>
 
-  <!-- CMMI — bold italic WHITE for dark backgrounds -->
+  <!-- CMMI — bold italic white, wide viewBox gives it room -->
   <text
-    x="110" y="148"
+    x="165" y="136"
     font-family="'Arial Black', 'Arial Bold', Impact, Arial, sans-serif"
-    font-size="84"
+    font-size="96"
     font-weight="900"
     font-style="italic"
     fill="#ffffff"
     text-anchor="middle"
-    letter-spacing="-1">CMMI</text>
+    letter-spacing="-2">CMMI</text>
 
-  <!-- LEVEL 3 — light gray -->
+  <!-- LEVEL 3 -->
   <text
-    x="118" y="180"
+    x="196" y="168"
     font-family="Arial, Helvetica, sans-serif"
-    font-size="24"
+    font-size="26"
     font-weight="600"
     fill="#cccccc"
     text-anchor="middle"
-    letter-spacing="3">LEVEL 3</text>
+    letter-spacing="4">LEVEL 3</text>
 </svg>
