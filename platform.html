@@ -34,11 +34,15 @@ a{text-decoration:none;color:inherit}
 .btn-ghost:hover{background:rgba(10,191,204,.08)}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);background:rgba(7,15,29,.92);backdrop-filter:blur(18px);border-bottom:1px solid var(--border)}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h)}
-.nav-logo img{height:68px}
-.nav-right{display:flex;align-items:center;gap:20px}
-.nav-back{font-size:.84rem;color:var(--txt2);transition:.2s}
+nav{width:100%;background:rgba(7,16,30,.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 48px;height:72px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:99;}
+.nav-logo a{display:flex;align-items:center;}.nav-logo img{height:68px;width:auto;}
+.nav-links{display:flex;gap:4px;list-style:none;}
+.nav-links a{padding:8px 16px;border-radius:8px;font-size:14px;font-weight:500;color:var(--txt2);transition:all .2s;}
+.nav-links a:hover{color:var(--txt);background:rgba(10,191,204,.08);}
+.nav-links a.active{color:var(--teal);}
+.nav-cta{display:inline-flex;align-items:center;gap:8px;background:var(--grad);color:#07101e;font-family:var(--ff);font-size:14px;font-weight:700;padding:10px 22px;border-radius:10px;}
+.nav-cta:hover{opacity:.9;transform:translateY(-1px);}
+@media(max-width:768px){nav{padding:0 20px;}.nav-links{display:none;}}
 .nav-back:hover{color:var(--teal)}
 .nav-btn{font-family:var(--ff);font-size:.82rem;font-weight:600;padding:9px 20px;border-radius:100px;cursor:pointer;background:var(--grad);color:#070f1d;border:none}
 .nav-btn:hover{opacity:.88}
@@ -181,18 +185,16 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:64px 48px
 <body>
 
 <nav>
-  <div class="wrap nav-inner">
-    <a href="/" class="nav-logo">
-      <img src="upcore-logo.png" alt="Upcore Technologies" height="36">
-    </a>
-    <div class="nav-right">
-      <a href="/" class="nav-back">← Home</a>
-      <a href="/industries" class="nav-back">Industries</a>
-      <a href="/insights" class="nav-back">Insights</a>
-      <a href="/about" class="nav-back">About</a>
-      <a href="/assessment" class="nav-btn">Book a Discovery Call</a>
-    </div>
-  </div>
+  <div class="nav-logo"><a href="/"><img src="/upcore-logo.png" alt="Upcore Technologies"/></a></div>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/platform" class="active">Platform</a></li>
+    <li><a href="/industries">Industries</a></li>
+    <li><a href="/insights">Insights</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+  <a href="/assessment" class="nav-cta">Book a Discovery Call</a>
 </nav>
 
 <!-- HERO -->
